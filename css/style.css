@@ -1,0 +1,11 @@
+:root {
+    --main-dark-color: rgb(2, 93, 129);
+    --main-medium-color: rgb(30, 111, 140);
+    --main-light-color: rgb(90 , 150, 177);
+
+}
+
+.main-color {
+
+    background-color: var(--main-medium-color);
+}
