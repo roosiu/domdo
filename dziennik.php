@@ -105,7 +105,13 @@ var objsel = {
 };
 var objinp = {
   "adres_nrbud": "'.$adres_nrbud.'",
+<<<<<<< HEAD
   "adres_nrlok": "'.$adres_nrlok.'"
+=======
+  "adres_nrlok": "'.$adres_nrlok.'",
+  "data_od": "'.$data_od.'",
+  "data_do": "'.$data_do.'"
+>>>>>>> zmianydziennik
 };
 $.each( objsel, function( select, value ) {
   $(function() {
@@ -115,6 +121,7 @@ $.each( objsel, function( select, value ) {
   })
 });
 
+<<<<<<< HEAD
 $.each( objinp, function( select, value ) {
   $("input[name="+select+"]").val(value);
 
@@ -122,6 +129,8 @@ $.each( objinp, function( select, value ) {
 $("#datepicker-10").datepicker("setDate", "-7");
 
 
+=======
+>>>>>>> zmianydziennik
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
 
