@@ -2,9 +2,8 @@
 
 </footer>
 
-
-      <!-- Javascript -->
-      <script>
+    <!-- Javascript -->
+    <script>
       $("#datepicker-10, #datepicker").datepicker({
          closeText: "Zamknij",
     prevText: "&#x3C;Poprzedni",
@@ -24,12 +23,12 @@
          $(function() {
             $( "#datepicker-10" ).datepicker();
             $( "#datepicker-10" ).datepicker( "option", "dateFormat", 'yy-mm-dd' );
-            $( "#datepicker-10" ).datepicker("setDate", "-10w+1");
+           /// $( "#datepicker-10" ).datepicker("setDate", "-10w+1");
          });
          $(function() {
             $( "#datepicker" ).datepicker();
             $( "#datepicker" ).datepicker( "option", "dateFormat", 'yy-mm-dd' );
-            $( "#datepicker" ).datepicker("setDate", "today");
+           /// $( "#datepicker" ).datepicker("setDate", "today");
          });
       </script>
 <!--koniec wczytywanie bibliotek-->
