@@ -17,7 +17,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
                 <h5 class="card-header bg-white mb-3 text-center">
                 <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
-                <form method="post" action="dziennik.php"><i class="fa fa-book"></i> DZIENNIK
+                <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <span id="naglowek_dziennik">DZIENNIK</span>
                 <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
                 </h5>
 <script>
@@ -32,28 +32,28 @@ jQuery(function(){
                 <div id="div_filtr" class="row mb-3" style="display: none">';
                 $filtr_0_rozmiar = '-2';
                 $filtr_0_text = 'ZLECONO';
-                $filtr_0 = '<select name="zlecono" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+                $filtr_0 = '<select name="zlecono" id="zlecono" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
                 $filtr_1_rozmiar = '-2';
                 $filtr_1_text = 'STATUS';
-                $filtr_1 = '<select name="status" class="form-control form-control-sm">
+                $filtr_1 = '<select name="status" id="status" class="form-control form-control-sm">
                 <option></option>
                 <option value=1>wykonane</option>
                 <option value=0>niewykonane</option>
                 </select>';
                 $filtr_2_rozmiar = '-2';
                 $filtr_2_text = 'TYP';
-                $filtr_2 = '<select name ="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+                $filtr_2 = '<select name ="typ" id="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
                 $filtr_3_rozmiar = '-3';
                 $filtr_3_text = 'ADRES';
                 $filtr_3 = '
                 <div class="row">
                 <div class="col-sm-8 pr-1">
-                <select name="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+                <select name="adres_ulica" id="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
                 </div>
-                <div class="col-sm px-0"><input name="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
+                <div class="col-sm px-0"><input name="adres_nrbud" id="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
                 </div>/
                 <div class="col-sm pl-0">
-                <input name="adres_nrlok" class="form-control form-control-sm" type="text" placeholder="">
+                <input name="adres_nrlok" id="adres_nrlok" class="form-control form-control-sm" type="text" placeholder="">
                 </div></div>';
                 $filtr_4_rozmiar = '';
                 $filtr_4_text = 'DATA OD';
@@ -87,16 +87,10 @@ jQuery(function(){
                 $adres_nrlok = (htmlspecialchars(trim($_POST['adres_nrlok'])));
                 $data_od = (htmlspecialchars(trim($_POST['data_od'])));
                 $data_do = (htmlspecialchars(trim($_POST['data_do'])));
-echo $zlecono;
-echo $status;
-echo $typ;
-echo $adres_ulica;
-echo $adres_nrbud;
-echo $adres_nrlok;
-echo $data_od;
-echo $data_do;
+
 echo
 '<script>
+
 var objsel = {
   "zlecono": "'.$zlecono.'",
   "status": "'.$status.'",
@@ -113,17 +107,20 @@ $.each( objsel, function( select, value ) {
   $(function() {
     $("[name="+select+"] option").filter(function() {
         return ($(this).val() == value);
-    }).prop("selected", true);
-  })
-});
+      }).prop("selected", true);
+      alert($("#"+select+" option:selected").text());
+    })
+  });
 
-$.each( objinp, function( select, value ) {
-  $("input[name="+select+"]").val(value);
-
+  $.each( objinp, function( select, value ) {
+    $("input[name="+select+"]").val(value);
+alert($("input[name="+select+"]").val());
 });
 
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
+
+$("#naglowek_dziennik").html("<B>DZIENNIK</B>");
 
 </script>';
                           }
