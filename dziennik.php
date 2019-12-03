@@ -122,10 +122,6 @@ $.each( objinp, function( select, value ) {
 
 });
 
-
-
-
-
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
 
