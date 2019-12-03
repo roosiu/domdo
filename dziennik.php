@@ -98,13 +98,29 @@ echo $data_od;
 echo $data_do;
 echo
 '<script>
+var objsel = {
+  "zlecono": "'.$zlecono.'",
+  "status": "'.$status.'",
+  "typ": "'.$typ.'",
+  "adres_ulica": "'.$adres_ulica.'"
+};
+var objinp = {
+  "adres_nrbud": "'.$adres_nrbud.'",
+  "adres_nrlok": "'.$adres_nrlok.'",
+  "data_od": "'.$data_od.'",
+  "data_do": "'.$data_do.'"
+};
+$.each( objsel, function( select, value ) {
+  $(function() {
+    $("[name="+select+"] option").filter(function() {
+        return ($(this).val() == value);
+    }).prop("selected", true);
+  })
+});
+
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
-$(function() {
-  $("[name=zlecono] option").filter(function() {
-      return ($(this).val() == "'.$zlecono.'");
-  }).prop("selected", true);
-})
+
 </script>';
                           }
 
