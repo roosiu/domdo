@@ -108,13 +108,20 @@ $.each( objsel, function( select, value ) {
     $("[name="+select+"] option").filter(function() {
         return ($(this).val() == value);
       }).prop("selected", true);
-      alert($("#"+select+" option:selected").text());
+      if(value == ""){  }
+      else {
+
+        $("#naglowek_dziennik").append(" | "+select+": <i>"+($("#"+select+" option:selected").text())+"</i>" );
+      };
     })
   });
 
   $.each( objinp, function( select, value ) {
+    if(value == ""){  }
+    else {
     $("input[name="+select+"]").val(value);
 alert($("input[name="+select+"]").val());
+    };
 });
 
 jQuery("#div_filtr").toggle("fast");
