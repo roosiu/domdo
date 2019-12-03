@@ -96,8 +96,17 @@ echo $adres_nrbud;
 echo $adres_nrlok;
 echo $data_od;
 echo $data_do;
-
-                }
+echo
+'<script>
+jQuery("#div_filtr").toggle("fast");
+jQuery("#przycisk_filtr").toggle("fast");
+$(function() {
+  $("[name=zlecono] option").filter(function() {
+      return ($(this).val() == "'.$zlecono.'");
+  }).prop("selected", true);
+})
+</script>';
+                          }
 
         echo '<table class="table table-sm table-striped">
               <thead>
