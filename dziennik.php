@@ -1,6 +1,5 @@
 <?php
 
-
 require 'includes/config.php';
 require 'includes/header.php';
 
@@ -96,8 +95,38 @@ echo $adres_nrbud;
 echo $adres_nrlok;
 echo $data_od;
 echo $data_do;
+echo
+'<script>
+var objsel = {
+  "zlecono": "'.$zlecono.'",
+  "status": "'.$status.'",
+  "typ": "'.$typ.'",
+  "adres_ulica": "'.$adres_ulica.'"
+};
+var objinp = {
+  "adres_nrbud": "'.$adres_nrbud.'",
+  "adres_nrlok": "'.$adres_nrlok.'"
+};
+$.each( objsel, function( select, value ) {
+  $(function() {
+    $("[name="+select+"] option").filter(function() {
+        return ($(this).val() == value);
+    }).prop("selected", true);
+  })
+});
 
-                }
+$.each( objinp, function( select, value ) {
+  $("input[name="+select+"]").val(value);
+
+});
+$("#datepicker-10").datepicker("setDate", "-7");
+
+
+jQuery("#div_filtr").toggle("fast");
+jQuery("#przycisk_filtr").toggle("fast");
+
+</script>';
+                          }
 
         echo '<table class="table table-sm table-striped">
               <thead>
