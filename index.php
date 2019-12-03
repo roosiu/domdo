@@ -4,8 +4,6 @@
 require 'includes/config.php';
 require 'includes/header.php';
 
-
-
 if ($user->check()) { // Tylko dla użytkowników zalogowanych
     // Pobierz dane o użytkowniku i zapisz je do zmiennej $userData
     $userData = $user->data();
@@ -18,5 +16,5 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     die();
 
 }
-
+/// includowanie stopki
 require 'includes/footer.php';
