@@ -136,7 +136,7 @@ jQuery("#przycisk_filtr").toggle("fast");
 
 
 </script>';
-                          }
+
 
         echo '<table class="table table-sm table-striped">
               <thead>
@@ -185,7 +185,59 @@ jQuery("#przycisk_filtr").toggle("fast");
 
 </main>';
 
+} else
 
+{
+
+          echo '<table class="table table-sm table-striped">
+                <thead>
+                <tr class="">
+                    <th scope="col">ID</th>
+                    <th scope="col">data</th>
+                    <th scope="col">termin uzgodniony</th>
+                    <th scope="col">termin faktyczny</th>
+                    <th scope="col">Treść</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Typ zgłoszenia</th>
+                    <th scope="col">Zgłaszający</th>
+                    <th scope="col">Kontakt</th>
+                    <th scope="col">Zlecono</th>
+                    <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
+                  </tr>
+                  </thead>
+                <tbody>
+                  ';
+
+
+      echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
+      '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+      '<td>', '1', '</td>',
+      '<td>', '2', '</td>',
+      '<td>', '3', '</td>',
+      '<td>', '4', '</td>',
+      '<td>', '5', '',
+      ' ', '6', '',
+      '/', '7', '</td>',
+      '<td>', '8', '</td>',
+      '<td>', '9', '</td>',
+      '<td>', '10', '</td>',
+      '<td>', '11', '</td>',
+      '<td class="text-center dontprint">', '', '<button type="button" class="btn btn-dark btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</button></td>
+      <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
+
+     echo '
+     </tbody>
+              </table>
+
+
+
+  </div>
+
+
+  </main>';
+
+
+                }
 
 /// koniec części main
 
