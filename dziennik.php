@@ -19,7 +19,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <b>DZIENNIK</b> <span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
+            <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <b>DZIENNIK</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col-2">
             <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
@@ -84,6 +84,25 @@ jQuery(function(){
                 </div>';}
 
                 echo '</div></form>';
+
+                        echo '<table class="table table-sm table-striped">
+                              <thead>
+                              <tr class="">
+                                  <th scope="col">ID</th>
+                                  <th scope="col">data</th>
+                                  <th scope="col">termin uzgodniony</th>
+                                  <th scope="col">termin faktyczny</th>
+                                  <th scope="col">Treść</th>
+                                  <th scope="col">Adres</th>
+                                  <th scope="col">Typ zgłoszenia</th>
+                                  <th scope="col">Zgłaszający</th>
+                                  <th scope="col">Kontakt</th>
+                                  <th scope="col">Zlecono</th>
+                                  <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
+                                </tr>
+                                </thead>
+                              <tbody>
+                                ';
                 if ($_POST) {
                 $zlecono = (htmlspecialchars(trim($_POST['zlecono'])));
                 $status = (htmlspecialchars(trim($_POST['status'])));
@@ -137,27 +156,39 @@ jQuery("#przycisk_filtr").toggle("fast");
 
 </script>';
 
+                $zlecono = (htmlspecialchars(trim($_POST['zlecono'])));
+                $status = (htmlspecialchars(trim($_POST['status'])));
+                $typ = (htmlspecialchars(trim($_POST['typ'])));
+                $adres_ulica = (htmlspecialchars(trim($_POST['adres_ulica'])));
+                $adres_nrbud = (htmlspecialchars(trim($_POST['adres_nrbud'])));
+                $adres_nrlok = (htmlspecialchars(trim($_POST['adres_nrlok'])));
+                $data_od = (htmlspecialchars(trim($_POST['data_od'])));
+                $data_do = (htmlspecialchars(trim($_POST['data_do'])));
 
-        echo '<table class="table table-sm table-striped">
-              <thead>
-              <tr class="">
-                  <th scope="col">ID</th>
-                  <th scope="col">data</th>
-                  <th scope="col">termin uzgodniony</th>
-                  <th scope="col">termin faktyczny</th>
-                  <th scope="col">Treść</th>
-                  <th scope="col">Adres</th>
-                  <th scope="col">Typ zgłoszenia</th>
-                  <th scope="col">Zgłaszający</th>
-                  <th scope="col">Kontakt</th>
-                  <th scope="col">Zlecono</th>
-                  <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
-                </tr>
-                </thead>
-              <tbody>
-                ';
-
-
+if($zlecono){
+  echo pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$zlecono);
+}
+if($typ){
+  echo pojed_zapyt('SELECT typ FROM typy WHERE `id` ='.$typ);
+}
+if($status>=0){
+  echo $status;
+}
+if($adres_ulica){
+  echo pojed_zapyt('SELECT nazwa FROM ulice WHERE `id` ='.$adres_ulica);
+}
+if($adres_nrbud){
+  echo $adres_nrbud;
+}
+if($adres_nrlok){
+  echo $adres_nrlok;
+}
+if($data_od){
+  echo $data_od;
+}
+if($data_do){
+  echo $data_do;
+}
     echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` ASC', '<tr>', '</tr>',
     '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
@@ -188,26 +219,6 @@ jQuery("#przycisk_filtr").toggle("fast");
 } else
 
 {
-
-          echo '<table class="table table-sm table-striped">
-                <thead>
-                <tr class="">
-                    <th scope="col">ID</th>
-                    <th scope="col">data</th>
-                    <th scope="col">termin uzgodniony</th>
-                    <th scope="col">termin faktyczny</th>
-                    <th scope="col">Treść</th>
-                    <th scope="col">Adres</th>
-                    <th scope="col">Typ zgłoszenia</th>
-                    <th scope="col">Zgłaszający</th>
-                    <th scope="col">Kontakt</th>
-                    <th scope="col">Zlecono</th>
-                    <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
-                  </tr>
-                  </thead>
-                <tbody>
-                  ';
-
 
       echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
       '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
