@@ -1,0 +1,35 @@
+.dontprint
+{ display: none; }
+@media all {
+
+.print_table {
+    width: 900px;
+    border: solid 1px;
+    border-collapse: collapse;
+	
+}
+.print_table th{
+    border-color: black;
+    font-size: 14px;
+    border: solid 1px;
+    border-collapse: collapse;
+    margin: 5;
+    padding: 5;
+}
+.print_table td{
+    border-color: black;
+    font-size: 14px;
+    border: solid 1px;
+    border-collapse: collapse;
+    margin: 5;
+    padding: 5;
+    text-align: center;
+}
+.print_table tr:nth-child(odd){
+    background-color:#E8E8E8;
+}
+.print_table tr:nth-child(even){
+    background-color:#ffffff;
+}
+
+}

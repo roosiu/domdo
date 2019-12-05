@@ -10,8 +10,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href = "css/jquery-ui.css" rel = "stylesheet">
-
-<!--wczytywanie bibliotek-->
+    <link href = "css/print.css" rel = "stylesheet" media = "print">
+<!--wczytywanie bibliotekd-->
 
 <script src = "js/jquery.js"></script>
 <script src="js/popper.min.js"></script>

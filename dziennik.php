@@ -14,12 +14,18 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     echo '<main>
 
     <div class="jumbotron mb-n4 bg-white">
+            <div class="row mb-4">
+            <div class="col-2">
+            <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
+            </div>
+            <div class="col text-center">
+            <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <b>DZIENNIK</b> <span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
+            </div>
+            <div class="col-2">
+            <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
 
-                <h5 class="card-header bg-white mb-3 text-center">
-                <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
-                <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <span id="naglowek_dziennik">DZIENNIK</span>
-                <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
-                </h5>
+            </div>
+            </div>
 <script>
 jQuery(function(){
   jQuery("#but_div_filtr").click(function () {
@@ -29,7 +35,7 @@ jQuery(function(){
 });
 </script>
 
-                <div id="div_filtr" class="row mb-3" style="display: none">';
+                <div id="div_filtr" class="row mb-3 dontprint" style="display: none">';
                 $filtr_0_rozmiar = '-2';
                 $filtr_0_text = 'ZLECONO';
                 $filtr_0 = '<select name="zlecono" id="zlecono" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
@@ -120,14 +126,14 @@ $.each( objsel, function( select, value ) {
     if(value == ""){  }
     else {
     $("input[name="+select+"]").val(value);
-alert($("input[name="+select+"]").val());
+    $("#naglowek_dziennik2").append(" | "+select+": <i>"+($("input[name="+select+"]").val())+"</i>");
     };
 });
 
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
 
-$("#naglowek_dziennik").html("<B>DZIENNIK</B>");
+
 
 </script>';
                           }
@@ -145,7 +151,7 @@ $("#naglowek_dziennik").html("<B>DZIENNIK</B>");
                   <th scope="col">Zgłaszający</th>
                   <th scope="col">Kontakt</th>
                   <th scope="col">Zlecono</th>
-                  <th colspan="2" scope="col" class="text-center"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
+                  <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
                 </tr>
                 </thead>
               <tbody>
@@ -153,7 +159,7 @@ $("#naglowek_dziennik").html("<B>DZIENNIK</B>");
 
 
     echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` ASC', '<tr>', '</tr>',
-    '<td>', '0', '&nbsp;<span class="badge badge-dark"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+    '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
     '<td>', '3', '</td>',
@@ -165,7 +171,8 @@ $("#naglowek_dziennik").html("<B>DZIENNIK</B>");
     '<td>', '9', '</td>',
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
-    '<td class="text-center">', '', '<button type="button" class="btn btn-dark btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</button></td><td class="text-center"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
+    '<td class="text-center dontprint">', '', '<button type="button" class="btn btn-dark btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</button></td>
+    <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
 
    echo '
    </tbody>
