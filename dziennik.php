@@ -156,40 +156,41 @@ jQuery("#przycisk_filtr").toggle("fast");
 
 </script>';
 
-                $zlecono = (htmlspecialchars(trim($_POST['zlecono'])));
-                $status = (htmlspecialchars(trim($_POST['status'])));
-                $typ = (htmlspecialchars(trim($_POST['typ'])));
-                $adres_ulica = (htmlspecialchars(trim($_POST['adres_ulica'])));
-                $adres_nrbud = (htmlspecialchars(trim($_POST['adres_nrbud'])));
-                $adres_nrlok = (htmlspecialchars(trim($_POST['adres_nrlok'])));
-                $data_od = (htmlspecialchars(trim($_POST['data_od'])));
-                $data_do = (htmlspecialchars(trim($_POST['data_do'])));
 
 if($zlecono){
-  echo pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$zlecono);
+  $zlecono_i = ' AND zlecono = "'.pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$zlecono).'"';
 }
 if($typ){
-  echo pojed_zapyt('SELECT typ FROM typy WHERE `id` ='.$typ);
+  $typ_i = ' AND typ = "'.pojed_zapyt('SELECT typ FROM typy WHERE `id` ='.$typ).'"';
 }
-if($status>=0){
-  echo $status;
+if($status=='0'){
+
+  $status_i = ' AND data_k = "" ';
+}elseif($status=='1'){
+
+  $status_i = ' AND data_k <> "" ';
 }
 if($adres_ulica){
-  echo pojed_zapyt('SELECT nazwa FROM ulice WHERE `id` ='.$adres_ulica);
+  $ulica_i = ' AND ulica = "'.pojed_zapyt('SELECT nazwa FROM ulice WHERE `id` ='.$adres_ulica).'"';
 }
 if($adres_nrbud){
-  echo $adres_nrbud;
+  $adres_nrbud_i = ' AND nr_ulicy = "'.$adres_nrbud.'"';
 }
 if($adres_nrlok){
-  echo $adres_nrlok;
+  $adres_nrlok_i = ' AND nr_lokalu = "'.$adres_nrlok.'"';
 }
-if($data_od){
-  echo $data_od;
+if($data_od <> ''){
+$data_od_i = ' AND data_p BETWEEN "'.$data_od.'"';
+  echo $data_od_i;
+  if($data_do <> ''){
+  $data_do_i = ' AND "'.$data_do.'"';
+    echo $data_do_i;
+  }  else {
+    $data_do_i = ' AND "'.date('Y-m-d').'"';
+      echo $data_do_i;
+  }
 }
-if($data_do){
-  echo $data_do;
-}
-    echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` ASC', '<tr>', '</tr>',
+    echo tabeladb2('12','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
     '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
