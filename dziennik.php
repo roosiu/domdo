@@ -64,11 +64,11 @@ jQuery(function(){
                 $filtr_4_rozmiar = '';
                 $filtr_4_text = 'DATA OD';
                 $filtr_4 = '
-                <input type="text" name="data_od" class="form-control form-control-sm" id="datepicker-10">';
+                <input type="text" name="data_od" class="form-control form-control-sm" id="datepicker-10" value = '.(date('Y-m-d', strtotime(" -1 year"))).'>';
                 $filtr_5_rozmiar = '';
                 $filtr_5_text = 'DATA DO';
                 $filtr_5 = '
-                <input type = "text" name="data_do" class="form-control form-control-sm" id = "datepicker">';
+                <input type = "text" name="data_do" class="form-control form-control-sm" id = "datepicker" value = '.date('Y-m-d').'>';
                 for ($x = 0; $x <= 5; $x++) {
 
                   echo ' <div class="col-sm'.${filtr_.$x._rozmiar}.' px-1">
@@ -180,18 +180,15 @@ if($adres_nrlok){
   $adres_nrlok_i = ' AND nr_lokalu = "'.$adres_nrlok.'"';
 }
 if($data_od <> ''){
-$data_od_i = ' AND data_p BETWEEN "'.$data_od.'"';
-  echo $data_od_i;
+$data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
   if($data_do <> ''){
-  $data_do_i = ' AND "'.$data_do.'"';
-    echo $data_do_i;
+  $data_do_i = ' AND "'.$data_do.'" ';
   }  else {
-    $data_do_i = ' AND "'.date('Y-m-d').'"';
-      echo $data_do_i;
+    $data_do_i = ' AND "'.date('Y-m-d').'" ';
   }
 }
-    echo tabeladb2('12','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
-    '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+    echo tabeladb2('12','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
+    '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
     '<td>', '3', '</td>',
@@ -222,7 +219,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'"';
 {
 
       echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
-      '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+      '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
       '<td>', '3', '</td>',
@@ -251,8 +248,24 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'"';
 
                 }
 
-/// koniec części main
 
+/// koniec części main
+/// dodawanie przycisku niedrukowania wybranych zdarzeń z tabeli
+echo '
+<script>
+$(".pokazukryj").click(function() {
+  if (!$(this).parent().parent().hasClass("dontprint"))
+  {
+   $(this).parent().parent().addClass("dontprint text-secondary");
+  } else {
+    $(this).parent().parent().removeClass("dontprint text-secondary");
+
+  }
+});
+
+</script>
+
+';
 } else {
     // Widok dla użytkownika niezalogowanego
     header("Location: login.php");

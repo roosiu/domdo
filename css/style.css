@@ -9,3 +9,8 @@
 
     background-color: var(--main-medium-color);
 }
+
+.clickable {
+    cursor: pointer;
+    cursor: hand;
+  }
