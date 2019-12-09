@@ -25,26 +25,36 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             </div>
 
-            <div class="row mb-4">
-            <div class="col-sm-2 bg-light">
-            <label for="data_z">Data</label>
-            <input class="form-control form-control-sm mb-3" id="data_z" type="text" placeholder="">
-            <label for="termin_uzgodniony_z">Termin uzgodniony</label>
-            <input class="form-control form-control-sm mb-3" id="termin_uzgodniony_z" type="text" placeholder="">
-            <label for="termin_faktyczny_z">Termin faktyczny</label>
-            <input class="form-control form-control-sm mb-3" id="termin_faktyczny_z" type="text" placeholder="">
+            <div class="row mb-4 border rounded">
+            <div class="col-sm-2 bg-light border">
+            <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data</label>
+            <input class="form-control form-control-sm mb-3 datepicker" id="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
+            <label for="termin_uzgodniony_z" class="badge badge-pill badge-secondary text-uppercase">Termin uzgodniony</label>
+            <input class="form-control form-control-sm mb-3 datepicker" id="termin_uzgodniony_z" type="text" placeholder="">
+            <label for="termin_faktyczny_z" class="badge badge-pill badge-secondary text-uppercase">Termin faktyczny</label>
+            <input class="form-control form-control-sm mb-3 datepicker" id="termin_faktyczny_z" type="text" placeholder="">
             </div>
             <div class="col-sm-4">
-            <label for="tresc_z">Treść</label>
-            <textarea class="form-control" id="tresc_z" rows="7"></textarea>
+            <label for="tresc_z" class="badge badge-pill badge-secondary text-uppercase">Treść</label>
+            <textarea class="form-control" id="tresc_z" rows="9"></textarea>
             </div>
-            <div class="col-sm-2 bg-light">
-            <label for="adres_ulica_z">Ulica</label>
-            <select name="adres_ulica" id="adres_ulica_z" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
-
+            <div class="col-sm-2 bg-light border">
+            <label for="adres_ulica_z" class="badge badge-pill badge-secondary text-uppercase">Ulica</label>
+            <select name="adres_ulica" id="adres_ulica_z" class="form-control form-control-sm mb-3"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+            <div class="row mb-3">
+            <div class="col">
+            <input name="adres_nrulicy" id="adres_nrulicy" class="form-control form-control-sm" type="text" placeholder="">
+            </div>/<div class="col">
+            <input name="adres_nrlok" id="adres_nrlok" class="form-control form-control-sm" type="text" placeholder="">
+            </div>
+            </div>
+            <label for="zglasza_z" class="badge badge-pill badge-secondary text-uppercase">Zgłaszający</label>
+            <input name="zglasza_z" id="zglasza_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <label for="kontakt_z" class="badge badge-pill badge-secondary text-uppercase">Kontakt</label>
+            <input name="kontakt_z" id="kontakt_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             </div>
             <div class="col-sm-2">dsa</div>
-            <div class="col-sm-2">dsa</div>
+            <div class="col-sm-2 border bg-light">dsa</div>
             </div>
     </div>
 </form>

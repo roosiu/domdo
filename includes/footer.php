@@ -4,7 +4,7 @@
 
     <!-- Javascript -->
     <script>
-      $("#datepicker-10, #datepicker").datepicker({
+      $("#datepicker-10, #datepicker, .datepicker").datepicker({
          closeText: "Zamknij",
     prevText: "&#x3C;Poprzedni",
     nextText: "Następny&#x3E;",
@@ -23,6 +23,11 @@
          $(function() {
             $( "#datepicker-10" ).datepicker();
             $( "#datepicker-10" ).datepicker( "option", "dateFormat", 'yy-mm-dd' );
+           /// $( "#datepicker-10" ).datepicker("setDate", "-10w+1");
+         });
+         $(function() {
+            $( ".datepicker" ).datepicker();
+            $( ".datepicker" ).datepicker( "option", "dateFormat", 'yy-mm-dd' );
            /// $( "#datepicker-10" ).datepicker("setDate", "-10w+1");
          });
          $(function() {
