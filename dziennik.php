@@ -256,9 +256,9 @@ echo '
 $(".pokazukryj").click(function() {
   if (!$(this).parent().parent().hasClass("dontprint"))
   {
-   $(this).parent().parent().addClass("dontprint text-secondary");
+   $(this).parent().parent().addClass("dontprint text-light bg-secondary");
   } else {
-    $(this).parent().parent().removeClass("dontprint text-secondary");
+    $(this).parent().parent().removeClass("dontprint text-light bg-secondary");
 
   }
 });
