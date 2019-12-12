@@ -30,11 +30,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data</label>
             <input class="form-control form-control-sm mb-3 datepicker" id="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
             <label for="termin_uzgodniony_z" class="badge badge-pill badge-secondary text-uppercase">Termin uzgodniony</label>
-            <input class="form-control form-control-sm mb-3 datepicker" id="termin_uzgodniony_z" type="text" placeholder="">
+            <input class="form-control form-control-sm mb-3 datepicker" id="termin_uzgodniony_z" type="text" value = '.date('Y-m-d').' placeholder="">
             <label for="termin_faktyczny_z" class="badge badge-pill badge-secondary text-uppercase">Termin faktyczny</label>
             <input class="form-control form-control-sm mb-3 datepicker" id="termin_faktyczny_z" type="text" placeholder="">
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" id="div_tresc_z">
             <label for="tresc_z" class="badge badge-pill badge-secondary text-uppercase">Treść</label>
             <textarea class="form-control" id="tresc_z" rows="9"></textarea>
             </div>
@@ -53,10 +53,36 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <label for="kontakt_z" class="badge badge-pill badge-secondary text-uppercase">Kontakt</label>
             <input name="kontakt_z" id="kontakt_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             </div>
-            <div class="col-sm-2">dsa</div>
-            <div class="col-sm-2 border bg-light">dsa</div>
+            <div class="col-sm-2">
+            <label for="typ_z" class="badge badge-pill badge-secondary text-uppercase">Typ</label>
+            <select name="typ_z" id="typ_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <option></option>
+            '.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            </select>
             </div>
-    </div>
+            <div class="col-sm-2 border bg-light">
+            <label for="zlecono_z" class="badge badge-pill badge-secondary text-uppercase">Zlecono</label>
+            <select name="zlecono_z" id="zlecono_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <option></option>
+            '.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            </select>
+            </div>
+            </div>
+
+            <div class="row mb-4">
+            <div class="col-sm border rounded bg-light">
+            <label class="badge badge-pill badge-secondary text-uppercase">Pliki i załączniki</label>
+            </div>
+            <div class="col-sm-2">
+            <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</button>
+            </div>
+            <div class="col-sm-2">
+
+            <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
+            </div>
+            </div>
+
+        </div>
 </form>
 </main>';
 

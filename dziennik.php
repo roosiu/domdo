@@ -98,7 +98,7 @@ jQuery(function(){
                                   <th scope="col">Zgłaszający</th>
                                   <th scope="col">Kontakt</th>
                                   <th scope="col">Zlecono</th>
-                                  <th colspan="2" scope="col" class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</button></th>
+                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="dziennik_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</a></th>
                                 </tr>
                                 </thead>
                               <tbody>
