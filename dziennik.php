@@ -200,7 +200,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     '<td>', '9', '</td>',
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
-    '<td class="text-center dontprint">', '', '<button type="button" class="btn btn-dark btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</button></td>
+    '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>
     <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
 
    echo '
@@ -231,7 +231,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '9', '</td>',
       '<td>', '10', '</td>',
       '<td>', '11', '</td>',
-      '<td class="text-center dontprint">', '', '<button type="button" class="btn btn-dark btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</button></td>
+      '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>
       <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
 
      echo '

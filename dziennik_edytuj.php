@@ -70,13 +70,13 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
 
             <div class="row mb-4">
-            <div class="col-sm border rounded bg-light">
+            <div class="col-sm border rounded bg-light mb-3">
             <label class="badge badge-pill badge-secondary text-uppercase">Pliki i załączniki</label>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 mb-3">
             <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</button>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 mb-3">
 
             <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
             </div>
@@ -85,7 +85,20 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
         </div>
 </form>
 </main>';
+if ($_GET) {
 
+    if($_GET['id']){
+        $id_get = (htmlspecialchars(trim($_GET['id'])));
+        echo 'edytowanie '.$id_get;
+
+    }
+
+    if($_GET['del']){
+
+    $del_get = (htmlspecialchars(trim($_GET['del'])));
+    echo 'usuwanie '.$del_get;
+    }
+}
 } else {
     // Widok dla użytkownika niezalogowanego
     header("Location: login.php");
