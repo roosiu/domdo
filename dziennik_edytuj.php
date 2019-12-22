@@ -28,19 +28,19 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="row mb-4 border rounded">
             <div class="col-sm-2 bg-light border">
             <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data</label>
-            <input class="form-control form-control-sm mb-3 datepicker" id="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
+            <input class="form-control form-control-sm mb-3 datepicker" id="data_z" name="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
             <label for="termin_uzgodniony_z" class="badge badge-pill badge-secondary text-uppercase">Termin uzgodniony</label>
-            <input class="form-control form-control-sm mb-3 datepicker" id="termin_uzgodniony_z" type="text" value = '.date('Y-m-d').' placeholder="">
+            <input class="form-control form-control-sm mb-3 datepicker" id="termin_uzgodniony_z" name="termin_uzgodniony_z" type="text" value = '.date('Y-m-d').' placeholder="">
             <label for="termin_faktyczny_z" class="badge badge-pill badge-secondary text-uppercase">Termin faktyczny</label>
-            <input class="form-control form-control-sm mb-3 datepicker" id="termin_faktyczny_z" type="text" placeholder="">
+            <input class="form-control form-control-sm mb-3 datepicker" id="termin_faktyczny_z" name="termin_faktyczny_z" type="text" placeholder="">
             </div>
             <div class="col-sm-4" id="div_tresc_z">
             <label for="tresc_z" class="badge badge-pill badge-secondary text-uppercase">Treść</label>
-            <textarea class="form-control" id="tresc_z" rows="9"></textarea>
+            <textarea class="form-control" id="tresc_z" name="tresc_z" rows="9"></textarea>
             </div>
             <div class="col-sm-2 bg-light border">
             <label for="adres_ulica_z" class="badge badge-pill badge-secondary text-uppercase">Ulica</label>
-            <select name="adres_ulica" id="adres_ulica_z" class="form-control form-control-sm mb-3"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+            <select name="adres_ulica_z" id="adres_ulica_z" class="form-control form-control-sm mb-3"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
             <div class="row mb-3">
             <div class="col">
             <input name="adres_nrulicy" id="adres_nrulicy" class="form-control form-control-sm" type="text" placeholder="">
@@ -89,7 +89,54 @@ if ($_GET) {
 
     if($_GET['id']){
         $id_get = (htmlspecialchars(trim($_GET['id'])));
+
         echo 'edytowanie '.$id_get;
+echo '<script>
+
+var objinp = {
+    "data_z": "2019-12-01",
+    "termin_uzgodniony_z": "2019-12-02",
+    "termin_faktyczny_z": "2019-12-03",
+    "tresc_z": "tresc jakaś",
+    "adres_nrulicy": "4324",
+    "adres_nrlok": "12",
+    "zglasza_z": "jan",
+    "kontakt_z": "tel. 143"
+};
+
+var objsel = {
+    "adres_ulica_z": "Dreckiego",
+    "typ_z": "1",
+    "zlecono_z": "1"
+
+  };
+
+$.each( objinp, function( select, value ) {
+    if(value == ""){  }
+    else {
+    $("#"+select).val(value);
+    };
+});
+</script>
+
+';
+
+      echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
+      '', '0', '',
+      '', '1', '',
+      '', '2', '',
+      '', '3', '',
+      '', '4', '',
+      '', '5', '',
+      '', '6', '',
+      '', '7', '',
+      '', '8', '',
+      '', '9', '',
+      '', '10', '',
+      '', '11', '',
+      '', '0', ''
+    );
+
 
     }
 
