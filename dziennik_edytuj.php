@@ -18,7 +18,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col-2">
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b>
+            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b> | wpis o id: <input disabled size="7" id="id_z"></input>
             </div>
 
             <div class="col-2">
@@ -90,26 +90,29 @@ if ($_GET) {
     if($_GET['id']){
         $id_get = (htmlspecialchars(trim($_GET['id'])));
 
-        echo 'edytowanie '.$id_get;
-echo '<script>
+echo '<script>';
+echo 'var objinp = {';
+echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
+'"id_z": "', '0', '",',
+'"data_z": "', '1', '",',
+'"termin_uzgodniony_z": "', '2', '",',
+'"termin_faktyczny_z": "', '3', '",',
+'"tresc_z": "', '4', '",',
+'"adres_nrulicy": "', '6', '",',
+'"adres_nrlok": "', '7', '",',
+'"zglasza_z": "', '9', '",',
+'"kontakt_z": "', '10', '" };',
+'var objsel = {
+    "adres_ulica_z": "', '9', '",',
+'"typ_z": "', '10', '",',
+'"zlecono_z": "', '11', '",',
+'"zlecono_z": "', '11', '"'
+);
 
-var objinp = {
-    "data_z": "2019-12-01",
-    "termin_uzgodniony_z": "2019-12-02",
-    "termin_faktyczny_z": "2019-12-03",
-    "tresc_z": "tresc jakaś",
-    "adres_nrulicy": "4324",
-    "adres_nrlok": "12",
-    "zglasza_z": "jan",
-    "kontakt_z": "tel. 143"
-};
+echo '};';
+echo '
 
-var objsel = {
-    "adres_ulica_z": "Dreckiego",
-    "typ_z": "1",
-    "zlecono_z": "1"
 
-  };
 
 $.each( objinp, function( select, value ) {
     if(value == ""){  }
@@ -121,21 +124,7 @@ $.each( objinp, function( select, value ) {
 
 ';
 
-      echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
-      '', '0', '',
-      '', '1', '',
-      '', '2', '',
-      '', '3', '',
-      '', '4', '',
-      '', '5', '',
-      '', '6', '',
-      '', '7', '',
-      '', '8', '',
-      '', '9', '',
-      '', '10', '',
-      '', '11', '',
-      '', '0', ''
-    );
+
 
 
     }
