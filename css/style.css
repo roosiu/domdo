@@ -14,3 +14,7 @@
     cursor: pointer;
     cursor: hand;
   }
+
+  body{
+      padding-top: 30px;
+  }

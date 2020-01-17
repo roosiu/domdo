@@ -102,11 +102,12 @@ echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
 '"adres_nrlok": "', '7', '",',
 '"zglasza_z": "', '9', '",',
 '"kontakt_z": "', '10', '" };',
-'var objsel = {
-    "adres_ulica_z": "', '9', '",',
-'"typ_z": "', '10', '",',
-'"zlecono_z": "', '11', '",',
-'"zlecono_z": "', '11', '"'
+'
+var objsel = {
+"adres_ulica_z": "', '5', '",',
+'"typ_z": "', '8', '",',
+'"zlecono_z": "', '11', '"',
+'', '', ''
 );
 
 echo '};';
@@ -118,6 +119,14 @@ $.each( objinp, function( select, value ) {
     if(value == ""){  }
     else {
     $("#"+select).val(value);
+};
+});
+$.each( objsel, function( select, value ) {
+    if(value == ""){  }
+    else {
+        $("#typ_z option:contains(unifon)").val();
+        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
+
     };
 });
 </script>

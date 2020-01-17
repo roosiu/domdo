@@ -15,13 +15,13 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
-            <div class="col-2">
+            <div class="col">
             <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
             </div>
             <div class="col text-center">
             <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <b>DZIENNIK</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
-            <div class="col-2">
+            <div class="col">
             <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
 
             </div>
