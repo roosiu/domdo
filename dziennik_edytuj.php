@@ -18,7 +18,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col-2">
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b> | wpis o id: <input disabled size="7" id="id_z"></input>
+            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <input disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
@@ -124,7 +124,7 @@ $.each( objinp, function( select, value ) {
 $.each( objsel, function( select, value ) {
     if(value == ""){  }
     else {
-        $("#typ_z option:contains(unifon)").val();
+        $("#input_z_id").show();
         $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
 
     };
