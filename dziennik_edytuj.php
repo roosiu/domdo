@@ -18,7 +18,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col-2">
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <input disabled size="7" id="id_z"></input></span>
+            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
@@ -40,7 +40,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             <div class="col-sm-2 bg-light border">
             <label for="adres_ulica_z" class="badge badge-pill badge-secondary text-uppercase">Ulica</label>
-            <select name="adres_ulica_z" id="adres_ulica_z" class="form-control form-control-sm mb-3"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+            <select name="adres_ulica_z" id="adres_ulica_z" class="form-control form-control-sm mb-3"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
             <div class="row mb-3">
             <div class="col">
             <input name="adres_nrulicy" id="adres_nrulicy" class="form-control form-control-sm" type="text" placeholder="">
@@ -57,14 +57,14 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <label for="typ_z" class="badge badge-pill badge-secondary text-uppercase">Typ</label>
             <select name="typ_z" id="typ_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <option></option>
-            '.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            '.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
             </select>
             </div>
             <div class="col-sm-2 border bg-light">
             <label for="zlecono_z" class="badge badge-pill badge-secondary text-uppercase">Zlecono</label>
             <select name="zlecono_z" id="zlecono_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <option></option>
-            '.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            '.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
             </select>
             </div>
             </div>
@@ -107,7 +107,11 @@ var objsel = {
 "adres_ulica_z": "', '5', '",',
 '"typ_z": "', '8', '",',
 '"zlecono_z": "', '11', '"',
+'', '', '',
+'', '', '',
+'', '', '',
 '', '', ''
+
 );
 
 echo '};';
@@ -125,6 +129,7 @@ $.each( objsel, function( select, value ) {
     if(value == ""){  }
     else {
         $("#input_z_id").show();
+        $("#id_z_label").html($("#id_z").val());
         $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
 
     };

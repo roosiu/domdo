@@ -38,7 +38,7 @@ jQuery(function(){
                 <div id="div_filtr" class="row mb-3 dontprint" style="display: none">';
                 $filtr_0_rozmiar = '-2';
                 $filtr_0_text = 'ZLECONO';
-                $filtr_0 = '<select name="zlecono" id="zlecono" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+                $filtr_0 = '<select name="zlecono" id="zlecono" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
                 $filtr_1_rozmiar = '-2';
                 $filtr_1_text = 'STATUS';
                 $filtr_1 = '<select name="status" id="status" class="form-control form-control-sm">
@@ -48,13 +48,13 @@ jQuery(function(){
                 </select>';
                 $filtr_2_rozmiar = '-2';
                 $filtr_2_text = 'TYP';
-                $filtr_2 = '<select name ="typ" id="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+                $filtr_2 = '<select name ="typ" id="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
                 $filtr_3_rozmiar = '-3';
                 $filtr_3_text = 'ADRES';
                 $filtr_3 = '
                 <div class="row">
                 <div class="col-sm-8 pr-1">
-                <select name="adres_ulica" id="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+                <select name="adres_ulica" id="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
                 </div>
                 <div class="col-sm px-0"><input name="adres_nrbud" id="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
                 </div>/
@@ -187,7 +187,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     $data_do_i = ' AND "'.date('Y-m-d').'" ';
   }
 }
-    echo tabeladb2('12','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
+    echo tabeladb2('13','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
     '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
@@ -200,9 +200,11 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     '<td>', '9', '</td>',
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
-    '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>
-    <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
-
+    '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+    '<td class="text-center dontprint"><a href="dziennik_edytuj.php?del=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</a></td>',
+    '', '', '',
+    '', '', ''
+    );
    echo '
    </tbody>
             </table>
@@ -218,7 +220,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 
 {
 
-      echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
+      echo tabeladb2('13','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
       '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
@@ -231,8 +233,11 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '9', '</td>',
       '<td>', '10', '</td>',
       '<td>', '11', '</td>',
-      '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>
-      <td class="text-center dontprint"><button type="button" class="btn btn-dark btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>');
+      '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+     '<td class="text-center dontprint"><a href="dziennik_edytuj.php?del=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</a></td>',
+     '', '', '',
+     '', '', ''
+    );
 
      echo '
      </tbody>
