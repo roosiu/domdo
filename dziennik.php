@@ -3,7 +3,26 @@
 require 'includes/config.php';
 require 'includes/header.php';
 
-
+echo '
+<script>
+$( function() {
+  $( "#dialog-confirm" ).dialog({
+    resizable: false,
+    height: "auto",
+    width: 400,
+    modal: true,
+    buttons: {
+      "Usuń wpis": function() {
+        $( this ).dialog( "close" );
+      },
+      Anuluj: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+} );
+</script>
+';
 
 if ($user->check()) { // Tylko dla użytkowników zalogowanych
     // Pobierz dane o użytkowniku i zapisz je do zmiennej $userData
@@ -256,7 +275,11 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 
 /// koniec części main
 /// dodawanie przycisku niedrukowania wybranych zdarzeń z tabeli
-echo '
+echo '<div id="dialog-confirm" title="Potwierdzenie usuwania">
+<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis o id xxx? Przywrócenie go nie będzie możliwe</p>
+</div>
+
+
 <script>
 $(".pokazukryj").click(function() {
   if (!$(this).parent().parent().hasClass("dontprint"))
