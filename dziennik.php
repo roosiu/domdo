@@ -6,11 +6,20 @@ require 'includes/header.php';
 echo '
 <script>
 $( function() {
-  $( "#dialog-confirm" ).dialog({
+  $( ".dialog-confirm" ).dialog({
+    autoOpen: false,
     resizable: false,
     height: "auto",
-    width: 400,
+    width: "350",
     modal: true,
+    show: {
+      effect: "fade",
+      duration: 300
+    },
+    hide: {
+      effect: "fade",
+      duration: 300
+    },
     buttons: {
       "Usuń wpis": function() {
         $( this ).dialog( "close" );
@@ -19,6 +28,10 @@ $( function() {
         $( this ).dialog( "close" );
       }
     }
+  });
+  $( ".click-del" ).on( "click", function() {
+    $("div .dialog-confirm").first().dialog( "open" );
+
   });
 } );
 </script>
@@ -220,7 +233,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
     '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-    '<td class="text-center dontprint"><a href="dziennik_edytuj.php?del=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</a></td>',
+    '<td class="text-center dontprint"><button', '', ' class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
     '', '', '',
     '', '', ''
     );
@@ -239,7 +252,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 
 {
 
-      echo tabeladb2('13','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
+      echo tabeladb2('14','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
       '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
@@ -253,8 +266,8 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '10', '</td>',
       '<td>', '11', '</td>',
       '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-     '<td class="text-center dontprint"><a href="dziennik_edytuj.php?del=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</a></td>',
-     '', '', '',
+     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+     '<div class="dialog-confirm" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-trash" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis o id ', '0', '? Przywrócenie go nie będzie możliwe</p></div>',
      '', '', ''
     );
 
@@ -275,9 +288,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 
 /// koniec części main
 /// dodawanie przycisku niedrukowania wybranych zdarzeń z tabeli
-echo '<div id="dialog-confirm" title="Potwierdzenie usuwania">
-<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis o id xxx? Przywrócenie go nie będzie możliwe</p>
-</div>
+echo '
 
 
 <script>
