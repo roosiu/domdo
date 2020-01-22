@@ -19,20 +19,19 @@ $( function() {
     hide: {
       effect: "fade",
       duration: 300
-    },
-    buttons: {
-      "Usuń wpis": function() {
-        $( this ).dialog( "close" );
-      },
-      Anuluj: function() {
-        $( this ).dialog( "close" );
-      }
     }
-  });
-  $( ".click-del" ).on( "click", function() {
-    $("div .dialog-confirm").first().dialog( "open" );
 
   });
+  $( ".click-del" ).on( "click", function() {
+
+    $("#dialog-confirm-"+$(this).attr("id")).dialog( "open" );
+    $(this).children(".span_z_id").html( "wpis" ); /// do poprawki
+  });
+  $( ".dialog_cancel" ).on( "click", function() {
+    $(this).parent("div").dialog( "close" );
+
+  });
+
 } );
 </script>
 ';
@@ -252,7 +251,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 
 {
 
-      echo tabeladb2('14','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
+      echo tabeladb2('15','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
       '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
@@ -267,8 +266,10 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '11', '</td>',
       '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
      '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
-     '<div class="dialog-confirm" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-trash" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis o id ', '0', '? Przywrócenie go nie będzie możliwe</p></div>',
-     '', '', ''
+     '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-trash" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis o id <span class="span_z_id"></span>? Przywrócenie go nie będzie możliwe</p>',
+     '<a href="dziennik_edytuj.php?del=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</a>
+     <button class="click-del btn btn-dark btn-sm dialog_cancel">anuluj</button>
+     </div>'
     );
 
      echo '
