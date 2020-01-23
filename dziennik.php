@@ -54,8 +54,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <form method="post" action="dziennik.php"><i class="fa fa-book"></i> <b>DZIENNIK</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
-            <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
-
+            <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
+            <button type="reset" id="przycisk_filtr_wyczysc" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-eraser" aria-hidden="true"></i> Wyczyść filtry</button>
             </div>
             </div>
 <script>
@@ -63,6 +63,10 @@ jQuery(function(){
   jQuery("#but_div_filtr").click(function () {
     jQuery("#div_filtr").toggle("slow");
     jQuery("#przycisk_filtr").toggle("slow");
+    jQuery("#przycisk_filtr_wyczysc").toggle("slow");
+  });
+  jQuery("#przycisk_filtr_wyczysc").click(function () {
+    $(":input").val("");
   });
 });
 </script>
@@ -183,7 +187,7 @@ $.each( objsel, function( select, value ) {
 
 jQuery("#div_filtr").toggle("fast");
 jQuery("#przycisk_filtr").toggle("fast");
-
+jQuery("#przycisk_filtr_wyczysc").toggle("fast");
 
 
 </script>';
