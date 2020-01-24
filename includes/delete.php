@@ -12,7 +12,6 @@ if (isset($_POST['delete'])) { //////// reszta na https://stackoverflow.com/ques
 
     $stmt = $db->prepare($sql);
 
-
     if ($stmt->execute()) {
         echo "ok";
     } else {

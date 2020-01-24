@@ -36,6 +36,7 @@
            /// $( "#datepicker" ).datepicker("setDate", "today");
          });
       </script>
+
 <!--koniec wczytywanie bibliotek-->
 
 </body>
