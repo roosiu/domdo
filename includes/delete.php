@@ -5,18 +5,19 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     $userData = $user->data();
 
 if (isset($_POST['delete'])) { //////// reszta na https://stackoverflow.com/questions/44455768/delete-mysql-row-from-jquery-ajax
-
+    global $db;
     $idToDelete = intval($_POST['delete']);
-    $sql        = "DELETE  FROM table1 WHERE id= ?";
+    $fromTable = $_POST['tabela'];
+    $sql        = "DELETE FROM ".$fromTable." WHERE id= ".$idToDelete;
 
-    $stmt = $con->prepare($sql);
-    $stmt->bin_param("i", $idToDelete);
+    $stmt = $db->prepare($sql);
+
 
     if ($stmt->execute()) {
         echo "ok";
     } else {
 
-        echo "Error : " . $con->error;
+        echo "Error : " . $db->error;
     }
 }
 } else {

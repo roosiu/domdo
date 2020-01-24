@@ -28,8 +28,7 @@ $( function() {
     $(this).parent("td").parent("tr").addClass("bg-warning");
   });
   $( ".click-del-confirm" ).on( "click", function() {
-alert($(this).attr("value"));
-
+deleteRecord(($(this).attr("value")),"dziennik");
 
   });
   $( ".dialog_cancel" ).on( "click", function() {
