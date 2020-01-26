@@ -37,3 +37,22 @@
              },
         })
     }
+    function createRecord(nowe, tabela) {
+
+
+       var select_all, value_all, zapytanie;
+
+       $.each(nowe, function( select, value ) {
+            $(function() {
+                if(typeof value != 'undefined'){
+
+                select_all = select_all +", "+ select;
+                value_all = value_all +", '"+ value +"'";
+            }
+
+            });
+        });
+
+    zapytanie = "INSERT INTO "+tabela+" ("+select_all+")  VALUES  ("+value_all+")";
+        console.log(zapytanie);
+    }

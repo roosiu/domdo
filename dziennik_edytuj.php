@@ -78,7 +78,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             <div class="col-sm-2 mb-3">
 
-            <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
+            <button type="button" id="zapis_button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
             </div>
             </div>
 
@@ -134,6 +134,8 @@ $.each( objsel, function( select, value ) {
 
     };
 });
+
+
 </script>
 
 ';
@@ -155,5 +157,31 @@ $.each( objsel, function( select, value ) {
     die();
 
 }
+echo '
+<script>
+jQuery(function(){
+    jQuery("#zapis_button").click(function () {
+        var nowe = {
+        "data_z" : $("#data_z").val(),
+        "data_u" : $("#termin_uzgodniony_z").val(),
+        "data_k" : $("#termin_faktyczny_z").val(),
+        "tresc" : $("#tresc_z").val(),
+        "ulica" : $("#adres_ulica_z option:selected").html(),
+        "nr_ulicy" : $("#adres_nrulicy").val(),
+        "nr_lokalu" : $("#adres_nrlok").val(),
+        "typ" : $("#typ_z option:selected").html(),
+        "zglasza" : $("#zglasza_z").val(),
+        "kontakt" : $("#kontakt_z").val(),
+        "zlecono" : $("#zlecono_z option:selected").html()
+          };
+
+        tabela = "dziennik";
+
+        createRecord(nowe, tabela);
+
+    });
+});
+</script>
+';
 
 require 'includes/footer.php';
