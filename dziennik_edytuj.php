@@ -162,7 +162,7 @@ echo '
 jQuery(function(){
     jQuery("#zapis_button").click(function () {
         var nowe = {
-        "data_z" : $("#data_z").val(),
+        "data_p" : $("#data_z").val(),
         "data_u" : $("#termin_uzgodniony_z").val(),
         "data_k" : $("#termin_faktyczny_z").val(),
         "tresc" : $("#tresc_z").val(),
@@ -176,8 +176,13 @@ jQuery(function(){
           };
 
         tabela = "dziennik";
+        if( !$("#id_z").val() ) {
+            createRecord(nowe, tabela);
+        } else
+        {
+           alert("do zrobienia update wpisów");
+        }
 
-        createRecord(nowe, tabela);
 
     });
 });
