@@ -60,14 +60,69 @@
         });
 
     zapytanie = "INSERT INTO "+tabela+" ("+select_all+")  VALUES  ("+value_all+")";
-        console.log(zapytanie);
+
 
 
         $.ajax({
             type:"post",
             url:"includes/create.php",
-            data: {"nowy" : zapytanie,
-                "tabela" : tabela},
+            data: {"nowy" : zapytanie},
+            success:function(data){
+
+               if(data == "ok"){
+                $('<div></div>').dialog({
+                    modal: true,
+                    title: "Informacja",
+                    open: function () {
+                        var markup = 'Wpis został zapisany';
+                        $(this).html(markup);
+                    },
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                }); //end confirm dialog
+
+
+
+               }else{
+                alert(data);
+               }
+
+            },
+            error: function(data) {
+                alert("Błąd: "+data);
+
+             },
+        })
+    }
+///////////// funkcja aktualizacji wpisu
+    function updateRecord(id, nowe, tabela) {
+
+
+       var val_all, zapytanie;
+
+       $.each(nowe, function( select, value ) {
+            $(function() {
+                if(val_all == null) {
+
+                    val_all = select+" = '"+value+"'";
+                } else {
+                    if(value != null){
+                    val_all = val_all +", "+ select+" = '"+value+"'";
+                }
+                }
+            });
+        });
+/////// do zrobienia prawidłowa forma zapytania
+    zapytanie = "UPDATE "+tabela+" SET "+val_all+"  WHERE id="+id;
+
+
+        $.ajax({
+            type:"post",
+            url:"includes/create.php",
+            data: {"nowy" : zapytanie},
             success:function(data){
 
                if(data == "ok"){

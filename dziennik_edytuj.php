@@ -180,7 +180,8 @@ jQuery(function(){
             createRecord(nowe, tabela);
         } else
         {
-           alert("do zrobienia update wpisów");
+            updateRecord($("#id_z").val(), nowe, tabela);
+
         }
 
 
