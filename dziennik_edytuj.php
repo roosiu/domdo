@@ -70,16 +70,20 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
 
             <div class="row mb-4">
-            <div class="col-sm border rounded bg-light mb-3">
-            <label class="badge badge-pill badge-secondary text-uppercase">Pliki i załączniki</label>
-            </div>
-            <div class="col-sm-2 mb-3">
-            <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</button>
-            </div>
-            <div class="col-sm-2 mb-3">
-
-            <button type="button" id="zapis_button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
-            </div>
+                <div class="col-sm mb-3">
+                    <div id="pliki_zapis" class="border rounded bg-light d-none">
+                        <label class="badge badge-pill badge-secondary text-uppercase">Pliki i załączniki</label><br/>
+                        https://plugins.krajee.com/file-input#top <br/>
+                        https://www.sitepoint.com/10-jquery-file-uploads/ <br/>
+                        pliki beda zapisywane /upload/(id wpisu)/obraz.jpg
+                    </div>
+                </div>
+                <div class="col-sm-2 mb-3">
+                    <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</button>
+                </div>
+                <div class="col-sm-2 mb-3">
+                    <button type="button" id="zapis_button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>
+                </div>
             </div>
 
         </div>
@@ -123,15 +127,16 @@ $.each( objinp, function( select, value ) {
     if(value == ""){  }
     else {
     $("#"+select).val(value);
+    $("#input_z_id").show();
+    $("#id_z_label").html($("#id_z").val());
+    $("#pliki_zapis").removeClass( "d-none" );
 };
 });
 $.each( objsel, function( select, value ) {
     if(value == ""){  }
     else {
-        $("#input_z_id").show();
-        $("#id_z_label").html($("#id_z").val());
-        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
 
+        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
     };
 });
 

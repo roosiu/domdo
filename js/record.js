@@ -7,6 +7,7 @@
             url:"includes/delete.php",
             data: {"delete" : id,
                 "tabela" : tabela},
+                encode : true,
             success:function(data){
 
                if(data == "ok"){
@@ -67,6 +68,7 @@
             type:"post",
             url:"includes/create.php",
             data: {"nowy" : zapytanie},
+            encode : true,
             success:function(data){
 
                if(data == "ok"){
@@ -79,6 +81,7 @@
                     },
                     buttons: {
                         Ok: function () {
+                            history.back(1);
                             $(this).dialog("close");
                         }
                     }
@@ -115,7 +118,7 @@
                 }
             });
         });
-/////// do zrobienia prawidłowa forma zapytania
+
     zapytanie = "UPDATE "+tabela+" SET "+val_all+"  WHERE id="+id;
 
 
@@ -123,6 +126,7 @@
             type:"post",
             url:"includes/create.php",
             data: {"nowy" : zapytanie},
+            encode : true,
             success:function(data){
 
                if(data == "ok"){
@@ -130,7 +134,7 @@
                     modal: true,
                     title: "Informacja",
                     open: function () {
-                        var markup = 'Wpis został zapisany';
+                        var markup = 'Wpis został zaktualizowany';
                         $(this).html(markup);
                     },
                     buttons: {
