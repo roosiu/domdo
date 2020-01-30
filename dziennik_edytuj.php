@@ -143,8 +143,9 @@ $.each( objsel, function( select, value ) {
 
 ';
 
-
-
+echo '
+<script src="uploader/jquery.uploadfile.min.js"></script>
+   <script src = "uploader/uploader.js"></script>';
 
     }
 

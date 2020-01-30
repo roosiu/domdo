@@ -36,8 +36,7 @@
            /// $( "#datepicker" ).datepicker("setDate", "today");
          });
       </script>
-      <script src="uploader/jquery.uploadfile.min.js"></script>
-   <script src = "uploader/uploader.js"></script>
+
 <!--koniec wczytywanie bibliotek-->
 
 </body>

@@ -11,7 +11,7 @@ foreach($files as $file)
 	$filePath=$dir."/".$file;
 	$details = array();
 	$details['name']=$file;
-	$details['path']=$filePath; /// do poprawienia
+	$details['path']="uploads/".$subfolder."/".$file; /// do poprawienia
 	$details['size']=filesize($filePath);
 	$ret[] = $details;
 

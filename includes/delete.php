@@ -14,6 +14,13 @@ if (isset($_POST['delete'])) { //////// reszta na https://stackoverflow.com/ques
 
     if ($stmt->execute()) {
         echo "ok";
+        ////dodatkowo usuwanie folderu wpisu w dzienniku
+        if ($fromTable=="dziennik"){
+            if (file_exists('../uploads/'.$idToDelete)) {
+                array_map('unlink', glob("../uploads/".$idToDelete."/*.*"));
+                rmdir('../uploads/'.$idToDelete);
+            }
+        }
     } else {
 
         echo "Error : " . $db->error;

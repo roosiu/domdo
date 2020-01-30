@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var subfolder = "test";  //// subfolder do download, upload, load, delete
+	var subfolder = $("#id_z").val();  //// subfolder do download, upload, load, delete
 	$("#fileuploader").uploadFile({
 		url:"uploader/upload.php",
 		fileName:"myfile",
