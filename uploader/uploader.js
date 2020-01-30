@@ -1,16 +1,7 @@
-<html>
-<head>
-<script src="../js/jquery.min.js"></script>
-<link href="uploadfile.css" rel="stylesheet">
-<script src="jquery.uploadfile.min.js"></script>
-</head>
-<body>
-<div id="fileuploader">Upload</div>
-<script>
 $(document).ready(function() {
 	var subfolder = "test";  //// subfolder do download, upload, load, delete
 	$("#fileuploader").uploadFile({
-		url:"upload.php",
+		url:"uploader/upload.php",
 		fileName:"myfile",
 		returnType: "json",
 		formData: {"subfolder":subfolder}, ////subfolder np. id
@@ -37,7 +28,7 @@ onLoad:function(obj)
    {
    	$.ajax({
 	    	cache: false,
-		    url: "load.php",
+		    url: "uploader/load.php",
 			dataType: "json",
 			method      : "post",
 			data: {"subfolder":subfolder}, /// subfolder
@@ -52,7 +43,7 @@ onLoad:function(obj)
   },
 deleteCallback: function (data, pd) {
     for (var i = 0; i < data.length; i++) {
-        $.post("delete.php", {op: "delete",name: data[i], "subfolder":subfolder}, ///// subfolder
+        $.post("uploader/delete.php", {op: "delete",name: data[i], "subfolder":subfolder}, ///// subfolder
             function (resp,textStatus, jqXHR) {
                 //Show Message
                 alert("File Deleted");
@@ -63,10 +54,7 @@ deleteCallback: function (data, pd) {
 },
 downloadCallback:function(filename,pd)
 	{
-		location.href="../uploads/"+subfolder+"/"+filename;
+		location.href="uploads/"+subfolder+"/"+filename;
 	}
 	});
 });
-</script>
-</body>
-</html>
