@@ -7,7 +7,7 @@ $(document).ready(function() {
 		formData: {"subfolder":subfolder}, ////subfolder np. id
 showDelete: true,
 showDownload:true,
-statusBarWidth:600,
+statusBarWidth:135,
 dragdropWidth:600,
 maxFileSize:5000*1024,
 showPreview:true,
@@ -24,6 +24,11 @@ uploadErrorStr: "Przesyłanie nie jest dozwolone",
 uploadStr: "Przeglądaj",
 deleteStr:"Usuń",
 downloadStr:"Pobierz",
+onSuccess:function(files,data,xhr,pd)
+{
+alert("do poprawki")
+    this.statusbar.hide();  //// do poprawki
+},
 onLoad:function(obj)
    {
    	$.ajax({
@@ -36,7 +41,8 @@ onLoad:function(obj)
 		    {
 			    for(var i=0;i<data.length;i++)
    	    	{
-       			obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+
        		}
 	        }
 		});
