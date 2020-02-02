@@ -3,17 +3,19 @@ $(document).ready(function() {
 	$("#fileuploader").uploadFile({
 		url:"uploader/upload.php",
 		fileName:"myfile",
+		allowedTypes: "jpg,png,gif,doc,docx,pdf,odt,txt,jpeg,bmp,xls,xlsx,csv,xml,mp3,mp4,avi,wav,mpg,mpeg",
+		acceptFiles: "image/*, text/plain, video/*, audio/*, .pdf, .doc, .docx, .odt, .xls, .xlsx, .csv, .xml",
 		returnType: "json",
 		formData: {"subfolder":subfolder}, ////subfolder np. id
 showDelete: true,
 showDownload:true,
 statusBarWidth:135,
-dragdropWidth:600,
+dragdropWidth:"auto",
 maxFileSize:5000*1024,
 showPreview:true,
 previewHeight: "100px",
 previewWidth: "100px",
-	dragDropStr: "<span> <b> Przeciągnij i upuść pliki </b> </span>",
+	dragDropStr: "<span> <b><i class='fa fa-upload' aria-hidden='true'></i> Przeciągnij i upuść pliki </b> </span>",
 abortStr: "anuluj",
 cancelStr: "anuluj",
 doneStr: "gotowe",
@@ -26,8 +28,7 @@ deleteStr:"Usuń",
 downloadStr:"Pobierz",
 onSuccess:function(files,data,xhr,pd)
 {
-alert("do poprawki")
-    this.statusbar.hide();  //// do poprawki
+
 },
 onLoad:function(obj)
    {
@@ -42,6 +43,25 @@ onLoad:function(obj)
 			    for(var i=0;i<data.length;i++)
    	    	{
 				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+				   extension = (data[i]["name"]).substr( ((data[i]["name"]).lastIndexOf('.') +1) );
+				alert(extension);
+				switch(extension) {
+					case 'jpg':
+					case 'png':
+					case 'gif':
+						alert('was jpg png gif');  // There's was a typo in the example where
+					break;                         // the alert ended with pdf instead of gif.
+					case 'zip':
+					case 'rar':
+						alert('was zip rar');
+					break;
+					case 'pdf':
+						alert('was pdf');
+					break;
+					default:
+						alert('who knows');
+				}
+				   $("div.ajax-file-upload-progress").remove();
 
        		}
 	        }
