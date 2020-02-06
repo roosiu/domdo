@@ -228,7 +228,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
   }
 }
     echo tabeladb2('15','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
-    '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+    '<td>', '0', '<br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
     '<td>', '3', '</td>',
@@ -263,7 +263,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 {
 
       echo tabeladb2('15','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
-      '<td>', '0', '&nbsp;<span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+      '<td>', '0', '<br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
       '<td>', '3', '</td>',

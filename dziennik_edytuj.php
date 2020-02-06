@@ -73,9 +73,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 <div class="col-sm mb-3">
                     <div id="pliki_zapis" class="border rounded bg-light d-none">
                         <label class="badge badge-pill badge-secondary text-uppercase">Pliki i załączniki</label><br/>
-                        https://plugins.krajee.com/file-input#top <br/>
-                        https://www.sitepoint.com/10-jquery-file-uploads/ <br/>
-                        pliki beda zapisywane /upload/(id wpisu)/obraz.jpg
+                        <div id="fileuploader">Upload</div>
                     </div>
                 </div>
                 <div class="col-sm-2 mb-3">
@@ -145,8 +143,9 @@ $.each( objsel, function( select, value ) {
 
 ';
 
-
-
+echo '
+<script src="uploader/jquery.uploadfile.min.js"></script>
+   <script src = "uploader/uploader.js"></script>';
 
     }
 

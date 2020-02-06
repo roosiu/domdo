@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
 $output_dir = "../uploads/";
+=======
+$subfolder = $_POST['subfolder']; /// do danego folderu np. moze byc id wpisu
+$output_dir = "../uploads/".$subfolder."/";
+>>>>>>> 5d0294d994e511bc0756624c54726a85f1a010f6
 if(isset($_POST["op"]) && $_POST["op"] == "delete" && isset($_POST['name']))
 {
 	$fileName =$_POST['name'];

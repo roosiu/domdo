@@ -11,12 +11,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href = "css/jquery-ui.css" rel = "stylesheet">
     <link href = "css/print.css" rel = "stylesheet" media = "print">
+    <link href="uploader/uploadfile.css" rel="stylesheet">
 <!--wczytywanie bibliotekd-->
+
 
 <script src = "js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
       <script src = "js/jquery-ui.js"></script>
       <script src = "js/record.js"></script>
+
 </head>
 <body>
