@@ -44,11 +44,12 @@ onLoad:function(obj)
    	    	{
 				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
 				   extension = (data[i]["name"]).substr( ((data[i]["name"]).lastIndexOf('.') +1) );
-				alert(extension);
+
 				switch(extension) {
 					case 'jpg':
 					case 'png':
 					case 'gif':
+
 						alert('was jpg png gif');  // There's was a typo in the example where
 					break;                         // the alert ended with pdf instead of gif.
 					case 'zip':
@@ -56,7 +57,10 @@ onLoad:function(obj)
 						alert('was zip rar');
 					break;
 					case 'pdf':
-						alert('was pdf');
+						alert('was ghpdf');
+						alert(data[i]["path"]);
+						$('.ajax-file-upload-preview').find('img[src$="/'+data[i]["path"]+'"]').attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
+						///this.preview.attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
 					break;
 					default:
 						alert('who knows');
