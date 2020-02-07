@@ -43,27 +43,60 @@ onLoad:function(obj)
 			    for(var i=0;i<data.length;i++)
    	    	{
 				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+				   //// dodawanie a href do podglądu
+				   $("img[src$='"+(data[i]["path"])+"']").wrap("<a target='_blank' rel='noopener noreferrer' href='" + (data[i]["path"]) + "'>");
+				 ///sprawdzanie rozszezenia pliku
 				   extension = (data[i]["name"]).substr( ((data[i]["name"]).lastIndexOf('.') +1) );
-
 				switch(extension) {
 					case 'jpg':
+					case 'jpeg':
 					case 'png':
 					case 'gif':
+					case 'bmp':
+					break;
+					case 'mp3':
+					case 'wav':
+					case 'flac':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/music.svg");
 
-						alert('was jpg png gif');  // There's was a typo in the example where
+					 // There's was a typo in the example where
+					break;                         // the alert ended with pdf instead of gif.
+					case 'mp4':
+					case 'avi':
+					case 'mpg':
+					case 'mpeg':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/video.svg");
+
+					 // There's was a typo in the example where
 					break;                         // the alert ended with pdf instead of gif.
 					case 'zip':
 					case 'rar':
-						alert('was zip rar');
+
 					break;
 					case 'pdf':
-						alert('was ghpdf');
-						alert(data[i]["path"]);
-						$('.ajax-file-upload-preview').find('img[src$="/'+data[i]["path"]+'"]').attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
-						///this.preview.attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/pdf.svg");
+
+					break;
+					case 'xlsx':
+					case 'xls':
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/excel.svg");
+					break;
+					case 'doc':
+					case 'docx':
+					case 'odt':
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/word.svg");
+					break;
+					case 'txt':
+					case 'xml':
+					case 'csv':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/txt.svg");
+
 					break;
 					default:
-						alert('who knows');
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/unknow.svg");
 				}
 				   $("div.ajax-file-upload-progress").remove();
 
