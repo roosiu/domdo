@@ -14,6 +14,7 @@ if (isset($_POST['nowy'])) { //////// reszta na https://stackoverflow.com/questi
     $stmt = $db->prepare($sql);
     if(!$stmt){
         echo "Prepare failed: (". $db->errno.") ".$db->error."<br>";
+        echo $sql; //// do naprawienia nie widzi tresci po dodaniu lightboxa
      }
     if ($stmt->execute()) {
         echo "ok";

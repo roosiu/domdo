@@ -44,15 +44,16 @@ onLoad:function(obj)
    	    	{
 				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
 				   //// dodawanie a href do podglądu
-				   $("img[src$='"+(data[i]["path"])+"']").wrap("<a target='_blank' rel='noopener noreferrer' href='" + (data[i]["path"]) + "'>");
-				 ///sprawdzanie rozszezenia pliku
+				   //$("img[src$='"+(data[i]["path"])+"']").wrap("<a target='_blank' data-lightbox='wpis' rel='noopener noreferrer' href='" + (data[i]["path"]) + "'>");
+				   ///sprawdzanie rozszezenia pliku
 				   extension = (data[i]["name"]).substr( ((data[i]["name"]).lastIndexOf('.') +1) );
-				switch(extension) {
-					case 'jpg':
-					case 'jpeg':
-					case 'png':
-					case 'gif':
-					case 'bmp':
+				   switch(extension) {
+					   case 'jpg':
+						   case 'jpeg':
+							   case 'png':
+								   case 'gif':
+									   case 'bmp':
+										$("img[src$='"+(data[i]["path"])+"']").wrap("<a data-toggle='lightbox' data-gallery='example-gallery' href='" + (data[i]["path"]) + "'>");
 					break;
 					case 'mp3':
 					case 'wav':
@@ -109,7 +110,20 @@ deleteCallback: function (data, pd) {
         $.post("uploader/delete.php", {op: "delete",name: data[i], "subfolder":subfolder}, ///// subfolder
             function (resp,textStatus, jqXHR) {
                 //Show Message
-                alert("File Deleted");
+                $('<div></div>').dialog({
+                    modal: true,
+                    title: "Informacja",
+                    open: function () {
+                        var markup = 'Plik został usunięty';
+                        $(this).html(markup);
+                    },
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+				});
+				////end dialog
             });
     }
     pd.statusbar.hide(); //You choice.
@@ -117,6 +131,7 @@ deleteCallback: function (data, pd) {
 },
 downloadCallback:function(filename,pd)
 	{
+		////location.href="uploader/download.php?filename="+filename;//// do zrobienia
 		location.href="uploads/"+subfolder+"/"+filename;
 	}
 	});

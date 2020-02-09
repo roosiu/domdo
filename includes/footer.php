@@ -1,5 +1,7 @@
 <footer id="footer">
 
+<script src = "js/ekko-lightbox.min.js"></script>
+<script src = "js/ekko-lightbox.js"></script>
 </footer>
 
     <!-- Javascript -->
@@ -37,6 +39,12 @@
          });
       </script>
 
+<script>
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+            });
+</script>
 <!--koniec wczytywanie bibliotek-->
 
 </body>

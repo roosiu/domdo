@@ -12,6 +12,7 @@
     <link href = "css/jquery-ui.css" rel = "stylesheet">
     <link href = "css/print.css" rel = "stylesheet" media = "print">
     <link href="uploader/uploadfile.css" rel="stylesheet">
+    <link href="css/ekko-lightbox.css" rel="stylesheet">
 <!--wczytywanie bibliotekd-->
 
 
@@ -23,3 +24,20 @@
 
 </head>
 <body>
+<!--preloader DO ZROBIENIA !!!!!!!!!!!!!!-->
+<div id="mdb-preloader" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Ładowanie...</span>
+    </div>
+  </div>
+  <script>
+  $(window).on('load', function() {
+  $('#mdb-preloader').addClass('loaded');
+});
+  </script>
+  <style>
+  #mdb-preloader.loaded {
+  opacity: 0;
+  transition: .3s ease-in 1s;
+}
+  </style>
