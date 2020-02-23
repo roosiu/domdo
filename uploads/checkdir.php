@@ -1,0 +1,1 @@
+<?php echo is_dir($_POST['dir']);?>

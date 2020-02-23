@@ -43,27 +43,61 @@ onLoad:function(obj)
 			    for(var i=0;i<data.length;i++)
    	    	{
 				   obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+				   //// dodawanie a href do podglądu
+				   //$("img[src$='"+(data[i]["path"])+"']").wrap("<a target='_blank' data-lightbox='wpis' rel='noopener noreferrer' href='" + (data[i]["path"]) + "'>");
+				   ///sprawdzanie rozszezenia pliku
 				   extension = (data[i]["name"]).substr( ((data[i]["name"]).lastIndexOf('.') +1) );
+				   switch(extension) {
+					   case 'jpg':
+						   case 'jpeg':
+							   case 'png':
+								   case 'gif':
+									   case 'bmp':
+										$("img[src$='"+(data[i]["path"])+"']").wrap("<a data-toggle='lightbox' data-gallery='example-gallery' href='" + (data[i]["path"]) + "'>");
+					break;
+					case 'mp3':
+					case 'wav':
+					case 'flac':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/music.svg");
 
-				switch(extension) {
-					case 'jpg':
-					case 'png':
-					case 'gif':
+					 // There's was a typo in the example where
+					break;                         // the alert ended with pdf instead of gif.
+					case 'mp4':
+					case 'avi':
+					case 'mpg':
+					case 'mpeg':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/video.svg");
 
-						alert('was jpg png gif');  // There's was a typo in the example where
+					 // There's was a typo in the example where
 					break;                         // the alert ended with pdf instead of gif.
 					case 'zip':
 					case 'rar':
-						alert('was zip rar');
+
 					break;
 					case 'pdf':
-						alert('was ghpdf');
-						alert(data[i]["path"]);
-						$('.ajax-file-upload-preview').find('img[src$="/'+data[i]["path"]+'"]').attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
-						///this.preview.attr("src","https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg");
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/pdf.svg");
+
+					break;
+					case 'xlsx':
+					case 'xls':
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/excel.svg");
+					break;
+					case 'doc':
+					case 'docx':
+					case 'odt':
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/word.svg");
+					break;
+					case 'txt':
+					case 'xml':
+					case 'csv':
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/txt.svg");
+
 					break;
 					default:
-						alert('who knows');
+
+						$("img[src$='"+(data[i]["path"])+"']").attr("src", "img/icon/unknow.svg");
 				}
 				   $("div.ajax-file-upload-progress").remove();
 
@@ -76,7 +110,20 @@ deleteCallback: function (data, pd) {
         $.post("uploader/delete.php", {op: "delete",name: data[i], "subfolder":subfolder}, ///// subfolder
             function (resp,textStatus, jqXHR) {
                 //Show Message
-                alert("File Deleted");
+                $('<div></div>').dialog({
+                    modal: true,
+                    title: "Informacja",
+                    open: function () {
+                        var markup = 'Plik został usunięty';
+                        $(this).html(markup);
+                    },
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+				});
+				////end dialog
             });
     }
     pd.statusbar.hide(); //You choice.
@@ -84,6 +131,7 @@ deleteCallback: function (data, pd) {
 },
 downloadCallback:function(filename,pd)
 	{
+		////location.href="uploader/download.php?filename="+filename;//// do zrobienia
 		location.href="uploads/"+subfolder+"/"+filename;
 	}
 	});
