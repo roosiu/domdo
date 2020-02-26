@@ -18,13 +18,76 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col-2">
             </div>
             <div class="col text-center">
-            <i class="fa fa-file-text"></i> <b>GENERATOR PISM</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <i class="fa fa-file-text"></i> <b>GENERATOR PISM</b><span id="input_z_id"> | tworzenie pisma do wpisu o id: <span id="id_z_label">';
+            if($_GET['id']){
+                $id_get = (htmlspecialchars(trim($_GET['id'])));
+
+            echo $id_get;
+
+            }
+
+
+
+            echo '</span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
+            ??
             </div>
             </div>
+            <script src="js/editor.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#txtEditor").Editor();
+                });
+            </script>
+            <div class="container-fluid">
+			<div class="row">
 
+                 <ul id="menu">
+                    <li class="ui-state-disabled"><div>SZABLONY</div></li>
+                    <li><div>Ogłoszenia</div>
+                        <ul>
+                        <li class="ui-state-disabled"><div>Home Entertainment</div></li>
+                        <li><div>Car Hifi</div></li>
+                        <li><div>Utilities</div></li>
+                        </ul>
+                    </li>
+                    <li><div>Movies</div></li>
+                    <li><div>Music</div>
+                        <ul>
+                        <li><div>Rock</div>
+                            <ul>
+                            <li><div>Alternative</div></li>
+                            <li><div>Classic</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Jazz</div>
+                            <ul>
+                            <li><div>Freejazz</div></li>
+                            <li><div>Big Band</div></li>
+                            <li><div>Modern</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Pop</div></li>
+                        </ul>
+                    </li>
+                    <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+                </ul>
+<script>
+$( function() {
+  $( "#menu" ).menu();
+} );
+</script>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 nopadding">
+							<textarea id="txtEditor"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>';
 } else {
     // Widok dla użytkownika niezalogowanego

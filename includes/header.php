@@ -13,6 +13,7 @@
     <link href = "css/print.css" rel = "stylesheet" media = "print">
     <link href="uploader/uploadfile.css" rel="stylesheet">
     <link href="css/ekko-lightbox.css" rel="stylesheet">
+    <link href="css/editor.css" type="text/css" rel="stylesheet"/>
 <!--wczytywanie bibliotekd-->
 
 
