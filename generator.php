@@ -39,6 +39,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <script>
                 $(document).ready(function() {
                     $("#txtEditor").Editor();
+                    $(".Editor-editor").load("szablony/szb_00001.ddo");
+
                 });
             </script>
             <div class="container-fluid">
