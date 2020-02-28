@@ -46,44 +46,47 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="container-fluid">
 			<div class="row">
 
-                 <ul id="menu">
-                    <li class="ui-state-disabled"><div>SZABLONY</div></li>
-                    <li><div>Ogłoszenia</div>
-                        <ul>
-                        <li class="ui-state-disabled"><div>Home Entertainment</div></li>
-                        <li><div>Car Hifi</div></li>
-                        <li><div>Utilities</div></li>
-                        </ul>
-                    </li>
-                    <li><div>Movies</div></li>
-                    <li><div>Music</div>
-                        <ul>
-                        <li><div>Rock</div>
-                            <ul>
-                            <li><div>Alternative</div></li>
-                            <li><div>Classic</div></li>
-                            </ul>
-                        </li>
-                        <li><div>Jazz</div>
-                            <ul>
-                            <li><div>Freejazz</div></li>
-                            <li><div>Big Band</div></li>
-                            <li><div>Modern</div></li>
-                            </ul>
-                        </li>
-                        <li><div>Pop</div></li>
-                        </ul>
-                    </li>
-                    <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
-                </ul>
-<script>
-$( function() {
-  $( "#menu" ).menu();
-} );
-</script>
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 nopadding">
+                    <div class="row">
+                        <div class="col-lg-2">
+
+                                <ul id="menu_szablony">
+                                <li class="ui-state-disabled"><div>SZABLONY</div></li>
+                                <li><div>Ogłoszenia</div>
+                                    <ul>
+                                    <li class="ui-state-disabled"><div>Home Entertainment</div></li>
+                                    <li><div>Car Hifi</div></li>
+                                    <li><div>Utilities</div></li>
+                                    </ul>
+                                </li>
+                                <li><div>Movies</div></li>
+                                <li><div>Music</div>
+                                    <ul>
+                                    <li><div>Rock</div>
+                                        <ul>
+                                        <li><div>Alternative</div></li>
+                                        <li><div>Classic</div></li>
+                                        </ul>
+                                    </li>
+                                    <li><div>Jazz</div>
+                                        <ul>
+                                        <li><div>Freejazz</div></li>
+                                        <li><div>Big Band</div></li>
+                                        <li><div>Modern</div></li>
+                                        </ul>
+                                    </li>
+                                    <li><div>Pop</div></li>
+                                    </ul>
+                                </li>
+                                <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+                            </ul>
+                            <script>
+                            $( function() {
+                            $( "#menu_szablony" ).menu();
+                            } );
+                            </script>
+                        </div>
+						<div class="col-lg-10 nopadding">
 							<textarea id="txtEditor"></textarea>
 						</div>
 					</div>
