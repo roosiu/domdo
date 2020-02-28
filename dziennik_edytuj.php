@@ -77,7 +77,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                     </div>
                 </div>
                 <div class="col-sm-2 mb-3">
-                    <button type="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</button>
+                <a href="generator.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</a>
                 </div>
                 <div class="col-sm-2 mb-3">
                     <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-plus" aria-hidden="true"></i> Zapisz</button>

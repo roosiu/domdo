@@ -302,26 +302,9 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 /// dodawanie przycisku niedrukowania wybranych zdarzeń z tabeli
 echo '
 
-
+<script src = "js/checkdir.js"></script>
 <script>
-$(window).on("load", function() {
-  $("table:first tr").each(function(){
-    id_do_spr_dir = $(this).find("button:last").attr("id");
-    td_do_dodania_ikony = $(this).find("td:eq(4)");
-    if($.isNumeric(id_do_spr_dir))
-    {
-      $.post( "uploads/checkdir.php", { dir: id_do_spr_dir })
-      .done(function( data ) {
-        if(data){
-          alert(id_do_spr_dir);
-          td_do_dodania_ikony.append(" - Jest załącznik <i class=fa-paperclip aria-hidden=true></i>");
 
-        };
-      });
-    }
-    });
-
-});
 
 $(".pokazukryj").click(function() {
   if (!$(this).parent().parent().hasClass("dontprint"))
