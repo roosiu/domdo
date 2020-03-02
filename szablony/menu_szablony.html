@@ -1,0 +1,48 @@
+<style>
+   .ui-menu .ui-menu-item-wrapper{white-space: nowrap}
+</style>
+<ul id="menu_szablony">
+    <li class="ui-state-disabled"><div>SZABLONY</div></li>
+    <li><div>Wywieszki</div>
+    <ul>
+        <li id="szb_00003" class="szb"><div>Biuro nieczynne - [SZB_00003]</div></li>
+    </ul>
+    </li>
+    <li><div>Ogłoszenia</div>
+        <ul>
+        <li><div>Porządek</div>
+            <ul>
+            <li id="szb_00001" class="szb"><div>Zamykanie drzwi wejściowych - [SZB_00001]</div></li>
+            <li id="szb_00002" class="szb"><div>Zakłócanie ciszy nocnej - [SZB_00002]</div></li>
+            </ul>
+        </li>
+        <li><div>Jazz</div>
+            <ul>
+            <li><div>Freejazz</div></li>
+            <li><div>Big Band</div></li>
+            <li><div>Modern</div></li>
+            </ul>
+        </li>
+        <li><div>Pop</div></li>
+        </ul>
+    </li>
+
+</ul>
+<script>
+$( function() {
+    jQuery(".szb").click(function () {
+
+
+
+        $(".Editor-editor").load("szablony/"+($(this).attr("id"))+".ddo", function(response, status, xhr) {
+        if (status == "error") {
+            var msg = "Nie znaleziono pliku szablonu: ";
+            $(this).html(msg + xhr.status + " " + xhr.statusText);
+        }
+        });
+
+    });
+
+$( "#menu_szablony" ).menu();
+} );
+</script>

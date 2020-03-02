@@ -32,14 +32,14 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
 
             <div class="col-2">
-            ??
+            <a href="dziennik_edytuj.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót do wpisu</a>
             </div>
             </div>
             <script src="js/editor.js"></script>
             <script>
                 $(document).ready(function() {
                     $("#txtEditor").Editor();
-                    $(".Editor-editor").load("szablony/szb_00001.ddo");
+                    $("#menu_szablony_div").load("szablony/menu_szablony.html");
 
                 });
             </script>
@@ -48,43 +48,9 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 				<div class="container">
                     <div class="row">
-                        <div class="col-lg-2">
+                        <div class="col-lg-2" id="menu_szablony_div">
 
-                                <ul id="menu_szablony">
-                                <li class="ui-state-disabled"><div>SZABLONY</div></li>
-                                <li><div>Ogłoszenia</div>
-                                    <ul>
-                                    <li class="ui-state-disabled"><div>Home Entertainment</div></li>
-                                    <li><div>Car Hifi</div></li>
-                                    <li><div>Utilities</div></li>
-                                    </ul>
-                                </li>
-                                <li><div>Movies</div></li>
-                                <li><div>Music</div>
-                                    <ul>
-                                    <li><div>Rock</div>
-                                        <ul>
-                                        <li><div>Alternative</div></li>
-                                        <li><div>Classic</div></li>
-                                        </ul>
-                                    </li>
-                                    <li><div>Jazz</div>
-                                        <ul>
-                                        <li><div>Freejazz</div></li>
-                                        <li><div>Big Band</div></li>
-                                        <li><div>Modern</div></li>
-                                        </ul>
-                                    </li>
-                                    <li><div>Pop</div></li>
-                                    </ul>
-                                </li>
-                                <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
-                            </ul>
-                            <script>
-                            $( function() {
-                            $( "#menu_szablony" ).menu();
-                            } );
-                            </script>
+
                         </div>
 						<div class="col-lg-10 nopadding">
 							<textarea id="txtEditor"></textarea>

@@ -17,6 +17,6 @@ require 'includes/header.php';
 session_destroy();
 echo '<p class="success">Zostałeś wylogowany! Możesz przejść na <a href="index.php">stronę główną</a></p>';
 
-require 'includes/footer.php';
+/////require 'includes/footer.php';
 header("Location: login.php");
 die();

@@ -31,7 +31,7 @@
               /><b
                 ><span style="font-size:14.0pt;line-height:115%"
                   ><br />
-                  Gniewkowo, dnia 24.04.2019 r.</span
+                  {{miejscowosc_o}}, dnia {{termin_uzgodniony_z}}</span
                 ></b
               >
             </p>
@@ -39,7 +39,7 @@
               <b
                 ><span style="font-size:36.0pt;line-height:115%"
                   >UWAGA MIESZKAŃCY BUDYNKÓW PRZY ULICY<br />
-                  Dreckiego 1 VI klatka</span
+                  {{adres_ulica_z}}{{adres_nrulicy}}{{adres_nrlok}}</span
                 ></b
               >
             </p>
