@@ -30,7 +30,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
                 'data["id_z"]="', '0', '";',
                 'data["data_z"]="', '1', '";',
-                'data["termin_uzgodniony_z"]="', '2', '";',
+                'termin_uzgodniony_z="', '2', '".split("-"); data["termin_uzgodniony_z"]= termin_uzgodniony_z[2] + "-" + termin_uzgodniony_z[1] + "-" + termin_uzgodniony_z[0] + "r.";',
                 'data["termin_faktyczny_z"]="', '3', '";',
                 'data["tresc_z"]="', '4', '";',
                 'data["adres_nrulicy"]="', '6', '";',
