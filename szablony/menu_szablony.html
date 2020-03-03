@@ -39,6 +39,33 @@ $( function() {
             var msg = "Nie znaleziono pliku szablonu: ";
             $(this).html(msg + xhr.status + " " + xhr.statusText);
         }
+
+
+
+
+
+                    data['miejscowosc_o']='Gniewkowo';
+
+
+                    var text=  $(".Editor-editor").html();
+
+                    var result = formatString(text, data); // desired output
+                    console.log(result);
+
+                    /* Replace the token values */
+                    function formatString(text, data)
+                    {
+                        var keyNames = Object.keys(data);
+                        for(var i = 0; i < keyNames.length ;i++)
+                        {
+                            text = text.replace("{{"+ keyNames[i] +"}}", data[ keyNames[i] ] );
+                        }
+                        $(".Editor-editor").html(text);
+                    }
+
+
+
+
         });
 
     });

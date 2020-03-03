@@ -24,6 +24,31 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             echo $id_get;
 
+            echo '
+            <script>
+            var data = [];';
+                echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
+                'data["id_z"]="', '0', '";',
+                'data["data_z"]="', '1', '";',
+                'data["termin_uzgodniony_z"]="', '2', '";',
+                'data["termin_faktyczny_z"]="', '3', '";',
+                'data["tresc_z"]="', '4', '";',
+                'data["adres_nrulicy"]="', '6', '";',
+                'data["adres_nrlok"]="', '7', '";',
+                'data["zglasza_z"]="', '9', '";',
+                'data["kontakt_z"]="', '10', '";',
+                'data["adres_ulica_z"]="', '5', '";',
+                'data["typ_z"]="', '8', '";',
+                'data["zlecono_z"]="', '11', '";',
+                '', '', '',
+                '', '', '',
+                '', '', '',
+                '', '', ''
+
+                );
+                echo '';
+                echo '</script>';
+
             }
 
 
@@ -33,6 +58,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             <div class="col-2">
             <a href="dziennik_edytuj.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót do wpisu</a>
+            <a href="generator.php?zapis='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Dodaj do wpisu</a>
             </div>
             </div>
             <script src="js/editor.js"></script>
