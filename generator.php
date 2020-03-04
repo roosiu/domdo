@@ -11,11 +11,13 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     /// pobieranie menu
     require 'includes/menu.php';
      /// część main
-    echo '<main>
+     echo '<main>
 
-    <div class="jumbotron mb-n4 bg-white">
-            <div class="row mb-4">
+     <div class="jumbotron mb-n4 bg-white">
+     <div class="row mb-4">
             <div class="col-2">
+
+            <a href="dziennik_edytuj.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót do wpisu</a>
             </div>
             <div class="col text-center">
             <i class="fa fa-file-text"></i> <b>GENERATOR PISM</b><span id="input_z_id"> | tworzenie pisma do wpisu o id: <span id="id_z_label">';
@@ -57,8 +59,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
 
             <div class="col-2">
-            <a href="dziennik_edytuj.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót do wpisu</a>
-            <a href="generator.php?zapis='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Dodaj do wpisu</a>
+            <button id="zapis_button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Dodaj do wpisu</button>
             </div>
             </div>
             <script src="js/editor.js"></script>
@@ -66,7 +67,47 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 $(document).ready(function() {
                     $("#txtEditor").Editor();
                     $("#menu_szablony_div").load("szablony/menu_szablony.html");
+                    jQuery("#zapis_button").click(function () {
 
+                        $.ajax({
+                            type:"post",
+                            url:"szablony/wgraj_szablon.php",
+                            data: {"id_z" : data["id_z"],
+                            "tresc" : $(".Editor-editor").html()},
+                            encode : true,
+                            success:function(data){
+
+                               if(data == "ok"){
+                                $("<div></div>").dialog({
+                                    modal: true,
+                                    title: "Informacja",
+                                    open: function () {
+                                        var markup = "Pismo zostało dodane do wpisu";
+                                        $(this).html(markup);
+                                    },
+                                    buttons: {
+                                        Ok: function () {
+                                            $(this).dialog("close");
+                                        }
+                                    }
+                                }); //end confirm dialog
+
+
+
+                               }else{
+                                alert(data);
+                               }
+
+                            },
+                            error: function(data) {
+                                alert("Błąd: "+data);
+
+                             },
+                        })
+
+
+
+                    });
                 });
             </script>
             <div class="container-fluid">

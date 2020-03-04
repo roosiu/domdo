@@ -1,13 +1,9 @@
 <?php
-<<<<<<< HEAD
-$output_dir = "../uploads/";
-=======
 $subfolder = $_POST['subfolder']; /// do danego folderu np. moze byc id wpisu
 $output_dir = "../uploads/".$subfolder."/";
 if (!file_exists('../uploads/'.$subfolder)) {
     mkdir('../uploads/'.$subfolder, 0777, true);
 }
->>>>>>> 5d0294d994e511bc0756624c54726a85f1a010f6
 if(isset($_FILES["myfile"]))
 {
 	$ret = array();
@@ -23,10 +19,7 @@ if(isset($_FILES["myfile"]))
 	//If Any browser does not support serializing of multiple files using FormData()
 	if(!is_array($_FILES["myfile"]["name"])) //single file
 	{
-<<<<<<< HEAD
-=======
 
->>>>>>> 5d0294d994e511bc0756624c54726a85f1a010f6
  	 	$fileName = $_FILES["myfile"]["name"];
  		move_uploaded_file($_FILES["myfile"]["tmp_name"],$output_dir.$fileName);
     	$ret[]= $fileName;
