@@ -9,7 +9,11 @@ if (!file_exists('../uploads/'.$subfolder)) {
     //// jesli folder istnieje
 }
 if(!empty($tresc)){
-$plik = fopen($output_dir."testfile.html", "w");
+$nazwa_pliku = "pismo_".$subfolder."_".date("Y_m_d_h_i_s").".html";
+$tresc = str_replace('src="szablony/','src="../../szablony/',$tresc);
+$plik = fopen($output_dir.$nazwa_pliku, "w");
+fwrite($plik, pack("CCC",0xef,0xbb,0xbf));
+
 fwrite($plik,$tresc);
   fclose($plik);
 echo "ok";
