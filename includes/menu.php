@@ -22,7 +22,7 @@
                 <i class="fa fa-male"></i> Pracownicy
               </a>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item bg-dark text-light" href="#">Lista pracowników</a>
+                <a class="dropdown-item bg-dark text-light" href="pracownicy_lista.php">Lista pracowników</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Kontrola czasu pracy</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Karty odzieżowe</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Napoje dla pracowników</a>

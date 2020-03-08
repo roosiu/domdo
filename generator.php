@@ -20,7 +20,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <a href="dziennik_edytuj.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót do wpisu</a>
             </div>
             <div class="col text-center">
-            <i class="fa fa-file-text"></i> <b>GENERATOR PISM</b><span id="input_z_id"> | tworzenie pisma do wpisu o id: <span id="id_z_label">';
+            <i class="fa fa-file-text"></i> <b>GENERATOR PISM I OGŁOSZEŃ</b><span id="input_z_id"> | tworzenie pisma do wpisu o id: <span id="id_z_label">';
             if($_GET['id']){
                 $id_get = (htmlspecialchars(trim($_GET['id'])));
 
