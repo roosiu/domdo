@@ -28,7 +28,7 @@ $( function() {
     $(this).parent("td").parent("tr").addClass("bg-warning");
   });
   $( ".click-del-confirm" ).on( "click", function() {
-deleteRecord(($(this).attr("value")),"pracownicy");
+deleteRecord(($(this).attr("value")),"kontrola_czasu_pracy");
 
   });
   $( ".dialog_cancel" ).on( "click", function() {
@@ -114,15 +114,29 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                                 ';
 
 
-      echo tabeladb2('15','SELECT * FROM pracownicy ORDER BY `id` ASC LIMIT 20', '<tr>', '</tr>',
+      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy ORDER BY `id` ASC LIMIT 20', '<tr>', '</tr>',
       '<td>', '0', '</td>',
       '<td>', '1', '</td>',
-      '<td>', '5', '</td>',
       '<td>', '2', '</td>',
-      '<td>', '6', '</td>',
-      '<td>', '3', '',
+      '<td>', '3', '</td>',
+      '', '', '',
+      '<script> var str="', '4', '"
+      wynik = str.split(";");
+
+      for (i = 0; i < 30; ++i) {
+
+        if(wynik.length>i){
+          console.log(wynik[i]);
+        }
+        else
+        {
+          console.log("brak");
+        };
+
+      }
+      </script>',
       ' ', '', '',
-      '', '', '</td>',
+      '<td>', '', '</td>',
       '<td>', '8', '</td>',
       '', '', '',
       '', '', '',
