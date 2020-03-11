@@ -77,7 +77,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                     </div>
                 </div>
                 <div class="col-sm-2 mb-3">
-                <a href="generator.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</a>
+                <a href="generator.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right m-1"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</a>
+                <button type="button" class="btn btn-dark btn-sm text-uppercase float-right m-1" onclick=sendEmail()><i class="fa fa-paper-plane" aria-hidden="true"></i> Wyślij mail</button>
                 </div>
                 <div class="col-sm-2 mb-3">
                     <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
@@ -191,6 +192,11 @@ jQuery(function(){
 
     });
 });
+function sendEmail() {
+    if ($("#typ_z option:selected").html()=="unifon"){
+        window.open("mailto:"+ $("#kontakt_z").val() + "?subject="+ $("#tresc_z").val() + "&body=Data: "+ $("#data_z").val() +" Zgłaszający: "+ $("#zglasza_z").val() +", Kontakt: "+ $("#kontakt_z").val() +" - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " - " + $("#tresc_z").val()+ "");
+    }
+}
 </script>
 ';
 
