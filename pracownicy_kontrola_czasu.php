@@ -52,14 +52,29 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
             <div class="col">
+            <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
             </div>
             <div class="col text-center">
             <form method="post" action="pracownicy_kontrola_czasu.php"><i class="fa fa-male"></i> <b>KONTROLA CZASU PRACY</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
-            <a href="pracownicy_kontrola_czasu_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase float-right dontprint"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj</a>
+            <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
+            <button type="reset" id="przycisk_filtr_wyczysc" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-eraser" aria-hidden="true"></i> Wyczyść filtry</button>
+
             </div>
             </div>
+<script>
+jQuery(function(){
+  jQuery("#but_div_filtr").click(function () {
+    jQuery("#div_filtr").toggle("slow");
+    jQuery("#przycisk_filtr").toggle("slow");
+    jQuery("#przycisk_filtr_wyczysc").toggle("slow");
+  });
+  jQuery("#przycisk_filtr_wyczysc").click(function () {
+    $(":input").val("");
+  });
+});
+</script>
 ';
 
 
@@ -107,7 +122,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                                   <th scope="col">Razem godzin</th>
                                   <th scope="col">Statystyka</th>
 
-                                  <th colspan="2" scope="col" class="text-center dontprint"></th>
+                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="pracownicy_kontrola_czasu_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>rozliczenie</a>
+                                  </th>
                                 </tr>
                                 </thead>
                               <tbody>
@@ -158,18 +174,20 @@ $(window).on("load", function() {
         str = str.replace(/:/g, "<br/>");
         wynik = str.split(";");
         var suma = "0";
-        if ((str.match(/UW/g)).length != 0) {
-          uw = (str.match(/UW/g)).length;
-        } else {
-          uw = "0";
-        }
+        if( str.indexOf("UW") != -1 ) {uw = (str.match(/UW/g)).length;} else {uw = "0";}
+        if( str.indexOf("CH") != -1 ) {ch = (str.match(/CH/g)).length;} else {ch = "0";}
+        if( str.indexOf("WN") != -1 ) {wn = (str.match(/WN/g)).length;} else {wn = "0";}
+        if( str.indexOf("NP") != -1 ) {np = (str.match(/NP/g)).length;} else {np = "0";}
+        if( str.indexOf("NP") != -1 ) {np = (str.match(/NP/g)).length;} else {np = "0";}
+        if( str.indexOf("UOK") != -1 ) {uok = (str.match(/UOK/g)).length;} else {uok = "0";}
+        if( str.indexOf("OP") != -1 ) {op = (str.match(/OP/g)).length;} else {op = "0";}
 
 
 
 
-        $(this).find("td:eq(36)").html("|UW:"+uw+"|CH:0|WN:0|<br/>|NP:0|Uok:0|OP:0|");
+        $(this).find("td:eq(36)").html("|UW:"+uw+"|CH:"+ch+"|WN:"+wn+"|<br/>|NP:"+np+"|UOK:"+uok+"|OP:"+op+"|");
 
-        for (i = 0; i < 30; ++i) {
+        for (i = 0; i < 31; ++i) {
 
           if(wynik.length>i){
             $(this).find("td:eq("+(i+4)+")").append(wynik[i]);
