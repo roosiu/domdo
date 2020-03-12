@@ -57,7 +57,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <form method="post" action="pracownicy_kontrola_czasu.php"><i class="fa fa-male"></i> <b>KONTROLA CZASU PRACY</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
-            <a href="pracownicy_lista_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase float-right dontprint"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj</a>
+            <a href="pracownicy_kontrola_czasu_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase float-right dontprint"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj</a>
             </div>
             </div>
 ';
@@ -68,7 +68,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
                         echo '<table class="table table-sm table-striped">
                               <thead>
-                              <tr class="">
+                              <tr class="text-center">
                                   <th scope="col">ID</th>
                                   <th scope="col">Miesiąc</th>
                                   <th scope="col">Rok</th>
@@ -119,29 +119,16 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
       '<td>', '3', '</td>',
+      '<input type="hidden" id="dni_', '0', '" value="',
+      ' ', '4', '">',
       '', '', '',
-      '<script> var str="', '4', '"
-      wynik = str.split(";");
 
-      for (i = 0; i < 30; ++i) {
-
-        if(wynik.length>i){
-          console.log(wynik[i]);
-        }
-        else
-        {
-          console.log("brak");
-        };
-
-      }
-      </script>',
-      ' ', '', '',
       '<td>', '', '</td>',
       '<td>', '8', '</td>',
+      '<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>', '', '',
       '', '', '',
       '', '', '',
-      '', '', '',
-      '<td class="text-center dontprint"><a href="pracownicy_lista_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+      '<td class="text-center dontprint"><a href="pracownicy_kontrola_czasu_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
      '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
      '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
      '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
@@ -159,7 +146,52 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 
   </main>';
+  echo'
+<script>
+$(window).on("load", function() {
+  $("table:first tr").each(function(){
+    var id_do_spr_dir = $(this).find("button:last").attr("id");
+   var td_do_dodania_ikony = $(this).find("td:eq(4)");
+    if($.isNumeric(id_do_spr_dir))
+      {
+        var str = $("#dni_"+id_do_spr_dir).val();
+        str = str.replace(/:/g, "<br/>");
+        wynik = str.split(";");
+        var suma = "0";
+        if ((str.match(/UW/g)).length != 0) {
+          uw = (str.match(/UW/g)).length;
+        } else {
+          uw = "0";
+        }
 
+
+
+
+        $(this).find("td:eq(36)").html("|UW:"+uw+"|CH:0|WN:0|<br/>|NP:0|Uok:0|OP:0|");
+
+        for (i = 0; i < 30; ++i) {
+
+          if(wynik.length>i){
+            $(this).find("td:eq("+(i+4)+")").append(wynik[i]);
+            if($.isNumeric(wynik[i])){
+              suma = parseFloat(suma) + parseFloat(wynik[i]);
+              $(this).find("td:eq(35)").html(suma);
+            }else
+            {
+              $(this).find("td:eq("+(i+4)+")").addClass( "small text-center" );
+            }
+          }
+          else
+          {
+
+          };
+
+        }
+      }
+    });
+
+});
+</script>';
 
 
 
