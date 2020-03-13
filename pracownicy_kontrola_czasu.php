@@ -75,7 +75,56 @@ jQuery(function(){
   });
 });
 </script>
-';
+<div id="div_filtr" class="row mb-3 dontprint justify-content-center" style="display: none">';
+$filtr_0_rozmiar = '-3';
+$filtr_0_text = 'PRACOWNIK';
+$filtr_0 = '<select name="pracownik" id="pracownik" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+$filtr_1_rozmiar = '-2';
+$filtr_1_text = 'MIESIĄC';
+$filtr_1 = '<select name="miesiac" id="miesiac" class="form-control form-control-sm">
+<option value = '.(date('m')).'>'.(date('m')).'</option>
+<option></option>
+<option value=01>01</option>
+<option value=02>02</option>
+<option value=02>03</option>
+<option value=02>04</option>
+<option value=02>05</option>
+<option value=06>06</option>
+<option value=07>07</option>
+<option value=08>08</option>
+<option value=09>09</option>
+<option value=10>10</option>
+<option value=11>11</option>
+<option value=12>12</option>
+</select>';
+$filtr_2_rozmiar = '-2';
+$filtr_2_text = 'ROK';
+$filtr_2 = '<select name ="rok" id="rok" class="form-control form-control-sm">
+<option value = '.(date('Y')).'>'.(date('Y')).'</option>
+<option></option>
+<option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
+<option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
+<option value = '.(date('Y', strtotime(" -1 year"))).'>'.(date('Y', strtotime(" -1 year"))).'</option>
+</select>';
+
+
+
+for ($x = 0; $x <= 2; $x++) {
+
+  echo ' <div class="col-sm'.${filtr_.$x._rozmiar}.' px-1">
+  <div class="card bg-light">
+  <div class="card-body p-2">
+      <h6 class="card-title text-center">'.${filtr_.$x._text}.'</h6>
+      <div class="card-text">
+      '.${filtr_.$x}.'
+      </div>
+
+    </div>
+  </div>
+</div>';}
+
+echo '</div></form>';
+
 
 
 
@@ -128,9 +177,91 @@ jQuery(function(){
                                 </thead>
                               <tbody>
                                 ';
+                                if ($_POST) {
+                                  $pracownik = (htmlspecialchars(trim($_POST['pracownik'])));
+                                  $miesiac = (htmlspecialchars(trim($_POST['miesiac'])));
+                                  $rok = (htmlspecialchars(trim($_POST['rok'])));
+
+                  echo
+                  '<script>
+
+                  var objsel = {
+                    "pracownik": "'.$pracownik.'",
+                    "miesiac": "'.$miesiac.'",
+                    "rok": "'.$rok.'"
+                  };
+
+                  $.each( objsel, function( select, value ) {
+                    $(function() {
+                      $("[name="+select+"] option").filter(function() {
+                          return ($(this).val() == value);
+                        }).prop("selected", true);
+                        if(value == ""){  }
+                        else {
+
+                          $("#naglowek_dziennik").append(" | "+select+": <i>"+($("#"+select+" option:selected").text())+"</i>" );
+                        };
+                      })
+                    });
 
 
-      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy ORDER BY `id` ASC LIMIT 20', '<tr>', '</tr>',
+
+                  jQuery("#div_filtr").toggle("fast");
+                  jQuery("#przycisk_filtr").toggle("fast");
+                  jQuery("#przycisk_filtr_wyczysc").toggle("fast");
+
+
+                  </script>';
+
+
+                  if($pracownik){
+                    $pracownik_i = ' AND pracownik = "'.pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$pracownik).'"';
+                  }
+                  if($miesiac){
+                    $miesiac_i = ' AND miesiac = "'.$miesiac.'"';
+                  }
+                  if($rok){
+                    $rok_i = ' AND rok = "'.$rok.'"';
+                  }
+
+
+                      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy WHERE id IS NOT NULL'.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
+                      '<td>', '0', '</td>',
+                      '<td>', '1', '</td>',
+                      '<td>', '2', '</td>',
+                      '<td>', '3', '</td>',
+                      '<input type="hidden" id="dni_', '0', '" value="',
+                      ' ', '4', '">',
+                      '', '', '',
+
+                      '<td>', '', '</td>',
+                      '<td>', '8', '</td>',
+                      '<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>', '', '',
+                      '', '', '',
+                      '', '', '',
+                      '<td class="text-center dontprint"><a href="pracownicy_kontrola_czasu_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+                     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+                     '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
+                     '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
+                     <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
+                     </div>'
+                    );
+                     echo '
+                     </tbody>
+                              </table>
+
+
+
+                  </div>
+
+
+                  </main>';
+
+                  } else
+
+                  {
+
+      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy ORDER BY `id` ASC LIMIT 20', '<tr class="text-center">', '</tr>',
       '<td>', '0', '</td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
@@ -161,7 +292,7 @@ jQuery(function(){
   </div>
 
 
-  </main>';
+  </main>';};
   echo'
 <script>
 $(window).on("load", function() {
