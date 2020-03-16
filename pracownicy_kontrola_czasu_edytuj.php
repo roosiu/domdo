@@ -46,7 +46,14 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                     <option value=11>12</option>
                     </select>
                     <label for="rok_z" class="badge badge-pill badge-secondary text-uppercase">Rok: </label>
-                <select id="rok_z" name="rok_z" onchange="jump()" class="form-control form-control-sm"></select>
+                <select id="rok_z" name="rok_z" onchange="jump()" class="form-control form-control-sm">
+                <option value = '.(date('Y')).'>'.(date('Y')).'</option>
+                <option></option>
+                <option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
+                <option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
+                <option value = '.(date('Y', strtotime(" -1 year"))).'>'.(date('Y', strtotime(" -1 year"))).'</option>
+                <option value = '.(date('Y', strtotime(" +1 year"))).'>'.(date('Y', strtotime(" +1 year"))).'</option>
+                </select>
             </div>
 
         <div class="col-sm-10 border">

@@ -20,12 +20,12 @@ selectMonth = document.getElementById("miesiac_z");
 
 
 
-createYear = generate_year_range(1970, 2050);
+///createYear = generate_year_range(1970, 2050);
 /** or
  * createYear = generate_year_range( 1970, currentYear );
  */
 
-document.getElementById("rok_z").innerHTML = createYear;
+//// document.getElementById("rok_z").innerHTML = createYear;
 
 var calendar = document.getElementById("calendar");
 var lang = calendar.getAttribute('data-lang');
@@ -115,7 +115,8 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-year", year);
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
-                cell.innerHTML = "<span>" + date + "</span>";
+                cell.innerHTML = "<span>" + date + " <select id='dzien_z_" + date + "' class='form-control form-control-sm'><option value = '-'>-</option><option value = 'CH'>CH</option><option value = 'WN'>WN</option><option value = 'NP'>NP</option><option value = 'UOK'>UOK</option><option value = 'OP'>OP</option><option value = 'UW:4'>UW:4</option> <option value = 'UW:8'>UW:8</option><option value = 'UW:9'>UW:9</option><option value = 'UW:7'>UW:7</option><option value = '4'>4</option> <option value = '8'>8</option><option value = '9'>9</option><option value = '7'>7</option></select></span>";
+
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                     cell.className = "date-picker selected";
