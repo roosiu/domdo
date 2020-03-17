@@ -47,6 +47,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     /// pobieranie menu
     require 'includes/menu.php';
      /// część main
+     echo '<script src = "js/urlopliczenie.js"></script>';
     echo '<main>
 
     <div class="jumbotron mb-n4 bg-white">
@@ -73,9 +74,9 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                                   <th scope="col">imię i nazwisko</th>
                                   <th scope="col">stanowisko</th>
                                   <th scope="col">kontakt</th>
-                                  <th scope="col">Dni UW na rok</th>
+                                  <th scope="col">UW na rok</th>
                                   <th scope="col">Adres</th>
-                                  <th scope="col">Statystyka 2020</th>
+                                  <th scope="col">Statystyka</th>
 
                                   <th colspan="2" scope="col" class="text-center dontprint"></th>
                                 </tr>
@@ -89,12 +90,12 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
       '<td>', '1', '</td>',
       '<td>', '5', '</td>',
       '<td>', '2', '</td>',
-      '<td>', '6', '</td>',
-      '<td>', '3', '',
-      ' ', '', '',
+      '<td>', '6', '',
       '', '', '</td>',
+      ' ', '', '',
+      '<td>', '3', '</td>',
       '<td>', '8', '</td>',
-      '', '', '',
+      '<script>urlopliczenie("', '1', '");</script>',
       '', '', '',
       '', '', '',
       '<td class="text-center dontprint"><a href="pracownicy_lista_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
@@ -112,7 +113,6 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 
   </div>
-
 
   </main>';
 

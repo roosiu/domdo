@@ -16,9 +16,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
             <div class="col-2">
+            <a href="pracownicy_lista.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót </a>
+
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-male"></i> <b>LISTA PRACOWNIKÓW</b> <span id="input_z_id" style="display: none"> | pracownik o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="pracownicy_lista_edytuj.php"><i class="fa fa-male"></i> <b>LISTA PRACOWNIKÓW</b> <span id="input_z_id" style="display: none"> | pracownik o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
@@ -46,7 +48,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             <div class="col-sm-1">
 
-            <label for="urlop_z" class="badge badge-pill badge-secondary text-uppercase">Dni UW na rok</label>
+            <label for="urlop_z" class="badge badge-pill badge-secondary text-uppercase">Godzin UW na rok</label>
             <input name="urlop_z" id="urlop_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             </div>
 

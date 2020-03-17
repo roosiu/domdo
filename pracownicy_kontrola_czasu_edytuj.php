@@ -16,9 +16,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
             <div class="col-2">
+            <a href="pracownicy_kontrola_czasu.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót </a>
+
             </div>
             <div class="col text-center">
-            <form method="post" action="dziennik_edytuj.php"><i class="fa fa-male"></i> <b>KONTROLA CZASU PRACY</b> <span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="pracownicy_kontrola_czasu_edytuj.php"><i class="fa fa-male"></i> <b>KONTROLA CZASU PRACY</b> <span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
@@ -26,35 +28,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
         </div>
 
         <div class="row mb-4 border rounded">
-            <div class="col-sm-2 bg-light border">
 
-                <label for="pracownik_z" class="badge badge-pill badge-secondary text-uppercase">Imię i nazwisko</label>
-                <select name="pracownik_z" id="pracownik_z" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
-                <label for="miesiac_z" class="badge badge-pill badge-secondary text-uppercase">Miesiąc: </label>
-                <select id="miesiac_z" name="miesiac_z" class="form-control form-control-sm" onchange="jump()">
-                <option value=0>1</option>
-                <option value=1>2</option>
-                <option value=2>3</option>
-                <option value=3>4</option>
-                <option value=4>5</option>
-                <option value=5>6</option>
-                <option value=6>7</option>
-                    <option value=7>8</option>
-                    <option value=8>9</option>
-                    <option value=9>10</option>
-                    <option value=10>11</option>
-                    <option value=11>12</option>
-                    </select>
-                    <label for="rok_z" class="badge badge-pill badge-secondary text-uppercase">Rok: </label>
-                <select id="rok_z" name="rok_z" onchange="jump()" class="form-control form-control-sm">
-                <option value = '.(date('Y')).'>'.(date('Y')).'</option>
-                <option></option>
-                <option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
-                <option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
-                <option value = '.(date('Y', strtotime(" -1 year"))).'>'.(date('Y', strtotime(" -1 year"))).'</option>
-                <option value = '.(date('Y', strtotime(" +1 year"))).'>'.(date('Y', strtotime(" +1 year"))).'</option>
-                </select>
-            </div>
 
         <div class="col-sm-10 border">
   <!--kalendarz/poczatek-->
@@ -77,12 +51,42 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 <!--kalendarz/koniec-->
             <input type="hidden" class="form-control form-control-sm mb-3" id="godziny_z" name="godziny_z">
             </div>
+            <div class="col-sm-2 bg-light border">
 
+            <label for="pracownik_z" class="badge badge-pill badge-secondary text-uppercase">Imię i nazwisko</label>
+            <select name="pracownik_z" id="pracownik_z" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+            <label for="miesiac_z" class="badge badge-pill badge-secondary text-uppercase">Miesiąc: </label>
+            <select id="miesiac_z" name="miesiac_z" class="form-control form-control-sm" onchange="jump()">
+            <option value=0>1</option>
+            <option value=1>2</option>
+            <option value=2>3</option>
+            <option value=3>4</option>
+            <option value=4>5</option>
+            <option value=5>6</option>
+            <option value=6>7</option>
+                <option value=7>8</option>
+                <option value=8>9</option>
+                <option value=9>10</option>
+                <option value=10>11</option>
+                <option value=11>12</option>
+                </select>
+                <label for="rok_z" class="badge badge-pill badge-secondary text-uppercase">Rok: </label>
+            <select id="rok_z" name="rok_z" onchange="jump()" class="form-control form-control-sm">
+            <option value = '.(date('Y')).'>'.(date('Y')).'</option>
+            <option></option>
+            <option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
+            <option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
+            <option value = '.(date('Y', strtotime(" -1 year"))).'>'.(date('Y', strtotime(" -1 year"))).'</option>
+            <option value = '.(date('Y', strtotime(" +1 year"))).'>'.(date('Y', strtotime(" +1 year"))).'</option>
+            </select>
+            <div class="text-center">
+            <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase "><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button></div>
+        </div>
 
             </div>
             <div class="row mb-4">
                 <div class="col-sm mb-3">
-                <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
+
                 </div>
             </div>
         </div>
@@ -132,9 +136,12 @@ $.each( objinp, function( select, value ) {
 
 $.each( objsel, function( select, value ) {
     if(value == ""){  }
+    else if(select == "miesiac_z"){
+        $("#" + select + " option[value=" + (value-1) + "]").prop("selected", true);
+    }
     else {
-
-        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
+       ///// $("#" + select + " option[value=" + value + "]").prop("selected", true);
+  $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
 };
 });
 
