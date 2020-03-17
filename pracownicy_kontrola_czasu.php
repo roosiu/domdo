@@ -320,7 +320,7 @@ $(window).on("load", function() {
 
         for (i = 0; i < 31; ++i) {
 
-          if(wynik.length>i){
+          if(wynik[i] != "undefined"){
             $(this).find("td:eq("+(i+4)+")").append(wynik[i]);
             if($.isNumeric(wynik[i])){
               suma = parseFloat(suma) + parseFloat(wynik[i]);
@@ -332,7 +332,7 @@ $(window).on("load", function() {
           }
           else
           {
-           /// $(this).find("td:eq("+(i+4)+")").append("x");
+           $(this).find("td:eq("+(i+4)+")").append("x");
           };
 
         }

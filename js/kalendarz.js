@@ -77,6 +77,22 @@ function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
     showCalendar(currentMonth, currentYear);
+ selectcalendar();
+}
+function selectcalendar() {
+    var str = $("#godziny_z").val();
+    wynik = str.split(";");
+
+
+    for (i = 0; i < 31; ++i) {
+        if(wynik!=''){
+          $("#dzien_z_" + (i+1) + " option:contains(" + wynik[i] + ")").attr("selected", "selected");
+        }
+        else
+        {
+         /// $(this).find("td:eq("+(i+4)+")").append("x");
+        };
+      }
 }
 
 function showCalendar(month, year) {
@@ -115,7 +131,7 @@ function showCalendar(month, year) {
                 cell.setAttribute("data-year", year);
                 cell.setAttribute("data-month_name", months[month]);
                 cell.className = "date-picker";
-                cell.innerHTML = "<span>" + date + " <select id='dzien_z_" + date + "' class='form-control form-control-sm'><option value = '-'>-</option><option value = 'CH'>CH</option><option value = 'WN'>WN</option><option value = 'NP'>NP</option><option value = 'UOK'>UOK</option><option value = 'OP'>OP</option><option value = 'UW:4'>UW:4</option> <option value = 'UW:8'>UW:8</option><option value = 'UW:9'>UW:9</option><option value = 'UW:7'>UW:7</option><option value = '4'>4</option> <option value = '8'>8</option><option value = '9'>9</option><option value = '7'>7</option></select></span>";
+                cell.innerHTML = "<span>" + date + " <select id='dzien_z_" + date + "' class='form-control form-control-sm'><option value = '-'>-</option><option value = 'UW:4'>UW:4</option> <option value = 'UW:8'>UW:8</option><option value = 'UW:9'>UW:9</option><option value = 'UW:7'>UW:7</option><option value = '4'>4</option> <option value = '8'>8</option><option value = '9'>9</option><option value = '7'>7</option><option value = 'CH'>CH</option><option value = 'WN'>WN</option><option value = 'NP'>NP</option><option value = 'UOK'>UOK</option><option value = 'OP'>OP</option></select></span>";
 
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {

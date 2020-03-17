@@ -62,12 +62,6 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
     <div class="container-calendar">
         <h3 id="monthAndYear"></h3>
-<!--
-        <div class="button-container-calendar">
-            <button id="previous" onclick="previous()">&#8249;</button>
-            <button id="next" onclick="next()">&#8250;</button>
-        </div>
--->
         <table class="table-calendar" id="calendar" data-lang="en">
             <thead id="thead-month"></thead>
             <tbody id="calendar-body"></tbody>
@@ -81,8 +75,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 </div>
 <!--kalendarz/koniec-->
-            <label for="godziny_z" class="badge badge-pill badge-secondary text-uppercase">Dni</label>
-            <textarea class="form-control" id="godziny_z" name="godziny_z" rows="9"></textarea>
+            <input type="hidden" class="form-control form-control-sm mb-3" id="godziny_z" name="godziny_z">
             </div>
 
 
@@ -104,16 +97,16 @@ echo '<script>';
 echo 'var objinp = {';
 echo tabeladb2('12','SELECT * FROM kontrola_czasu_pracy WHERE `id` = '.$id_get.'', '', '',
 '"id_z": "', '0', '",',
+'', '', '',
+'', '', '',
+'', '', '',
+'"godziny_z": "', '4', '"',
+'', '', '',
+'', '', ' };',
+'var objsel = {', '', '',
 '"miesiac_z": "', '1', '",',
 '"rok_z": "', '2', '",',
-'"pracownik_z": "', '3', '",',
-'"godziny_z": "', '4', '",',
-'"stanowisko_z": "', '5', '",',
-'"urlop_z": "', '6', '" };',
-'', '', '',
-'', '', '',
-'', '', '',
-'', '', '',
+'"pracownik_z": "', '3', '"};',
 '', '', '',
 '', '', '',
 '', '', '',
@@ -132,9 +125,16 @@ $.each( objinp, function( select, value ) {
     else {
         $("#"+select).val(value);
 
-    $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
     $("#input_z_id").show();
     $("#id_z_label").html($("#id_z").val());
+};
+});
+
+$.each( objsel, function( select, value ) {
+    if(value == ""){  }
+    else {
+
+        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
 };
 });
 
@@ -159,11 +159,15 @@ echo '
 <script>
 jQuery(function(){
     jQuery("#zapis_button").click(function () {
+        var sum_zapis = "";
+        for (i = 0; i < 31; ++i) {
+            sum_zapis = sum_zapis + $("#dzien_z_" + (i+1) + " option:selected").html() + ";";
+        }
         var nowe = {
         "miesiac" : $("#miesiac_z option:selected").html(),
         "rok" : $("#rok_z option:selected").html(),
         "pracownik" : $("#pracownik_z option:selected").html(),
-        "godziny" : $("#godziny_z").val(),
+        "godziny" : sum_zapis,
         "urlop" : $("#urlop_z").val()
           };
 
@@ -179,6 +183,12 @@ jQuery(function(){
 
     });
 });
+
+$(window).on("load", function() {
+selectcalendar();
+
+});
+
 </script>
 ';
 
