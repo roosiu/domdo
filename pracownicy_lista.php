@@ -95,7 +95,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
       ' ', '', '',
       '<td>', '3', '</td>',
       '<td>', '8', '</td>',
-      '<script>urlopliczenie("', '1', '");</script>',
+      '', '', '',
       '', '', '',
       '', '', '',
       '<td class="text-center dontprint"><a href="pracownicy_lista_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
@@ -106,7 +106,39 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
      </div>'
     );
 
+    $pracownik = explode(";", tabeladb('1','1','pracownicy', '', '', '', ';'));
+echo '<script>var objprac = {';
+    foreach ($pracownik as $value){
+      if($value<>""){
+     echo '"'.$value.'": "';
+
+    ////echo count(explode(";", tabeladb('1','1','pracownicy', '', '', '', ';')))-1;
+      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy WHERE `pracownik` = "'.$value.'"', '', '',
+      '', '4', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+      '', '', '',
+     '', '', '',
+     '', '', '',
+     '', '', ''
+    );
+    echo '",';
+  }
+}
+echo '};
+urlopliczenie(objprac);</script>';
+
      echo '
+
      </tbody>
               </table>
 
@@ -115,7 +147,6 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
   </div>
 
   </main>';
-
 
 
 

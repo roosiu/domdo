@@ -1,7 +1,17 @@
 function urlopliczenie(pracownik) {
-console.log(pracownik);
 
+$.each( pracownik, function( select, value ) {
+    if(value == ""){  }
+    else {
+        $("tr:contains("+select+")").find("td:eq(6)").append(value);
+
+    };
+});
 };
+
+
+
+
 
 $(window).on("load", function() {
     $("table:first tr").each(function(){
