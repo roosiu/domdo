@@ -20,7 +20,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             </div>
             <div class="col text-center">
-            <form method="post" action="pracownicy_kontrola_czasu_edytuj.php"><i class="fa fa-male"></i> <b>KONTROLA CZASU PRACY</b> <span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="pracownicy_kontrola_czasu_edytuj.php"><i class="fa fa-clock-o" aria-hidden="true"></i> <b>KONTROLA CZASU PRACY</b> <span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">

@@ -18,7 +18,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col-2">
             </div>
             <div class="col text-center">
-            <form method="post" action="karty_odziezowe_edytuj.php"><i class="fa fa-male"></i> <b>KARTY ODZIEŻOWE - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="karty_odziezowe_edytuj.php"><i class="fa fa-user-secret" aria-hidden="true"></i> <b>KARTY ODZIEŻOWE - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">

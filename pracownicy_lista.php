@@ -55,7 +55,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <div class="col">
             </div>
             <div class="col text-center">
-            <form method="post" action="pracownicy_lista.php"><i class="fa fa-male"></i> <b>LISTA PRACOWNIKÓW</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
+            <form method="post" action="pracownicy_lista.php"><i class="fa fa-users" aria-hidden="true"></i> <b>LISTA PRACOWNIKÓW</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
             <a href="pracownicy_lista_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase float-right dontprint"><i class="fa fa-plus" aria-hidden="true"></i> <i class="fa fa-male"></i> Dodaj pracownika</a>

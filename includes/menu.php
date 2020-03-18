@@ -22,10 +22,10 @@
                 <i class="fa fa-male"></i> Pracownicy
               </a>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item bg-dark text-light" href="pracownicy_lista.php">Lista pracowników</a>
-                <a class="dropdown-item bg-dark text-light" href="pracownicy_kontrola_czasu.php">Kontrola czasu pracy</a>
-                <a class="dropdown-item bg-dark text-light" href="karty_odziezowe.php">Karty odzieżowe</a>
-                <a class="dropdown-item bg-dark text-light" href="#">Napoje dla pracowników</a>
+                <a class="dropdown-item bg-dark text-light" href="pracownicy_lista.php"><i class="fa fa-users" aria-hidden="true"></i> Lista pracowników</a>
+                <a class="dropdown-item bg-dark text-light" href="pracownicy_kontrola_czasu.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Kontrola czasu pracy</a>
+                <a class="dropdown-item bg-dark text-light" href="karty_odziezowe.php"><i class="fa fa-user-secret" aria-hidden="true"></i> Karty odzieżowe</a>
+                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-coffee" aria-hidden="true"></i> Napoje dla pracowników</a>
               </div>
             </li>
             <!-- koniec menu/Pracownicy-->

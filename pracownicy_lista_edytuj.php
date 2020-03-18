@@ -20,7 +20,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             </div>
             <div class="col text-center">
-            <form method="post" action="pracownicy_lista_edytuj.php"><i class="fa fa-male"></i> <b>LISTA PRACOWNIKÓW</b> <span id="input_z_id" style="display: none"> | pracownik o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="pracownicy_lista_edytuj.php"><i class="fa fa-users" aria-hidden="true"></i> <b>LISTA PRACOWNIKÓW</b> <span id="input_z_id" style="display: none"> | pracownik o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">

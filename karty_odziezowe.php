@@ -55,7 +55,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
             </div>
             <div class="col text-center">
-            <form method="post" action="karty_odziezowe.php"><i class="fa fa-male"></i> <b>KARTY ODZIEŻOWE</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
+            <form method="post" action="karty_odziezowe.php"><i class="fa fa-user-secret" aria-hidden="true"></i> <b>KARTY ODZIEŻOWE</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
             <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
@@ -204,7 +204,7 @@ echo '</div></form>';
       echo tabeladb2('15','SELECT * FROM karty_odziezowe ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
       '<td>', '0', '</td>',
       '<td>', '1', '</td>',
-      '<td>', '2', '</td>',
+      '<td><b>', '2', '</b></td>',
       '<td>', '3', '</td>',
       '<td>', '4', '</td>',
       '<td>', '5', '</td>',
@@ -233,51 +233,50 @@ echo '</div></form>';
 
 
   </main>';};
+  echo '<script src="js/date-pl-PL.js" type="text/javascript"></script>';
   echo'
 <script>
 $(window).on("load", function() {
+
   $("table:first tr").each(function(){
     var id_do_spr_dir = $(this).find("button:last").attr("id");
     var td_z_data = $(this).find("td:eq(7)");
     var td_z_okresem = $(this).find("td:eq(8)");
     var td_do_dodania = $(this).find("td:eq(9)");
 
-if(td_z_okresem.html() == "9m")
-{
-
-
-} else if(td_z_okresem.html() == "12m")
-{
-
-}else if(td_z_okresem.html() == "18m")
-{
-
-}else if(td_z_okresem.html() == "24m")
-{
-
-}else if(td_z_okresem.html() == "36m")
-{
-    wynik = td_z_data.html().split("-");
-    var data_nast = (parseInt(wynik[0])+3+"-"+wynik[1]+"-"+wynik[2]);
-
-}else if(td_z_okresem.html() == "48m")
-{
-
-}else if(td_z_okresem.html() == "96m")
-{
-
-}else if(td_z_okresem.html() == "3 o.z.")
-{
-
-}else if(td_z_okresem.html() == "6 o.z.")
-{
-
-}else if(td_z_okresem.html() == "d.z.")
-{
+if(td_z_okresem.html() == "9m"){
+var mi = 9;
+} else if(td_z_okresem.html() == "12m"){
+var mi = 12;
+}else if(td_z_okresem.html() == "18m"){
+var mi = 18;
+}else if(td_z_okresem.html() == "24m"){
+  var mi = 24;
+}else if(td_z_okresem.html() == "36m"){
+  var mi = 36;
+}else if(td_z_okresem.html() == "48m"){
+  var mi = 48;
+}else if(td_z_okresem.html() == "96m"){
+  var mi = 96;
+}else if(td_z_okresem.html() == "3 o.z."){
+  var mi = 36;
+}else if(td_z_okresem.html() == "6 o.z."){
+  var mi = 72;
+}else if(td_z_okresem.html() == "d.z."){
 
 }
+if($.isNumeric(mi))
+      {
+        var data_nast = new Date(td_z_data.html()).add(mi).month();
+        czywyszlo = Date.today().compareTo(data_nast);
+        if(czywyszlo>0){
+          td_do_dodania.addClass( "bg-danger text-white font-weight-bold" );
+        }else {
+          td_do_dodania.addClass( "text-success font-weight-bold" );
+        }
+td_do_dodania.html(data_nast.toString("yyyy-MM-dd"));
+}
 
-td_do_dodania.html(data_nast);
 
 });
 
