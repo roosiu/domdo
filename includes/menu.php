@@ -24,7 +24,7 @@
               <div class="dropdown-menu bg-dark">
                 <a class="dropdown-item bg-dark text-light" href="pracownicy_lista.php">Lista pracowników</a>
                 <a class="dropdown-item bg-dark text-light" href="pracownicy_kontrola_czasu.php">Kontrola czasu pracy</a>
-                <a class="dropdown-item bg-dark text-light" href="#">Karty odzieżowe</a>
+                <a class="dropdown-item bg-dark text-light" href="karty_odziezowe.php">Karty odzieżowe</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Napoje dla pracowników</a>
               </div>
             </li>

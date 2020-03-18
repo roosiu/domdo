@@ -132,10 +132,20 @@ echo '<script>var objprac = {';
      '', '', ''
     );
     echo '",';
+
   }
 }
 echo '};
-urlopliczenie(objprac);</script>';
+var objilelat = {';
+foreach ($pracownik as $value){
+  if($value<>""){
+    $odkiedy_rok = pojed_zapyt('SELECT rok FROM kontrola_czasu_pracy WHERE `pracownik` ="'.$value.'" ORDER BY rok ASC');
+    $ile_lat = (date('Y')) - $odkiedy_rok + 1;
+    echo '"'.$value.'": "'.$ile_lat.'",';
+  }
+}
+echo '};';
+echo 'urlopliczenie(objprac, objilelat);</script>';
 
      echo '
 
