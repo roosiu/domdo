@@ -125,7 +125,7 @@ jQuery(function(){
 
                 echo '</div></form>';
 
-                        echo '<table class="table table-sm table-striped">
+                        echo '<table id="tabela_gl" class="table table-sm table-striped">
                               <thead>
                               <tr class="">
                                   <th scope="col">ID</th>
@@ -138,7 +138,8 @@ jQuery(function(){
                                   <th scope="col">Zgłaszający</th>
                                   <th scope="col">Kontakt</th>
                                   <th scope="col">Zlecono</th>
-                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="dziennik_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</a></th>
+                                  <th scope="col" class="no-sort dontprint"></th>
+                                  <th scope="col" class="no-sort text-center dontprint"><a href="dziennik_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj zdarzenie</a></th>
                                 </tr>
                                 </thead>
                               <tbody>
@@ -241,7 +242,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
     '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i><br/>usuń</button></td>',
      '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
      '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
      <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
@@ -276,7 +277,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '10', '</td>',
       '<td>', '11', '</td>',
       '<td class="text-center dontprint"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i><br/>usuń</button></td>',
      '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
      '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
      <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
@@ -315,10 +316,31 @@ $(".pokazukryj").click(function() {
 
   }
 });
+$(window).on("load", function() {
+$("#tabela_gl").DataTable( {
+  "pageLength": 25,
+  "order": [[ 0, "desc" ]],
+  "columnDefs": [ {
+    "targets": "no-sort",
+    "orderable": false,
+} ]
+} );
+$(".dataTables_length").addClass("dontprint");
+$(".dataTables_paginate").addClass("dontprint");
+$(".dataTables_filter").addClass("dontprint");
+
+});
 
 </script>
 
 ';
+echo '
+<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css"/>
+
+<script type="text/javascript" src="js/datatables.min.js"></script>
+<script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>';
+
+
 } else {
     // Widok dla użytkownika niezalogowanego
     header("Location: login.php");
