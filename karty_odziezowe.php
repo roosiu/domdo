@@ -119,7 +119,7 @@ echo '</div></form>';
                                   <th scope="col">Data Następnego pobrania</th>
                                   <th scope="col">Uwagi</th>
 
-                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="karty_odziezowe_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>rozliczenie</a>
+                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="karty_odziezowe_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>odzież</a>
                                   </th>
                                 </tr>
                                 </thead>
