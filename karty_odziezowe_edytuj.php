@@ -164,7 +164,7 @@ jQuery(function(){
     jQuery("#zapis_button").click(function () {
         var nowe = {
         "data_pobr" : $("#data_z").val(),
-        "uwagi" : $("#uwagi_z").val(),
+        "uwagi" : $("#uwagi_z").val().replace(/(\r\n|\n|\r)/gm," "),
         "wartosc" : $("#wartosc_z").val(),
         "rozmiar" : $("#rozmiar_z").val(),
         "okres_uz" : $("#okres_uz_z option:selected").html(),

@@ -116,8 +116,8 @@ echo '</div></form>';
                                   <th scope="col">Nr dowodu wydania</th>
                                   <th scope="col">Data pobrania</th>
                                   <th scope="col">Okres używalności</th>
-                                  <th scope="col">Data Następnego pobrania</th>
-                                  <th scope="col">Uwagi</th>
+                                  <th scope="col">Data Następnego pobrania ^ - sort</th>
+                                  <th width="10%" scope="col">Uwagi</th>
 
                                   <th colspan="2" scope="col" class="text-center dontprint"><a href="karty_odziezowe_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>odzież</a>
                                   </th>
@@ -201,7 +201,7 @@ echo '</div></form>';
 
                   {
 
-      echo tabeladb2('15','SELECT * FROM karty_odziezowe ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
+      echo tabeladb2('15','SELECT * FROM karty_odziezowe ORDER BY `id` DESC', '<tr class="text-center">', '</tr>',
       '<td>', '0', '</td>',
       '<td>', '1', '</td>',
       '<td><b>', '2', '</b></td>',
@@ -243,7 +243,7 @@ $(window).on("load", function() {
     var td_z_data = $(this).find("td:eq(7)");
     var td_z_okresem = $(this).find("td:eq(8)");
     var td_do_dodania = $(this).find("td:eq(9)");
-
+    $(this).find("td:eq(10)").addClass("small text-wrap");
 if(td_z_okresem.html() == "9m"){
 var mi = 9;
 } else if(td_z_okresem.html() == "12m"){
