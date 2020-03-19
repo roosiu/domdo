@@ -86,9 +86,9 @@ $filtr_1 = '<select name="miesiac" id="miesiac" class="form-control form-control
 <option></option>
 <option value=01>01</option>
 <option value=02>02</option>
-<option value=02>03</option>
-<option value=02>04</option>
-<option value=02>05</option>
+<option value=03>03</option>
+<option value=04>04</option>
+<option value=05>05</option>
 <option value=06>06</option>
 <option value=07>07</option>
 <option value=08>08</option>
@@ -225,7 +225,7 @@ echo '</div></form>';
                   }
 
 
-                      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy WHERE id IS NOT NULL'.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
+                      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy WHERE id IS NOT NULL'.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY `id` DESC', '<tr class="text-center">', '</tr>',
                       '<td>', '0', '</td>',
                       '<td>', '1', '</td>',
                       '<td>', '2', '</td>',
@@ -261,7 +261,7 @@ echo '</div></form>';
 
                   {
 
-      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy ORDER BY `id` ASC LIMIT 20', '<tr class="text-center">', '</tr>',
+      echo tabeladb2('15','SELECT * FROM kontrola_czasu_pracy WHERE `miesiac` = '.date("m").' AND `rok` = '.date("Y").' ORDER BY `id` DESC', '<tr class="text-center">', '</tr>',
       '<td>', '0', '</td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',

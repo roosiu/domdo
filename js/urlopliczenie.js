@@ -25,11 +25,10 @@ function urlopliczenie(pracownik, objilelat) {
             if( value.indexOf("UW") != -1 ) {uw = (value.match(/UW/g)).length;} else {uw = "0";}
             if( value.indexOf("WN") != -1 ) {wn = (value.match(/WN/g)).length;} else {wn = "0";}
             if( value.indexOf("NP") != -1 ) {np = (value.match(/NP/g)).length;} else {np = "0";}
-            if( value.indexOf("NP") != -1 ) {np = (value.match(/NP/g)).length;} else {np = "0";}
             if( value.indexOf("UOK") != -1 ) {uok = (value.match(/UOK/g)).length;} else {uok = "0";}
             if( value.indexOf("OP") != -1 ) {op = (value.match(/OP/g)).length;} else {op = "0";}
 
-            $("tr:contains("+select+")").find("td:eq(6)").append("<i>|UW:</i>"+uw+"|<i>CH:</i>"+ch+"|<i>WN:</i>"+wn+"|<br/>|<i>NP:</i>"+np+"|<i>UOK:</i>"+uok+"|<i>OP:</i>"+op+"|");
+            $("tr:contains("+select+")").find("td:eq(6)").append("<i>|UW:</i>"+uw+"|<i>CH:</i>"+ch+"|<i>WN:</i>"+wn+"| |<i>NP:</i>"+np+"|<i>UOK:</i>"+uok+"|<i>OP:</i>"+op+"|");
             ///  $("tr:contains("+select+")").find("td:eq(6)").append(value);
 
         };
@@ -66,7 +65,7 @@ function urlopliczenie(pracownik, objilelat) {
         godziny_po_odjeciu = godziny_od_poczatku - (uw_godziny_ogolem[select]);
         dni_po_odjeciu = godziny_po_odjeciu/dzielenie;
 
-            $("tr:contains("+select+")").find("td:eq(6)").append("<br/>|<u>pozostało <i>UW:</i><br/>"+godziny_po_odjeciu+"godz.(<b>"+dni_po_odjeciu+"dni</b>)</u>|");
+            $("tr:contains("+select+")").find("td:eq(6)").append("<br/>|<u>pozostało <i>UW:</i> "+godziny_po_odjeciu+"godz.(<b>"+dni_po_odjeciu+"dni</b>)</u>|");
           ///  $("tr:contains("+select+")").find("td:eq(6)").append(value);
 
         };
