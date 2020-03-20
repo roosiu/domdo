@@ -1,3 +1,30 @@
+<style>
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu>a:after {
+  content: "\f0da";
+  float: right;
+  border: none;
+  font-family: 'FontAwesome';
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+</style>
 <!--menu-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <!--menu/logo-->
@@ -25,7 +52,18 @@
                 <a class="dropdown-item bg-dark text-light" href="pracownicy_lista.php"><i class="fa fa-users" aria-hidden="true"></i> Lista pracowników</a>
                 <a class="dropdown-item bg-dark text-light" href="pracownicy_kontrola_czasu.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Kontrola czasu pracy</a>
                 <a class="dropdown-item bg-dark text-light" href="karty_odziezowe.php"><i class="fa fa-user-secret" aria-hidden="true"></i> Karty odzieżowe</a>
-                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-coffee" aria-hidden="true"></i> Napoje dla pracowników</a>
+
+
+                    <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle bg-dark text-light"><i class="fa fa-coffee" aria-hidden="true"></i> Napoje dla pracowników</a>
+                    <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow bg-dark text-light">
+                      <li>
+                        <a tabindex="-1" href="napoje.php" class="dropdown-item bg-dark text-light">Przydział</a>
+                      </li>
+
+                      <li><a href="faktury.php" class="dropdown-item bg-dark text-light">Faktury</a></li>
+                    </ul>
+
+
               </div>
             </li>
             <!-- koniec menu/Pracownicy-->
@@ -38,6 +76,7 @@
                 <a class="dropdown-item bg-dark text-light" href="#">Zamówienia</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Magazyn</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Inwentarz</a>
+                <a class="dropdown-item bg-dark text-light" href="faktury.php">Faktury</a>
               </div>
             </li>
             <!-- koniec menu/Inwentarz Dropdown -->
@@ -94,14 +133,27 @@ echo $userData['fullname'];
   </div>
       </nav>
       <!--koniec menu-->
-      <!-- skrypt aktywności przycisków menu -->
-<script>
-function filename(path){
-    path = path.substring(path.lastIndexOf("/")+ 1);
-    return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0].slice(0,-4);
-}
-$(".nav-item").removeClass('active');
-$("#menu_"+filename(window.location.pathname)).addClass('active');
+  <script>
+$(function() {
+  // ------------------------------------------------------- //
+  // Multi Level dropdowns
+  // ------------------------------------------------------ //
+  $("ul.dropdown-menu [data-toggle='dropdown']").on("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $(this).siblings().toggleClass("show");
+
+
+    if (!$(this).next().hasClass('show')) {
+      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+    }
+    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+      $('.dropdown-submenu .show').removeClass("show");
+    });
+
+  });
+});
 
 </script>
     <!--koniec skryptu aktywności przycisków menu -->
