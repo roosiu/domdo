@@ -77,7 +77,7 @@ jQuery(function(){
 <div id="div_filtr" class="row mb-3 dontprint justify-content-center" style="display: none">';
 $filtr_0_rozmiar = '-3';
 $filtr_0_text = 'TYP';
-$filtr_0 = '<select name="typ" id="typ" class="form-control form-control-sm"><option></option><option value="paliwo">paliwo</option><option value="napoje">napoje</option><option value="materiały">materiały</option></select>';
+$filtr_0 = '<select name="typ" id="typ" class="form-control form-control-sm"><option></option><option value="paliwo">paliwo</option><option value="napoje">napoje</option><option value="materiał">materiał</option></select>';
 $filtr_1_rozmiar = '-3';
 $filtr_1_text = 'ROK';
 $filtr_1 = '<select name="rok" id="rok" class="form-control form-control-sm">
@@ -134,7 +134,7 @@ echo '</div></form>';
                               <tbody>
                                 ';
                                 if ($_POST) {
-                                  $pracownik = (htmlspecialchars(trim($_POST['pracownik'])));
+                                  $typ = (htmlspecialchars(trim($_POST['typ'])));
                                   $rok = (htmlspecialchars(trim($_POST['rok'])));
 
 
@@ -169,13 +169,16 @@ echo '</div></form>';
                   </script>';
 
 
+                  if($typ){
+                    $typ_i = ' AND typ = "'.$typ.'"';
+                  }
                   if($rok){
-                    $rok_i = ' AND pracownik = "'.pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$pracownik).'"';
+                    $rok_i = ' AND YEAR(data) = "'.$rok.'"';
                   }
 
 
 
-                      echo tabeladb2('15','SELECT * FROM faktury WHERE id IS NOT NULL'.$pracownik_i.' ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
+                      echo tabeladb2('15','SELECT * FROM faktury WHERE id IS NOT NULL'.$typ_i.''.$rok_i.' ORDER BY `id` ASC', '<tr class="text-center">', '</tr>',
                       '<td>', '0', '</td>',
                       '<td>', '1', '</td>',
                       '<td>', '2', '</td>',

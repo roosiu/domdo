@@ -16,6 +16,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
             <div class="col-2">
+            <a href="dziennik.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-chevron-left " aria-hidden="true"></i> Powrót </a>
+
             </div>
             <div class="col text-center">
             <form method="post" action="dziennik_edytuj.php"><i class="fa fa-book"></i> <b>DZIENNIK - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
