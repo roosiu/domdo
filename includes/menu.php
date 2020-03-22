@@ -57,10 +57,10 @@
                     <a id="dropdownMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle bg-dark text-light"><i class="fa fa-coffee" aria-hidden="true"></i> Napoje dla pracowników</a>
                     <ul aria-labelledby="dropdownMenu2" class="dropdown-menu border-0 shadow bg-dark text-light">
                       <li>
-                        <a tabindex="-1" href="napoje.php" class="dropdown-item bg-dark text-light">Przydział</a>
+                        <a tabindex="-1" href="napoje.php" class="dropdown-item bg-dark text-light"><i class="fa fa-coffee" aria-hidden="true"></i> Przydział</a>
                       </li>
 
-                      <li><a href="faktury.php" class="dropdown-item bg-dark text-light">Faktury</a></li>
+                      <li><a href="faktury.php" class="dropdown-item bg-dark text-light"><i class="fa fa-money" aria-hidden="true"></i> Faktury</a></li>
                     </ul>
 
 
@@ -73,10 +73,10 @@
                 <i class="fa fa-building"></i> Inwentarz
               </a>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item bg-dark text-light" href="#">Zamówienia</a>
-                <a class="dropdown-item bg-dark text-light" href="#">Magazyn</a>
-                <a class="dropdown-item bg-dark text-light" href="#">Inwentarz</a>
-                <a class="dropdown-item bg-dark text-light" href="faktury.php">Faktury</a>
+                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Zamówienia</a>
+                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Magazyn</a>
+                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-university" aria-hidden="true"></i> Inwentarz</a>
+                <a class="dropdown-item bg-dark text-light" href="faktury.php"><i class="fa fa-money" aria-hidden="true"></i> Faktury</a>
               </div>
             </li>
             <!-- koniec menu/Inwentarz Dropdown -->
