@@ -37,14 +37,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li id="menu_index" class="nav-item active">
+            <li id="menu_index" class="nav-item menu_index active">
               <a class="nav-link" href="index.php"><i class="fa fa-home"></i> Start <span class="sr-only">(current)</span></a>
             </li>
-            <li id="menu_dziennik" class="nav-item">
+            <li class="nav-item menu_dziennik">
                 <a class="nav-link" href="dziennik.php"><i class="fa fa-book"></i> Dziennik</a>
             </li>
             <!-- menu/Pracownicy-->
-            <li class="nav-item dropdown bg-dark">
+            <li class="nav-item dropdown bg-dark menu_pracownicy">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <i class="fa fa-male"></i> Pracownicy
               </a>
@@ -68,7 +68,7 @@
             </li>
             <!-- koniec menu/Pracownicy-->
             <!-- menu/Inwentarz Dropdown -->
-            <li class="nav-item dropdown bg-dark">
+            <li class="nav-item dropdown bg-dark menu_inwentarz">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <i class="fa fa-building"></i> Inwentarz
               </a>
@@ -155,5 +155,20 @@ $(function() {
   });
 });
 
+function filename(path){
+path = path.substring(path.lastIndexOf("/")+ 1);
+return (path.match(/[^.]+(\.[^?#]+)?/) || [])[0].slice(0,-4);
+}
+$(".nav-item").removeClass('active');
+if (filename(window.location.pathname)=="pracownicy_lista" || filename(window.location.pathname)=="pracownicy_lista_edytuj" || filename(window.location.pathname)=="pracownicy_kontrola_czasu" || filename(window.location.pathname)=="pracownicy_kontrola_czasu_edytuj" || filename(window.location.pathname)=="karty_odziezowe" || filename(window.location.pathname)=="karty_odziezowe_edytuj" || filename(window.location.pathname)=="napoje"){
+  $(".menu_pracownicy").addClass('active');
+}else if(filename(window.location.pathname)=="dziennik" || filename(window.location.pathname)=="dziennik_edytuj"){
+  $(".menu_dziennik").addClass('active');
+}
+else if(filename(window.location.pathname)=="index"){
+  $(".menu_index").addClass('active');
+}else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj"){
+  $(".menu_inwentarz").addClass('active');
+}
 </script>
     <!--koniec skryptu aktywności przycisków menu -->

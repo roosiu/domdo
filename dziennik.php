@@ -104,7 +104,7 @@ jQuery(function(){
                 $filtr_4_rozmiar = '';
                 $filtr_4_text = 'DATA OD';
                 $filtr_4 = '
-                <input type="text" name="data_od" class="form-control form-control-sm" id="datepicker-10" value = '.(date('Y-m-d', strtotime(" -1 year"))).'>';
+                <input type="text" name="data_od" class="form-control form-control-sm" id="datepicker-10" value = '.(date('Y-m-d', strtotime(" -2 month"))).'>';
                 $filtr_5_rozmiar = '';
                 $filtr_5_text = 'DATA DO';
                 $filtr_5 = '
@@ -145,6 +145,7 @@ jQuery(function(){
                               <tbody>
                                 ';
                 if ($_POST) {
+                  ini_set('max_execution_time', 360);
                 $zlecono = (htmlspecialchars(trim($_POST['zlecono'])));
                 $status = (htmlspecialchars(trim($_POST['status'])));
                 $typ = (htmlspecialchars(trim($_POST['typ'])));
@@ -229,11 +230,11 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
   }
 }
     echo tabeladb2('15','SELECT * FROM dziennik WHERE id IS NOT NULL'.$zlecono_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
-    '<td>', '0', '<br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+    '<td><span class="small">', '0', '</span><br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
     '<td>', '1', '</td>',
     '<td>', '2', '</td>',
     '<td>', '3', '</td>',
-    '<td>', '4', '</td>',
+    '<td class="small">', '4', '</td>',
     '<td>', '5', '',
     ' ', '6', '',
     '/', '7', '</td>',
@@ -264,11 +265,11 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 {
 
       echo tabeladb2('15','SELECT * FROM dziennik ORDER BY `id` DESC LIMIT 20', '<tr>', '</tr>',
-      '<td>', '0', '<br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
+      '<td><span class="small">', '0', '</span><br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
       '<td>', '1', '</td>',
       '<td>', '2', '</td>',
       '<td>', '3', '</td>',
-      '<td>', '4', '</td>',
+      '<td class="small">', '4', '</td>',
       '<td>', '5', '',
       ' ', '6', '',
       '/', '7', '</td>',
@@ -302,7 +303,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
 /// koniec części main
 /// dodawanie przycisku niedrukowania wybranych zdarzeń z tabeli
 echo '
-
+<script src="js/date-pl-PL.js" type="text/javascript"></script>
 <script src = "js/checkdir.js"></script>
 <script>
 
@@ -317,6 +318,25 @@ $(".pokazukryj").click(function() {
   }
 });
 $(window).on("load", function() {
+  $("table:first tr").each(function(){
+    var id_do_spr_dir = $(this).find("button:last").attr("id");
+    var td_z_data_uzgod = $(this).find("td:eq(2)");
+    var td_z_data_fakt = $(this).find("td:eq(3)");
+    if(td_z_data_fakt.html() == ""){
+      if(td_z_data_uzgod.html() != ""){
+        czynadzis = new Date(Date.today().toString("yyyy-MM-dd")).compareTo(new Date(td_z_data_uzgod.html().toString("yyyy-MM-dd")));
+        if(czynadzis == 0){
+          td_z_data_uzgod.addClass( "bg-danger text-white font-weight-bold" );
+        }else if(czynadzis == -1){
+          td_z_data_uzgod.addClass( "bg-warning font-weight-bold" );
+        }else if(czynadzis == 1){
+          td_z_data_uzgod.addClass( "bg-dark text-white font-weight-bold" );
+        }
+
+      }
+    }
+
+  });
 $("#tabela_gl").DataTable( {
   "pageLength": 25,
   "order": [[ 0, "desc" ]],
