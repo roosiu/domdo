@@ -26,7 +26,7 @@
 }
 </style>
 <!--menu-->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
       <!--menu/logo-->
         <a class="navbar-brand" href="#">
             <img src="img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
