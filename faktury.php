@@ -77,7 +77,9 @@ jQuery(function(){
 <div id="div_filtr" class="row mb-3 dontprint justify-content-center" style="display: none">';
 $filtr_0_rozmiar = '-3';
 $filtr_0_text = 'TYP';
-$filtr_0 = '<select name="typ" id="typ" class="form-control form-control-sm"><option></option><option value="paliwo">paliwo</option><option value="napoje">napoje</option><option value="materiał">materiał</option></select>';
+$filtr_0 = '<select name="typ" id="typ" class="form-control form-control-sm"><option></option>
+'.tabeladb2('1','SELECT * FROM faktury_typy ORDER BY `id` ASC', '', '', '<option value=', '1', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+</select>';
 $filtr_1_rozmiar = '-3';
 $filtr_1_text = 'ROK';
 $filtr_1 = '<select name="rok" id="rok" class="form-control form-control-sm">

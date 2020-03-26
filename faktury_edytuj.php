@@ -29,8 +29,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             <div class="row mb-4 border rounded">
             <div class="col-sm-2 bg-light border">
-            <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data pobrania</label>
+            <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data wystawienia</label>
             <input class="form-control form-control-sm mb-3 datepicker" id="data_z" name="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
+            <label for="numer_faktury_z" class="badge badge-pill badge-secondary text-uppercase">Numer Faktury</label>
+            <input name="numer_faktury_z" id="numer_faktury_z" class="form-control form-control-sm" type="text" placeholder="">
+
             </div>
             <div class="col-sm-4" id="div_uwagi_z">
             <label for="nazwa_z" class="badge badge-pill badge-secondary text-uppercase">Nazwa</label>
@@ -39,38 +42,29 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <textarea class="form-control form-control-sm mb-3" id="uwagi_z" name="uwagi_z" rows="5"></textarea>
             </div>
             <div class="col-sm-2 bg-light border">
-            <label for="rozmiar_z" class="badge badge-pill badge-secondary text-uppercase">Rozmiar</label>
-            <input name="rozmiar_z" id="rozmiar_z" class="form-control form-control-sm" type="text" placeholder="">
-            <label for="wartosc_z" class="badge badge-pill badge-secondary text-uppercase">Wartość</label>
-            <input name="wartosc_z" id="wartosc_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="jm_z" class="badge badge-pill badge-secondary text-uppercase">J.m.</label>
+            <input name="jm_z" id="jm_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="wartosc_n_z" class="badge badge-pill badge-secondary text-uppercase">Wartość netto</label>
+            <input name="wartosc_n_z" id="wartosc_n_z" class="form-control form-control-sm" type="text" placeholder="">
 
 
             <label for="ilosc_z" class="badge badge-pill badge-secondary text-uppercase">Ilość</label>
-            <input name="ilosc_z" id="ilosc_z" class="form-control form-control-sm mb-3" type="number" placeholder="">
-            <label for="nr_dowodu_wyd_z" class="badge badge-pill badge-secondary text-uppercase">Nr dowodu wydania</label>
-            <input name="nr_dowodu_wyd_z" id="nr_dowodu_wyd_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <input name="ilosc_z" id="ilosc_z" class="form-control form-control-sm mb-3" type="number" step="0.01" placeholder="1">
+            <label for="wartosc_b_z" class="badge badge-pill badge-secondary text-uppercase">Wartość brutto</label>
+            <input name="wartosc_b_z" id="wartosc_b_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             </div>
             <div class="col-sm-2">
-            <label for="okres_uz_z" class="badge badge-pill badge-secondary text-uppercase">Okres używalności</label>
-            <select name="okres_uz_z" id="okres_uz_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <label for="stawka_vat_z" class="badge badge-pill badge-secondary text-uppercase">Stawka VAT</label>
+            <select name="stawka_vat_z" id="stawka_vat_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <option></option>
-           <option value="9m">9m</option>
-           <option value="12m">12m</option>
-           <option value="18m">18m</option>
-           <option value="24m">24m</option>
-           <option value="36m">36m</option>
-           <option value="48m">48m</option>
-           <option value="96m">96m</option>
-           <option value="3 o.z.">3 o.z.</option>
-           <option value="6 o.z.">6 o.z.</option>
-           <option value="d.z.">d.z.</option>
+           '.tabeladb2('1','SELECT * FROM faktury_stawki_vat ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
             </select>
             </div>
             <div class="col-sm-2 border bg-light">
-            <label for="pracownik_z" class="badge badge-pill badge-secondary text-uppercase">Pracownik</label>
-            <select name="pracownik_z" id="pracownik_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <label for="typ_z" class="badge badge-pill badge-secondary text-uppercase">typ</label>
+            <select name="typ_z" id="typ_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <option></option>
-            '.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            '.tabeladb2('1','SELECT * FROM faktury_typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
             </select>
             </div>
             </div>
@@ -101,17 +95,17 @@ echo tabeladb2('12','SELECT * FROM faktury WHERE `id` = '.$id_get.'', '', '',
 '"id_z": "', '0', '",',
 '"data_z": "', '7', '",',
 '"nazwa_z": "', '2', '",',
-'', '', '',
-'"uwagi_z": "', '9', '",',
-'"wartosc_z": "', '5', '",',
-'"rozmiar_z": "', '3', '",',
+'"numer_faktury_z": "', '1', '",',
+'"uwagi_z": "', '10', '",',
+'"wartosc_n_z": "', '5', '",',
+'"jm_z": "', '3', '",',
 '"ilosc_z": "', '4', '",',
-'"nr_dowodu_wyd_z": "', '6', '" };',
+'"wartosc_b_z": "', '6', '" };',
 '
 var objsel = {
 ', '', '',
-'"okres_uz_z": "', '8', '",',
-'"pracownik_z": "', '1', '"',
+'"stawka_vat_z": "', '8', '",',
+'"typ_z": "', '9', '"',
 '', '', '',
 '', '', '',
 '', '', '',
@@ -163,15 +157,16 @@ echo '
 jQuery(function(){
     jQuery("#zapis_button").click(function () {
         var nowe = {
-        "data_pobr" : $("#data_z").val(),
+        "data" : $("#data_z").val(),
         "uwagi" : $("#uwagi_z").val().replace(/(\r\n|\n|\r)/gm," "),
-        "wartosc" : $("#wartosc_z").val(),
-        "rozmiar" : $("#rozmiar_z").val(),
-        "okres_uz" : $("#okres_uz_z option:selected").html(),
+        "wartosc_netto" : $("#wartosc_n_z").val(),
+        "jm" : $("#jm_z").val(),
+        "stawka_vat" : $("#stawka_vat_z option:selected").html(),
         "ilosc" : $("#ilosc_z").val(),
-        "nazwa" : $("#nazwa_z").val(),
-        "nr_dowodu_wyd" : $("#nr_dowodu_wyd_z").val(),
-        "pracownik" : $("#pracownik_z option:selected").html()
+        "nazwa_poz" : $("#nazwa_z").val(),
+        "numer_faktury" : $("#numer_faktury_z").val(),
+        "wartosc_brutto" : $("#wartosc_b_z").val(),
+        "typ" : $("#typ_z option:selected").html()
           };
 
         tabela = "faktury";

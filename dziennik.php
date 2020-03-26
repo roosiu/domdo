@@ -339,6 +339,8 @@ if(ostatni_znak_w_adresie == "/") {
           $(this).addClass( "bg-dark text-light font-weight-bold" );
         }
 
+      } else {
+        $(this).addClass( "bg-info text-light font-weight-bold" );
       }
     }
 
