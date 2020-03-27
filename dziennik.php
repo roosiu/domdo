@@ -324,8 +324,15 @@ $(window).on("load", function() {
     var td_z_data_fakt = $(this).find("td:eq(3)");
     var td_z_adresem = $(this).find("td:eq(5)");
     var ostatni_znak_w_adresie = td_z_adresem.text().trim().slice(-1);
+
 if(ostatni_znak_w_adresie == "/") {
   td_z_adresem.html(td_z_adresem.text().slice(0, -1));
+  td_z_adresem.append(sprawdzindeks(id_do_spr_dir, td_z_adresem.text()));
+} else {
+  adres_podz = td_z_adresem.text().split("/");
+  adres_podz_ulica = adres_podz[0].split(" ");
+  td_z_adresem.append(sprawdzindeks(id_do_spr_dir, adres_podz[0], adres_podz[1]));
+
 }
 
     if(td_z_data_fakt.html() == ""){
@@ -365,6 +372,7 @@ $(".dataTables_filter").addClass("dontprint");
 echo '
 <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css"/>
 
+<script type="text/javascript" src="js/sprawdzindeks.js"></script>
 <script type="text/javascript" src="js/datatables.min.js"></script>
 <script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>';
 
