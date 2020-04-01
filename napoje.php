@@ -148,7 +148,7 @@ echo '</div></form>';
                                   <th scope="col">Uwagi</th>
                                   <th scope="col">Podpis</th>
 
-                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="napoje_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>rozliczenie</a>
+                                  <th colspan="2" scope="col" class="text-center dontprint"><a href="napoje_edytuj.php" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj<br/>pobranie</a>
                                   </th>
                                 </tr>
                                 </thead>
@@ -204,7 +204,7 @@ echo '</div></form>';
 
                       echo tabeladb2('15','SELECT * FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" '.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY napoje.id DESC', '<tr class="text-center">', '</tr>',
                       '<td>', '11', '</td>',
-                      '<td>', '1', '</td>',
+                      '<td class="td_z_numerem_fakt">', '1', '</td>',
                       '<td>', '7', '</td>',
                       '<td>', '4', '</td>',
                       '', '', '',
@@ -241,7 +241,7 @@ echo '</div></form>';
 
       echo tabeladb2('15','SELECT * FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND MONTH(napoje.data_wydania) = '.date('m').' AND YEAR(napoje.data_wydania) = '.date('Y').'  ORDER BY napoje.id DESC', '<tr class="text-center">', '</tr>',
       '<td>', '11', '</td>',
-      '<td>', '1', '</td>',
+      '<td class="td_z_numerem_fakt">', '1', '</td>',
       '<td>', '7', '</td>',
       '<td>', '4', '</td>',
       '', '', '',
@@ -313,6 +313,8 @@ $(window).on("load", function() {
       $(this).next("tr").find("td:eq(4)").addClass("duplikat");
       $(this).next("tr").find("td:eq(5)").addClass("duplikat");
     }
+
+
   });
 
   $(".duplikat").html("");
@@ -321,8 +323,13 @@ $(window).on("load", function() {
       $.each( zuzyto_faktury, function( select, value ) {
               if(value == ""){  }
             else {
+                $( ".td_z_numerem_fakt" ).each(function() {
+                  if ($(this).text() == select){
+                    pozostalo_nap = ($( this ).parent().find("td:eq(3)").text()) - value;
+                  $( this ).parent().find("td:eq(3)").append("<br/><span class=dontprint> pozostało: "+pozostalo_nap+"</span>");
 
-              console.log(select+" - "+value);
+                  }
+                });
             };
       });
 });
