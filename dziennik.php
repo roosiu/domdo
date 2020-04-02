@@ -5,7 +5,30 @@ require 'includes/header.php';
 
 echo '
 <script>
+$(document).ready( function(){
+
+});
 $( function() {
+  $( "#dialog-info" ).dialog({
+    autoOpen: false,
+    resizable: false,
+    height: "auto",
+    width: "350",
+    modal: true,
+    show: {
+      effect: "fade",
+      duration: 300
+    },
+    hide: {
+      effect: "fade",
+      duration: 300
+    }
+
+  });
+} );
+$( function() {
+
+
   $( ".dialog-confirm" ).dialog({
     autoOpen: false,
     resizable: false,
@@ -23,6 +46,7 @@ $( function() {
 
   });
   $( ".click-del" ).on( "click", function() {
+
 
     $("#dialog-confirm-"+$(this).attr("id")).dialog( "open" );
     $(this).parent("td").parent("tr").addClass("bg-warning");
@@ -48,7 +72,8 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     require 'includes/menu.php';
      /// część main
     echo '<main>
-
+    <div id="dialog-info" title="Informacje dodatkowe">
+  </div>
     <div class="jumbotron mb-n4 bg-white">
             <div class="row mb-4">
             <div class="col">
@@ -307,7 +332,6 @@ echo '
 <script src = "js/checkdir.js"></script>
 <script>
 
-
 $(".pokazukryj").click(function() {
   if (!$(this).parent().parent().hasClass("dontprint"))
   {
@@ -334,6 +358,14 @@ if(ostatni_znak_w_adresie == "/") {
   td_z_adresem.append(sprawdzindeks(id_do_spr_dir, adres_podz[0], adres_podz[1]));
 
 }
+
+$( ".pokaz_info" ).on( "click", function() {
+  
+  //////////////$(this).next(".dialog-info").dialog("open");
+  $("#dialog-info").html($(this).next(".text-info").html());
+  $("#dialog-info").dialog("open");
+
+});
 
     if(td_z_data_fakt.html() == ""){
       if(td_z_data_uzgod.html() != ""){
