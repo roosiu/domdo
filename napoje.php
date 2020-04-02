@@ -28,7 +28,7 @@ $( function() {
     $(this).parent("td").parent("tr").addClass("bg-warning");
   });
   $( ".click-del-confirm" ).on( "click", function() {
-deleteRecord(($(this).attr("value")),"kontrola_czasu_pracy");
+deleteRecord(($(this).attr("value")),"napoje");
 
   });
   $( ".dialog_cancel" ).on( "click", function() {
@@ -202,13 +202,11 @@ echo '</div></form>';
                   }
 
 
-                      echo tabeladb2('15','SELECT * FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" '.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY napoje.id DESC', '<tr class="text-center">', '</tr>',
+                      echo tabeladb2('18','SELECT * FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" '.$pracownik_i.''.$miesiac_i.''.$rok_i.' ORDER BY napoje.id DESC', '<tr class="text-center">', '</tr>',
                       '<td>', '11', '</td>',
                       '<td class="td_z_numerem_fakt">', '1', '</td>',
                       '<td>', '7', '</td>',
                       '<td>', '4', '</td>',
-                      '', '', '',
-                      '', '', '',
                       '<td>', '3', '</td>',
                       '<td>', '6', '</td>',
                       '<td>', '13', '</td>',
@@ -216,12 +214,14 @@ echo '</div></form>';
                       '<td>', '14', '</td>',
                       '<td>', '15', '°c</td>',
                       '<td>', '17', '</td>',
-                      '<td></td><td class="text-center dontprint"><a href="napoje_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-                    '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
-                    '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
-                    '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
+                      '<td></td><td class="text-center dontprint"><a href="napoje_edytuj.php?id=', '11', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+                    '<td class="text-center dontprint"><button id="', '11', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+                    '<div class="dialog-confirm" id="dialog-confirm-', '11', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
+                    '<button value="', '11', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
                     <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
-                    </div>'
+                    </div>',
+                    '', '', '',
+                    '', '', ''
                     );
 
                      echo '
@@ -244,8 +244,6 @@ echo '</div></form>';
       '<td class="td_z_numerem_fakt">', '1', '</td>',
       '<td>', '7', '</td>',
       '<td>', '4', '</td>',
-      '', '', '',
-      '', '', '',
       '<td>', '3', '</td>',
       '<td>', '6', '</td>',
       '<td>', '13', '</td>',
@@ -253,12 +251,14 @@ echo '</div></form>';
       '<td>', '14', '</td>',
       '<td>', '15', '°c</td>',
       '<td>', '17', '</td>',
-      '<td></td><td class="text-center dontprint"><a href="napoje_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
-     '<td class="text-center dontprint"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
-     '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
-     '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
+      '<td></td><td class="text-center dontprint"><a href="napoje_edytuj.php?id=', '11', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>',
+     '<td class="text-center dontprint"><button id="', '11', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
+     '<div class="dialog-confirm" id="dialog-confirm-', '11', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
+     '<button value="', '11', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
      <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
-     </div>'
+     </div>',
+     '', '', '',
+     '', '', ''
     );
 
      echo '

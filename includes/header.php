@@ -22,6 +22,7 @@
 <script src="js/bootstrap.min.js"></script>
       <script src = "js/jquery-ui.js"></script>
       <script src = "js/record.js"></script>
+      <script src = "js/menuhover.js"></script>
 
 </head>
 <body>

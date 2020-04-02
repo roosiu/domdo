@@ -67,6 +67,7 @@ function sprawdzindeks(id, ulica, nr_lok) {
         indeks_1_czesc = "01-05-030";
         ilosc_klatek = "";
         liczba_lokali = "";
+        liczba_lokali_na_kondyg = "";
     }
     else if(ulica == "Dreckiego 1"){
         indeks_1_czesc = "01-05-018";
@@ -126,17 +127,20 @@ function sprawdzindeks(id, ulica, nr_lok) {
         indeks_1_czesc = "01-05-031";
         ilosc_klatek = "";
         liczba_lokali = "";
+        liczba_lokali_na_kondyg = "";
     }
     else if(ulica == "Osiedle "){
         indeks_1_czesc = "01-05";
         ilosc_klatek = "65";
         liczba_lokali = "845";
+        liczba_lokali_na_kondyg = "";
     }
     else
     {
       indeks_1_czesc = "";
       ilosc_klatek = "";
         liczba_lokali = "";
+        liczba_lokali_na_kondyg = "";
 
     }
 
@@ -179,12 +183,12 @@ function sprawdzindeks(id, ulica, nr_lok) {
         ///////koniec sprawdzanie w ktorej klatce znajduje sie lokal
         //////sprawdzanie na ktorej kondygnacji znajduje sie lokal
 
-    ///    console.log("numer lokalu: "+nr_lok);
-     ///   console.log("numer klatki: "+nr_klatki);
-      ////  console.log("liczba mieszkan na kondygnacji: "+liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]);
-      ///  console.log("liczba mieszkan w klatce: "+liczba_lokali_w_klatkach[nr_klatki-1]);
-      ///  console.log("ostatnie mieszkanie w klatce: "+pierwszy_nr_w_klatce[nr_klatki-1]);
-
+  //////  console.log("numer lokalu: "+nr_lok);
+  /////    console.log("numer klatki: "+nr_klatki);
+  /////    console.log("liczba mieszkan na kondygnacji: "+liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]);
+ //////  console.log("liczba mieszkan w klatce: "+liczba_lokali_w_klatkach[nr_klatki-1]);
+  ////// console.log("ostatnie mieszkanie w klatce: "+pierwszy_nr_w_klatce[nr_klatki-1]);
+var ilosc_mieszkan_w_klatce = liczba_lokali_w_klatkach[nr_klatki-1];
         var x = 0;
         var przedzial;
         if(liczba_lokali_w_klatkach[nr_klatki-1] == pierwszy_nr_w_klatce[nr_klatki-1]){
@@ -212,27 +216,27 @@ function sprawdzindeks(id, ulica, nr_lok) {
       ///  console.log(nr_lok-przedzial);
         if(liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]==4){
            if((nr_lok-przedzial) == 0) {
-            strona_mieszkania = "mieszkanie prawe"
+            strona_mieszkania = "prawe"
            } else if((nr_lok-przedzial) == -1) {
-            strona_mieszkania = "mieszkanie środkowe prawe"
+            strona_mieszkania = "środkowe prawe"
             } else if((nr_lok-przedzial) == -2) {
-            strona_mieszkania = "mieszkanie środkowe lewe"
+            strona_mieszkania = "środkowe lewe"
             } else if((nr_lok-przedzial) == -3) {
-            strona_mieszkania = "mieszkanie lewe"
+            strona_mieszkania = "lewe"
            }
         } else if(liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]==3){
             if((nr_lok-przedzial) == 0) {
-             strona_mieszkania = "mieszkanie prawe"
+             strona_mieszkania = "prawe"
             } else if((nr_lok-przedzial) == -1) {
-             strona_mieszkania = "mieszkanie środkowe"
+             strona_mieszkania = "środkowe"
              } else if((nr_lok-przedzial) == -2) {
-             strona_mieszkania = "mieszkanie lewe"
+             strona_mieszkania = "lewe"
             }
         } else if(liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]==2){
             if((nr_lok-przedzial) == 0) {
-             strona_mieszkania = "mieszkanie prawe"
+             strona_mieszkania = "prawe"
             } else if((nr_lok-przedzial) == -1) {
-             strona_mieszkania = "mieszkanie lewe"
+             strona_mieszkania = "lewe"
              }
         }
 
@@ -259,12 +263,20 @@ function sprawdzindeks(id, ulica, nr_lok) {
             } else {
                 indeks_2_czesc = "";
             }
+            var mieszkania_powyzej = [];
+            var mieszkania_ponizej = [];
+            for (i = 0; i < ilosc_kondygnacji-nr_kondygnacji-1; ++i) {
+                mieszkania_powyzej.push(parseInt(nr_lok)+parseInt(liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1])*(i+1));
+            };
 
+            for (i = 0; i < nr_kondygnacji; ++i) {
+               mieszkania_ponizej.push(parseInt(nr_lok)-parseInt(liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1])*(i+1));
+            };
 
-            return " <span class='badge badge-dark dontprint clickable pokaz_info'><i class='fa fa-info-circle' aria-hidden='true'></i></span><div id='text_info_"+id+"' class='d-none text-info'><p class='small'>Indeks: "+indeks_1_czesc+""+indeks_2_czesc+"<br/>"+nr_klatki+" klatka<br/>kondygnacja: "+nr_kondygnacji+"<br/>"+strona_mieszkania+"<br/>Ilość mieszkań na kondygnacji: "+liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]+"<br/>Mieszkania powyżej: i przekierowania na zgłoszenia<hr><span class='small'>Ogólne<br/>Ilość klatek: "+ilosc_klatek+"<br/>Ilość lokali: "+liczba_lokali+"</span></p></div>";
+            return " <span class='badge badge-dark dontprint clickable pokaz_info'><i class='fa fa-info-circle' aria-hidden='true'></i></span><div id='text_info_"+id+"' class='d-none text-info'><p class='small'> <b>Adres:</b> "+ulica+"/"+nr_lok+"<br/><b>Indeks:</b> "+indeks_1_czesc+""+indeks_2_czesc+"<br/><b>Klatka:</b> "+nr_klatki+"<br/><b>kondygnacja:</b> "+nr_kondygnacji+"<br/><b>mieszkanie: </b>"+strona_mieszkania+"<br/><b>Ilość mieszkań na kondygnacji:</b> "+liczba_lokali_na_kondyg_rozdzielona[nr_klatki-1]+"<br/><b>Ilość mieszkań w klatce:</b> "+ilosc_mieszkan_w_klatce+"<br/><b>Mieszkania powyżej</b>: "+mieszkania_powyzej+"<br/><b>Mieszkania poniżej</b>: "+mieszkania_ponizej+"<br/><br/><b>Ogólne<br/>Ilość klatek:</b> "+ilosc_klatek+"<br/><b>Ilość mieszkań na kodygnacji w klatkach:</b> "+liczba_lokali_na_kondyg+"<br/><b>Ilość lokali:</b> "+liczba_lokali+"</p></div>";
 
     } else {
-        return "<span class='badge badge-dark dontprint clickable pokaz_info'><i class='fa fa-info-circle' aria-hidden='true'></i></span><div id='text_info_"+id+"' class='d-none text-info'><p class='small'>Ogólne<br/>Indeks: "+indeks_1_czesc+"<br/>Ilość klatek: "+ilosc_klatek+"<br/>Ilość lokali: "+liczba_lokali+"</p></div>";
+        return " <span class='badge badge-dark dontprint clickable pokaz_info'><i class='fa fa-info-circle' aria-hidden='true'></i></span><div id='text_info_"+id+"' class='d-none text-info'><p class='small'><b>Adres:</b> "+ulica+"<br/><br/><b>Ogólne<br/>Indeks:</b> "+indeks_1_czesc+"<br/><b>Ilość klatek:</b> "+ilosc_klatek+"<br/><b>Ilość mieszkań na kodygnacji w klatkach:</b> "+liczba_lokali_na_kondyg+"<br/><b>Ilość lokali:</b> "+liczba_lokali+"</p></div>";
     }
 
 }

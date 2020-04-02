@@ -263,7 +263,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     '<td>', '5', '',
     ' ', '6', '',
     '/', '7', '</td>',
-    '<td>', '8', '</td>',
+    '<td class="small">', '8', '</td>',
     '<td>', '9', '</td>',
     '<td>', '10', '</td>',
     '<td>', '11', '</td>',
@@ -298,7 +298,7 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
       '<td>', '5', '',
       ' ', '6', '',
       '/', '7', '</td>',
-      '<td>', '8', '</td>',
+      '<td class="small">', '8', '</td>',
       '<td>', '9', '</td>',
       '<td>', '10', '</td>',
       '<td>', '11', '</td>',
@@ -360,8 +360,8 @@ if(ostatni_znak_w_adresie == "/") {
 }
 
 $( ".pokaz_info" ).on( "click", function() {
-  
-  //////////////$(this).next(".dialog-info").dialog("open");
+
+
   $("#dialog-info").html($(this).next(".text-info").html());
   $("#dialog-info").dialog("open");
 
