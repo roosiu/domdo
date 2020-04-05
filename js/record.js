@@ -157,3 +157,51 @@
              },
         })
     }
+
+///////////// funkcja tworzenia multiwpisu
+    function createRecordnotConfirm(nowe, tabela) {
+
+
+       var select_all, value_all, zapytanie;
+
+       $.each(nowe, function( select, value ) {
+            $(function() {
+                if(select_all == null) {
+                    select_all = select;
+                    value_all = "'"+value +"'";
+                } else {
+                    if(value != null){
+
+                    select_all = select_all +", "+ select;
+                    value_all = value_all +", '"+ value +"'";
+                }
+                }
+            });
+        });
+
+    zapytanie = "INSERT INTO "+tabela+" ("+select_all+")  VALUES  ("+value_all+")";
+
+
+
+        $.ajax({
+            type:"post",
+            url:"includes/create.php",
+            data: {"nowy" : zapytanie},
+            encode : true,
+            success:function(data){
+
+               if(data == "ok"){
+
+
+
+               }else{
+                alert(data);
+               }
+
+            },
+            error: function(data) {
+                alert("Błąd: "+data);
+
+             },
+        })
+    }

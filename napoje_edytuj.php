@@ -219,12 +219,61 @@ jQuery(function(){
     });
 
 
+    jQuery("#zapis_wiele_button").click(function () { ///// do zrobienia sprawdzanie czy starczy wody na wszystkich
+        if($("#faktury_z option:selected").val() > ($("#ilosc_z").val() * ($("#pracownik_z option").length-1)) ){
 
-    jQuery("#zapis_wiele_button").click(function () {
-        alert("do zrobienia");
+        $("#pracownik_z option").each(function() {
+        var pracownik = $(this).text();
 
+            var nowe = {
+                "data_wydania" : $("#data_z").val(),
+                "uwagi" : $("#uwagi_z").val().replace(/(\r\n|\n|\r)/gm," "),
+                "temperatura" : $("#temperatura_z").val(),
+                "ilosc" : $("#ilosc_z").val(),
+                "pobral" : pracownik,
+                "numer_faktury" : $("#faktury_z option:selected").html()
+                };
+
+                tabela = "napoje";
+                if( !$("#id_z").val() && pracownik) {
+                  createRecordnotConfirm(nowe, tabela);
+                } else
+                {
+
+                }
+
+        });
+        $("<div></div>").dialog({
+            modal: true,
+            title: "Informacja",
+            open: function () {
+                var markup = "Wpisy zostały zapisane";
+                $(this).html(markup);
+            },
+            buttons: {
+                Ok: function () {
+                    history.back(1);
+                    $(this).dialog("close");
+                }
+            }
+        }); //end confirm dialog
+    } else {
+
+        $("<div></div>").dialog({
+            modal: true,
+            title: "Informacja",
+            open: function () {
+                var markup = "Niewystarczająca ilość na fakturze";
+                $(this).html(markup);
+            },
+            buttons: {
+                Ok: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
     });
-
 });
 
 </script>
