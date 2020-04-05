@@ -132,9 +132,13 @@ echo '</div></form>';
 
                 echo '</form>';
 
-                        echo '<table class="table table-sm table-striped">
-                              <thead>
-                              <tr class="text-center">
+                        echo '<table class="table table-sm table-striped table-bordered">
+                              <thead> <tr class="text-center table-bordered">
+
+                              <th colspan="6" scope="col" class="text-center">Przychód</th>
+                              <th colspan="8" scope="col" class="text-center">Rozchód</th>
+                            </tr>
+                              <tr class="text-center table-bordered">
                                   <th scope="col">ID</th>
                                   <th scope="col">Numer Faktury</th>
                                   <th scope="col">Data zakupu</th>
@@ -323,14 +327,13 @@ $(window).on("load", function() {
       $.each( zuzyto_faktury, function( select, value ) {
               if(value == ""){  }
             else {
-                $( ".td_z_numerem_fakt" ).each(function() {
-                  if ($(this).text() == select){
-                    pozostalo_nap = ($( this ).parent().find("td:eq(3)").text()) - value;
-                  $( this ).parent().find("td:eq(3)").append("<br/><span class=dontprint> pozostało: "+pozostalo_nap+"</span>");
-
-                  }
-                });
-            };
+                    $( ".td_z_numerem_fakt" ).each(function() {
+                      if ($(this).text() == select){
+                        pozostalo_nap = ($( this ).parent().find("td:eq(3)").text()) - value;
+                        $( this ).parent().find("td:eq(3)").append("<br/><span class=dontprint> pozostało: "+pozostalo_nap+"</span>");
+                      }
+                    });
+                 };
       });
 });
 

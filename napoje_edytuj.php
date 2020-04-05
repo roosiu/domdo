@@ -38,16 +38,18 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             <div class="col-sm-2 bg-light border">
             <label for="temperatura_z" class="badge badge-pill badge-secondary text-uppercase">Temperatura w °c</label>
-            <input name="temperatura_z" id="temperatura_z" class="form-control form-control-sm"  type="number" step="1" placeholder="">
+            <input name="temperatura_z" id="temperatura_z" class="form-control form-control-sm"  type="number" value="25" step="1" placeholder="">
 
 
             <label for="ilosc_z" class="badge badge-pill badge-secondary text-uppercase">Ilość</label>
             <input name="ilosc_z" id="ilosc_z" class="form-control form-control-sm mb-3" type="number" step="0.1" placeholder="">
+            <label id="ilosc_z_etykieta" class="badge badge-pill badge-secondary text-uppercase"></label>
             </div>
             <div class="col-sm-2">
             <label for="faktury_z" class="badge badge-pill badge-secondary text-uppercase">Okres używalności</label>
             <select name="faktury_z" id="faktury_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
-            '.tabeladb2('1','SELECT * FROM faktury WHERE typ="napoje" ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            <option>'.pojed_zapyt('SELECT numer_faktury FROM napoje WHERE `id` ='.$_GET['id']).'</option>
+            '.tabeladb2('1','SELECT * FROM faktury WHERE typ="napoje" AND YEAR(data) >= "'.date('Y', strtotime(" -3 year")).'" ORDER BY `id` DESC', '', '', '<option value=', '4', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
             </select>
             </div>
             <div class="col-sm-2 border bg-light">
@@ -63,23 +65,72 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 <div class="col-sm mb-3">
 
                 </div>
-                <div class="col-sm-2 mb-3">
+                <div class="col-sm-2 mb-3">';
+                if (!$_GET) {
+                    echo '<button type="button" id="zapis_wiele_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz wszystkim</button>';
 
-                </div>
-                <div class="col-sm-2 mb-3">
-                    <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
-                </div>
+                 }
+                echo '</div>
+                <div class="col-sm-2 mb-3">';
+
+               echo '<button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
+               </div>
             </div>
 
         </div>
 </form>
 </main>';
+echo '<script>var pozostalo_z_faktury = {';
+    echo tabeladb2('12','SELECT faktury.numer_faktury, faktury.ilosc - Sum(napoje.ilosc) FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND YEAR(faktury.data) >= "'.date('Y', strtotime(" -3 year")).'"  group by faktury.numer_faktury', '', '", ',
+    '', '', '',
+    '"', '0', '": "',
+    '', '1', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', '',
+    '', '', ''
+
+    );
+    echo ' };';
+echo '
+
+$.each( pozostalo_z_faktury, function( select, value ) {
+    $("#faktury_z > option").each(function() {
+
+       if($(this).text() == select) {
+        $(this).val(value);
+       }
+
+    });
+});
+
+$("#faktury_z").on("change", function() {
+var numer_faktury_z_pola = $(this).find("option:selected").text();
+var ile_szt_na_fakturze_z_pola = $(this).find("option:selected").val();
+$("#ilosc_z").attr({
+    "max" : ile_szt_na_fakturze_z_pola
+ });
+ $("#ilosc_z").val("0");
+ $("#ilosc_z_etykieta").html("Na fakturze pozostało: "+ile_szt_na_fakturze_z_pola);
+});
+</script>';
 if ($_GET) {
 
     if($_GET['id']){
         $id_get = (htmlspecialchars(trim($_GET['id'])));
 
 echo '<script>';
+
+
 echo 'var objinp = {';
 echo tabeladb2('12','SELECT * FROM napoje WHERE `id` = '.$id_get.'', '', '',
 '"id_z": "', '0', '",',
@@ -166,6 +217,14 @@ jQuery(function(){
 
 
     });
+
+
+
+    jQuery("#zapis_wiele_button").click(function () {
+        alert("do zrobienia");
+
+    });
+
 });
 
 </script>
