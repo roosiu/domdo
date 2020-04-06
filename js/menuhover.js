@@ -14,4 +14,7 @@ function filename(path){
     }else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj"){
       $(".menu_inwentarz").addClass('active');
     }
+    else if(filename(window.location.pathname)=="kontakty" || filename(window.location.pathname)=="kontakty_edytuj"){
+      $(".menu_kontakty").addClass('active');
+    }
 });

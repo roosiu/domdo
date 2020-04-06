@@ -38,7 +38,9 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             </div>
             <div class="col-sm-4" id="div_tresc_z">
             <label for="tresc_z" class="badge badge-pill badge-secondary text-uppercase">Treść</label>
-            <textarea class="form-control" id="tresc_z" name="tresc_z" rows="9"></textarea>
+            <textarea class="form-control" id="tresc_z" name="tresc_z" rows="9">';
+            if($_GET['id']){ echo pojed_zapyt("SELECT tresc FROM dziennik WHERE `id` = ".$_GET[id]); }
+            echo '</textarea>
             </div>
             <div class="col-sm-2 bg-light border">
             <label for="adres_ulica_z" class="badge badge-pill badge-secondary text-uppercase">Ulica</label>
@@ -102,7 +104,7 @@ echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
 '"data_z": "', '1', '",',
 '"termin_uzgodniony_z": "', '2', '",',
 '"termin_faktyczny_z": "', '3', '",',
-'"tresc_z": "', '4', '",',
+'', '', '',
 '"adres_nrulicy": "', '6', '",',
 '"adres_nrlok": "', '7', '",',
 '"zglasza_z": "', '9', '",',

@@ -92,8 +92,8 @@
               </div>
             </li>
             <!-- koniec menu/wydruki Dropdown -->
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-phone"></i> Kontakty</a>
+            <li class="nav-item menu_kontakty">
+                <a class="nav-link" href="kontakty.php"><i class="fa fa-phone"></i> Kontakty</a>
             </li>
 
 
