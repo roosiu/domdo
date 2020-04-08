@@ -81,12 +81,12 @@
             </li>
             <!-- koniec menu/Inwentarz Dropdown -->
             <!-- menu/wydruki Dropdown -->
-            <li class="nav-item dropdown bg-dark">
+            <li class="nav-item dropdown bg-dark menu_wydruki">
               <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 <i class="fa fa-print"></i> Wydruki
               </a>
               <div class="dropdown-menu bg-dark">
-                <a class="dropdown-item bg-dark text-light" href="#">Lista obecności</a>
+                <a class="dropdown-item bg-dark text-light" href="wydruki_lista_obecnosci.php">Lista obecności</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Karty robót</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Kontrola czasu</a>
               </div>

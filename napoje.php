@@ -284,7 +284,7 @@ echo '</div></form>';
 /// koniec części main
 echo '<script>';
 echo 'var zuzyto_faktury = {';
-echo tabeladb2('12','SELECT faktury.numer_faktury, Sum(napoje.ilosc), faktury.ilosc FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND YEAR(faktury.data) >= "'.date('Y', strtotime(" -3 year")).'"  group by faktury.numer_faktury', '', '", ',
+echo tabeladb2('12','SELECT faktury.numer_faktury, Sum(REPLACE(napoje.ilosc, ",", ".")), faktury.ilosc FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND YEAR(faktury.data) >= "'.date('Y', strtotime(" -3 year")).'"  group by faktury.numer_faktury', '', '", ',
 '', '', '',
 '"', '0', '": "',
 '', '1', '',

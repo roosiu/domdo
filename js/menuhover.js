@@ -17,4 +17,7 @@ function filename(path){
     else if(filename(window.location.pathname)=="kontakty" || filename(window.location.pathname)=="kontakty_edytuj"){
       $(".menu_kontakty").addClass('active');
     }
+    else if(filename(window.location.pathname)=="wydruki_lista_obecnosci" || filename(window.location.pathname)=="wydruki_karty_robot"){
+      $(".menu_wydruki").addClass('active');
+    }
 });

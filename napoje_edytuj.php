@@ -81,7 +81,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 </form>
 </main>';
 echo '<script>var pozostalo_z_faktury = {';
-    echo tabeladb2('12','SELECT faktury.numer_faktury, faktury.ilosc - Sum(napoje.ilosc) FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND YEAR(faktury.data) >= "'.date('Y', strtotime(" -3 year")).'"  group by faktury.numer_faktury', '', '", ',
+    echo tabeladb2('12','SELECT faktury.numer_faktury, faktury.ilosc - Sum(REPLACE(napoje.ilosc, ",", ".")) FROM faktury, napoje WHERE faktury.numer_faktury=napoje.numer_faktury AND faktury.typ="napoje" AND YEAR(faktury.data) >= "'.date('Y', strtotime(" -3 year")).'"  group by faktury.numer_faktury', '', '", ',
     '', '', '',
     '"', '0', '": "',
     '', '1', '',

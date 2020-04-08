@@ -6,7 +6,7 @@
     width: 900px;
     border: solid 1px;
     border-collapse: collapse;
-	
+
 }
 .print_table th{
     border-color: black;
@@ -32,4 +32,11 @@
     background-color:#ffffff;
 }
 
+body{
+    padding-top: 0px;
+}
+.jumbotron{
+    padding: 0rem 0rem;
+
+}
 }
