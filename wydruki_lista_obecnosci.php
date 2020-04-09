@@ -11,95 +11,81 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
     /// pobieranie menu
     require 'includes/menu.php';
      /// część main
-echo '<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Tahoma;
-	panose-1:2 11 6 4 3 5 4 4 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
-h1
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-align:center;
-	line-height:150%;
-	page-break-after:avoid;
-	text-autospace:none;
-	border:none;
-	padding:0cm;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
-p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
-	{margin-top:0cm;
-	margin-right:5.65pt;
-	margin-bottom:0cm;
-	margin-left:5.65pt;
-	margin-bottom:.0001pt;
-	text-align:center;
-	line-height:150%;
-	text-autospace:none;
-	font-size:12.0pt;
-	font-family:"Times New Roman","serif";}
-p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	text-autospace:none;
-	font-size:8.0pt;
-	font-family:"Tahoma","sans-serif";}
-.MsoChpDefault
-	{font-size:10.0pt;}
-@page Section1
-	{size:595.3pt 841.9pt;
-	margin:11.9pt 22.1pt 14.2pt 42.55pt;}
-div.Section1
-	{page:Section1;}
--->
-</style>';
+
 
     echo '<main>
 
     <div class="jumbotron mb-n4 bg-white">
-            <div class="row mb-4">
+            <div class="row mb-4 dontprint">
             <div class="col">
-            <button type="button" id="but_div_filtr" class="btn btn-dark btn-sm text-uppercase float-left dontprint"><i class="fa fa-eye-slash" aria-hidden="true"></i> Pokaż/Ukryj filtry</button>
             </div>
             <div class="col text-center">
             <form method="post" action="#"><i class="fa fa-print" aria-hidden="true"></i> <b>LISTA OBECNOŚCI</b> <br/><span class="small" id="naglowek_dziennik"></span><span class="small" id="naglowek_dziennik2"></span>
             </div>
             <div class="col">
-            <button type="submit" id="przycisk_filtr" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-filter" aria-hidden="true"></i> Filtruj</button>
-            <button type="reset" id="przycisk_filtr_wyczysc" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" style="display: none"><i class="fa fa-eraser" aria-hidden="true"></i> Wyczyść filtry</button>
+            <button type="button" id="przycisk_generuj" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" ><i class="fa fa-magic" aria-hidden="true"></i> Generuj</button>
+            <button type="button" id="przycisk_filtr_wyczysc" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" ><i class="fa fa-eraser" aria-hidden="true"></i> Wyczyść </button>
 
             </div>
             </div>
 <script>
 jQuery(function(){
-  jQuery("#but_div_filtr").click(function () {
-    jQuery("#div_filtr").toggle("slow");
-    jQuery("#przycisk_filtr").toggle("slow");
-    jQuery("#przycisk_filtr_wyczysc").toggle("slow");
+
+  $("#nr_kol").on("change", function() {
+
+    kto_przypis = $(this).find("option:selected").val();
+    $("#pracownik").val(kto_przypis).change();
+
   });
+  $("#pracownik").on("change", function() {
+    $("#nr_kol").find("option:selected").val($("#pracownik").find("option:selected").text());
+
+  });
+
   jQuery("#przycisk_filtr_wyczysc").click(function () {
     $(":input").val("");
+    $(function () {
+      $.get("wydruki_lista_obecnosci_podglad.html", function (data) {
+        $(".Editor-editor").html(data)
+      });
+    });
+  });
+
+  jQuery("#przycisk_generuj").click(function () {
+    $("#jednos_wart").html($("#jednos").val());
+    $("#mies_rok").html("m-c:"+$("#miesiac").val()+" rok"+$("#rok").val());
+
+    for (i = 1; i < 11; i++) {
+      if($.isNumeric($("#nr_kol option:contains("+i+")").val())) { } else {
+      console.log($("#nr_kol option:contains("+i+")").val());
+      $("#nazwisko_"+i).html($("#nr_kol option:contains("+i+")").val());
+      }
+    }
+
   });
 });
 </script>
-<div id="div_filtr" class="row mb-3 dontprint justify-content-center" style="display: none">';
-$filtr_0_rozmiar = '-3';
-$filtr_0_text = 'PRACOWNIK';
-$filtr_0 = '<select name="pracownik" id="pracownik" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+<div id="div_filtr" class="row mb-3 dontprint justify-content-center">';
+$filtr_0_rozmiar = '-1';
+$filtr_0_text = 'NR KOL';
+$filtr_0 = '<select name="nr_kol" id="nr_kol" class="form-control form-control-sm">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+</select>';
 $filtr_1_rozmiar = '-2';
-$filtr_1_text = 'MIESIĄC';
-$filtr_1 = '<select name="miesiac" id="miesiac" class="form-control form-control-sm">
+$filtr_1_text = 'PRACOWNIK';
+$filtr_1 = '<select name="pracownik" id="pracownik" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', "<option value='", "1", "'>", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+$filtr_2_rozmiar = '-2';
+$filtr_2_text = 'MIESIĄC';
+$filtr_2 = '<select name="miesiac" id="miesiac" class="form-control form-control-sm">
 <option value = '.(date('m')).'>'.(date('m')).'</option>
 <option></option>
 <option value=01>01</option>
@@ -115,19 +101,27 @@ $filtr_1 = '<select name="miesiac" id="miesiac" class="form-control form-control
 <option value=11>11</option>
 <option value=12>12</option>
 </select>';
-$filtr_2_rozmiar = '-2';
-$filtr_2_text = 'ROK';
-$filtr_2 = '<select name ="rok" id="rok" class="form-control form-control-sm">
+$filtr_3_rozmiar = '-2';
+$filtr_3_text = 'ROK';
+$filtr_3 = '<select name ="rok" id="rok" class="form-control form-control-sm">
 <option value = '.(date('Y')).'>'.(date('Y')).'</option>
 <option></option>
+<option value = '.(date('Y', strtotime(" +1 year"))).'>'.(date('Y', strtotime(" +1 year"))).'</option>
 <option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
 <option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
 <option value = '.(date('Y', strtotime(" -1 year"))).'>'.(date('Y', strtotime(" -1 year"))).'</option>
 </select>';
+$filtr_4_rozmiar = '-3';
+$filtr_4_text = 'JEDNOSTKA ORGANIZACYJNA';
+$filtr_4 = '<input type="text" class="form-control form-control-sm" id="jednos" name="jednos" value="
+Administracja Osiedli Rejonowych A3 - Osiedle w Gniewkowie">';
+$filtr_5_rozmiar = '-2';
+$filtr_5_text = 'OPCJE';
+$filtr_5 = '<label class="form-control form-control-sm"><input type="checkbox" id="sob_niedz" checked/> Zakreśl soboty i niedziele</label><label class="form-control form-control-sm"><input type="checkbox" id="dni_nie" checked/> Zakreśl dni nieistniejące</label>';
 
 
 
-for ($x = 0; $x <= 2; $x++) {
+for ($x = 0; $x <= 5; $x++) {
 
   echo ' <div class="col-sm'.${filtr_.$x._rozmiar}.' px-1">
   <div class="card bg-light">
@@ -151,48 +145,25 @@ echo '</div></form>';
 
 
 
-                  echo
-                  '<script>
-
-                  var objsel = {
-                    "pracownik": "'.$pracownik.'",
-                    "miesiac": "'.$miesiac.'",
-                    "rok": "'.$rok.'"
-                  };
-
-                  $.each( objsel, function( select, value ) {
-                    $(function() {
-                      $("[name="+select+"] option").filter(function() {
-                          return ($(this).val() == value);
-                        }).prop("selected", true);
-                        if(value == ""){  }
-                        else {
-
-                          $("#naglowek_dziennik").append(" | "+select+": <i>"+($("#"+select+" option:selected").text())+"</i>" );
-                        };
-                      })
-                    });
 
 
 
 
 
+                   echo' <script src="js/editor.js"></script>
+<script>
+$(document).ready(function() {
+  $("#txtEditor").Editor();
 
-                  </script>';
-
-
-
-
-
-                     echo '
-
-
-
-do zrobienia
-
-
+  $(function () {
+    $.get("wydruki_lista_obecnosci_podglad.html", function (data) {
+      $(".Editor-editor").html(data)
+    });
+});
+});
+</script>
+<div class="container"><textarea id="txtEditor"></textarea></div>
                   </main>';
-
 
 
 
