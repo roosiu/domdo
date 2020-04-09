@@ -31,6 +31,10 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 <script>
 jQuery(function(){
 
+  function daysInMonth (month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
   $("#nr_kol").on("change", function() {
 
     kto_przypis = $(this).find("option:selected").val();
@@ -51,16 +55,106 @@ jQuery(function(){
     });
   });
 
+  jQuery("#dod_po_kolei").click(function () {
+
+    i=0;
+    $("#pracownik > option").each(function() {
+     $("#nr_kol option:contains("+i+")").val($(this).text());
+      i++;
+    });
+  });
   jQuery("#przycisk_generuj").click(function () {
     $("#jednos_wart").html($("#jednos").val());
-    $("#mies_rok").html("m-c:"+$("#miesiac").val()+" rok"+$("#rok").val());
+    $("#mies_rok").html("m-c:"+$("#miesiac").val()+" rok:"+$("#rok").val());
 
     for (i = 1; i < 11; i++) {
       if($.isNumeric($("#nr_kol option:contains("+i+")").val())) { } else {
-      console.log($("#nr_kol option:contains("+i+")").val());
+
       $("#nazwisko_"+i).html($("#nr_kol option:contains("+i+")").val());
       }
     }
+
+
+    if ($("#dni_nie").checked = $("#dni_nie").is(":checked")) {
+			var rokj = $("#rok").val();
+			var miesiacj = $("#miesiac").val();
+			var dni_mies = daysInMonth(miesiacj,rokj);
+        for (y=(dni_mies+1);y<=31;y++) {
+          $(".dzien_"+y).html("XXXXX");
+
+        }
+    }
+
+		else
+		{
+
+    }
+
+
+    jQuery(function(e) {
+        if ( $("#sob_niedz").checked =  $("#sob_niedz").is(":checked")) {
+				var d = new Date();
+
+				var miesiacj = $("#miesiac").val();
+				var rokj = $("#rok").val();
+var pred = new Date(rokj,miesiacj,0).getDate();
+
+var nowd;
+var sat_array = "";
+var sun_array = "";
+
+
+for (i=1;i<=pred;i++) {
+
+  try {
+
+    nowd = new Date(rokj+ "-" + (miesiacj) + "-" + i)
+
+    if (nowd.getUTCDay() == 6)
+    {
+        sat_array = sat_array + "," + i;
+    $(".dzien_"+i).html("----------");
+    console.log(sat_array);
+  }
+
+  if (nowd.getUTCDay() == 0)
+  {
+    sun_array = sun_array + "," + i;
+		$(".dzien_"+i).html("----------");
+    console.log(i);
+    }
+
+
+  }
+  catch(e) {
+      return;
+  }
+
+}
+
+
+
+		}
+		else
+		{
+
+
+		for (x=1;x<=31;x++) {
+
+			$(".dzien_"+x).html(" ");
+
+
+		}
+
+
+
+
+
+
+		}
+
+    });
+
 
   });
 });
@@ -82,7 +176,10 @@ $filtr_0 = '<select name="nr_kol" id="nr_kol" class="form-control form-control-s
 </select>';
 $filtr_1_rozmiar = '-2';
 $filtr_1_text = 'PRACOWNIK';
-$filtr_1 = '<select name="pracownik" id="pracownik" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', "<option value='", "1", "'>", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+$filtr_1 = '<select name="pracownik" id="pracownik" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', "<option value='", "1", "'>", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+<button type="button" id="dod_po_kolei" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3" ><i class="fa fa-magic" aria-hidden="true"></i> Dodaj wszystich</button>
+
+';
 $filtr_2_rozmiar = '-2';
 $filtr_2_text = 'MIESIĄC';
 $filtr_2 = '<select name="miesiac" id="miesiac" class="form-control form-control-sm">
