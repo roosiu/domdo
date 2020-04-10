@@ -198,7 +198,7 @@ jQuery(function(){
 });
 function sendEmail() {
     if ($("#typ_z option:selected").html()=="unifon"){
-        window.open("mailto:"+ $("#kontakt_z").val() + "?subject="+ $("#tresc_z").val() + "&body=Data: "+ $("#data_z").val() +" Zgłaszający: "+ $("#zglasza_z").val() +", Kontakt: "+ $("#kontakt_z").val() +" - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " - " + $("#tresc_z").val()+ "");
+        window.open("mailto: '.pojed_zapyt('SELECT mail FROM ustawienia_adresy_mail WHERE `nazwa` = "zgl_unifony"').'  ?subject="+ $("#tresc_z").val() + "&body=Data: "+ $("#data_z").val() +" Zgłaszający: "+ $("#zglasza_z").val() +", Kontakt: "+ $("#kontakt_z").val() +" - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " - " + $("#tresc_z").val()+ "");
     }
 }
 </script>

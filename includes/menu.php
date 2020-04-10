@@ -87,7 +87,7 @@
               </a>
               <div class="dropdown-menu bg-dark">
                 <a class="dropdown-item bg-dark text-light" href="wydruki_lista_obecnosci.php">Lista obecności</a>
-                <a class="dropdown-item bg-dark text-light" href="#">Karty robót</a>
+                <a class="dropdown-item bg-dark text-light" href="wydruki_karty_robot.php">Karty robót</a>
                 <a class="dropdown-item bg-dark text-light" href="#">Kontrola czasu</a>
               </div>
             </li>
@@ -101,14 +101,14 @@
      <!--menu prawa strona-->
      <ul class="nav navbar-nav ml-auto">
        <!-- menu/ustawienia Dropdown -->
-       <li class="nav-item dropdown bg-dark">
+       <li class="nav-item dropdown bg-dark menu_ustawienia">
          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
            <i class="fa fa-cog"></i> Ustawienia
           </a>
           <div class="dropdown-menu bg-dark">
-            <a class="dropdown-item bg-dark text-light" href="#">Ogólne</a>
+            <a class="dropdown-item bg-dark text-light" href="ustawienia_ogolne.php">Ogólne</a>
             <a class="dropdown-item bg-dark text-light" href="#">Wzory pism</a>
-            <a class="dropdown-item bg-dark text-light" href="#">Adresy e-mail</a>
+            <a class="dropdown-item bg-dark text-light" href="ustawienia_adresy_mail.php">Adresy e-mail</a>
           </div>
         </li>
         <!-- koniec menu prawa strona/ustawienia Dropdown -->

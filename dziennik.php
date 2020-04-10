@@ -150,7 +150,7 @@ jQuery(function(){
 
                 echo '</div></form>';
 
-                        echo '<table id="tabela_gl" class="table table-sm table-striped">
+                        echo '<table id="tabela_gl" class="table table-sm table-striped table-hover">
                               <thead>
                               <tr class="">
                                   <th scope="col">ID</th>

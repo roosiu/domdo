@@ -211,7 +211,7 @@ $filtr_3 = '<select name ="rok" id="rok" class="form-control form-control-sm">
 $filtr_4_rozmiar = '-3';
 $filtr_4_text = 'JEDNOSTKA ORGANIZACYJNA';
 $filtr_4 = '<input type="text" class="form-control form-control-sm" id="jednos" name="jednos" value="
-Administracja Osiedli Rejonowych A3 - Osiedle w Gniewkowie">';
+'.pojed_zapyt('SELECT nazwa_jednostki FROM ustawienia_ogolne WHERE `id` = 1').'">';
 $filtr_5_rozmiar = '-2';
 $filtr_5_text = 'OPCJE';
 $filtr_5 = '<label class="form-control form-control-sm"><input type="checkbox" id="sob_niedz" checked/> Zakreśl soboty i niedziele</label><label class="form-control form-control-sm"><input type="checkbox" id="dni_nie" checked/> Zakreśl dni nieistniejące</label>';
