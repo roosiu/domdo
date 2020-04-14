@@ -11,7 +11,7 @@ function filename(path){
     }
     else if(filename(window.location.pathname)=="index"){
       $(".menu_index").addClass('active');
-    }else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj"){
+    }else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj" || filename(window.location.pathname)=="inwentarz" || filename(window.location.pathname)=="inwentarz_edytuj"){
       $(".menu_inwentarz").addClass('active');
     }
     else if(filename(window.location.pathname)=="kontakty" || filename(window.location.pathname)=="kontakty_edytuj"){

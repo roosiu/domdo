@@ -44,7 +44,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 echo tabeladb2('15','SELECT * FROM ustawienia_adresy_mail ORDER BY `id` ASC', '<tr>', '</tr>',
                 '<td class="text-center">', '0', '</td>',
                 '<td class="text-right">', '2', '</td>',
-                ' <td class="text-left"><input class="form-control form-control-sm" id="', '1', '" type="text" ',
+                ' <td class="text-left"><input class="form-control form-control-sm" id="', '1', '_z" type="text" ',
                 ' value="', '3', '" placeholder=""></td>',
                 '', '', '',
                 '', '', '',
@@ -63,12 +63,6 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
            echo '</tbody>
             </table>
             </div>
-
-
-
-
-
-
 
 
 
@@ -93,22 +87,59 @@ echo '
 jQuery(function(){
     jQuery("#zapis_button").click(function () {
         var nowe = {
-        "nazwa_jednostki" : $("#nazwa_jednostki_z").val(),
-        "adres_biura_ulica" : $("#adres_biura_ulica_z").val(),
-        "adres_biura_kod" : $("#adres_biura_kod_z").val(),
-        "adres_biura_miasto" : $("#adres_biura_miasto_z").val(),
-        "biuro_kontakt" : $("#biuro_kontakt_z").val(),
-        "biuro_email" : $("#biuro_email_z").val(),
-        "biuro_www" : $("#biuro_www_z").val(),
-        "symbol_jednostki" : $("#symbol_jednostki_z").val()
-
-          };
-
-        tabela = "ustawienia_ogolne";
-
-            updateRecord(1, nowe, tabela);
+            ';
 
 
+
+
+
+        echo tabeladb2('15','SELECT * FROM ustawienia_adresy_mail ORDER BY `id` ASC', '', ',',
+        '"', '1', '" : ',
+        '$("#', '1', '_z").val()',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+        '', '', '',
+         '', '', '',
+         '', '', '',
+         '', '', ''
+        );
+        echo '  };
+
+        tabela = "ustawienia_adresy_mail";
+';
+echo '$.each( nowe, function( key, value ) {
+    UpdateMailOpt(key, value, tabela);
+
+  });
+  ';
+
+
+
+
+
+echo '
+
+$("<div></div>").dialog({
+    modal: true,
+    title: "Informacja",
+    open: function () {
+        var markup = "Zapisano ustawienia";
+        $(this).html(markup);
+    },
+    buttons: {
+        Ok: function () {
+            $(this).dialog("close");
+        }
+    }
+}); //end confirm dialog
 
 
     });

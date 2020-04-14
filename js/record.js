@@ -157,6 +157,38 @@
              },
         })
     }
+///////////// funkcja aktualizacji wpisów po nazwie bez komunikatu
+    function UpdateMailOpt(name, wartosc, tabela) {
+
+
+       var zapytanie;
+
+   /////    UPDATE `ustawienia_adresy_mail` SET `mail`='andrzej.kaszewski@ksmino.pl' WHERE `nazwa` = 'zgl_unifony'
+
+    zapytanie = "UPDATE `"+tabela+"` SET `mail` = '"+wartosc+"'  WHERE `nazwa`='"+name+"'";
+
+
+        $.ajax({
+            type:"post",
+            url:"includes/create.php",
+            data: {"nowy" : zapytanie},
+            encode : true,
+            success:function(data){
+
+               if(data == "ok"){
+
+
+               }else{
+                alert(data);
+               }
+
+            },
+            error: function(data) {
+                alert("Błąd: "+data);
+
+             },
+        })
+    }
 
 ///////////// funkcja tworzenia multiwpisu
     function createRecordnotConfirm(nowe, tabela) {
