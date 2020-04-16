@@ -17,7 +17,7 @@ function filename(path){
     else if(filename(window.location.pathname)=="kontakty" || filename(window.location.pathname)=="kontakty_edytuj"){
       $(".menu_kontakty").addClass('active');
     }
-    else if(filename(window.location.pathname)=="wydruki_lista_obecnosci" || filename(window.location.pathname)=="wydruki_karty_robot"){
+    else if(filename(window.location.pathname)=="wydruki_lista_obecnosci" || filename(window.location.pathname)=="wydruki_karty_robot" || filename(window.location.pathname)=="wydruki_kontrola_czasu" || filename(window.location.pathname)=="wydruki_karty_wyposazenia" || filename(window.location.pathname)=="wydruki_raporty"){
       $(".menu_wydruki").addClass('active');
     }
     else if(filename(window.location.pathname)=="ustawienia_ogolne" || filename(window.location.pathname)=="wzory_pism" || filename(window.location.pathname)=="ustawienia_adresy_mail"){
