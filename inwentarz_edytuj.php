@@ -29,45 +29,42 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             <div class="row mb-4 border rounded">
             <div class="col-sm-2 bg-light border">
-            <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data pobrania</label>
+            <label for="nr_inw_z" class="badge badge-pill badge-secondary text-uppercase">Nr inw.</label>
+            <input name="nr_inw_z" id="nr_inw_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="data_z" class="badge badge-pill badge-secondary text-uppercase">Data</label>
             <input class="form-control form-control-sm mb-3 datepicker" id="data_z" name="data_z" type="text" value = '.date('Y-m-d').' placeholder="">
+            <label for="zlikwidowano_z" class="badge badge-pill badge-secondary text-uppercase">Zlikwidowano</label>
+            <input class="form-control form-control-sm mb-3 datepicker" id="zlikwidowano_z" name="zlikwidowano_z" type="text" placeholder="">
             </div>
             <div class="col-sm-4" id="div_uwagi_z">
             <label for="nazwa_z" class="badge badge-pill badge-secondary text-uppercase">Nazwa</label>
             <input name="nazwa_z" id="nazwa_z" class="form-control form-control-sm" type="text" placeholder="">
-            <label for="uwagi_z" class="badge badge-pill badge-secondary text-uppercase">Uwagi</label>
-            <textarea class="form-control form-control-sm mb-3" id="uwagi_z" name="uwagi_z" rows="5"></textarea>
+            <label for="grupa_z" class="badge badge-pill badge-secondary text-uppercase">Grupa</label>
+            <select name="grupa_z" id="grupa_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <option></option>
+            '.tabeladb2('1','SELECT * FROM inwentarz_grupy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+            </select>
             </div>
             <div class="col-sm-2 bg-light border">
-            <label for="rozmiar_z" class="badge badge-pill badge-secondary text-uppercase">Rozmiar</label>
-            <input name="rozmiar_z" id="rozmiar_z" class="form-control form-control-sm" type="text" placeholder="">
-            <label for="wartosc_z" class="badge badge-pill badge-secondary text-uppercase">Wartość</label>
-            <input name="wartosc_z" id="wartosc_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="lokalizacja_z" class="badge badge-pill badge-secondary text-uppercase">Lokalizacja</label>
+            <input name="lokalizacja_z" id="lokalizacja_z" class="form-control form-control-sm" type="text" placeholder="">
 
 
-            <label for="ilosc_z" class="badge badge-pill badge-secondary text-uppercase">Ilość</label>
-            <input name="ilosc_z" id="ilosc_z" class="form-control form-control-sm mb-3" type="number" placeholder="">
             <label for="nr_dowodu_wyd_z" class="badge badge-pill badge-secondary text-uppercase">Nr dowodu wydania</label>
             <input name="nr_dowodu_wyd_z" id="nr_dowodu_wyd_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             </div>
             <div class="col-sm-2">
-            <label for="okres_uz_z" class="badge badge-pill badge-secondary text-uppercase">Okres używalności</label>
-            <select name="okres_uz_z" id="okres_uz_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
-            <option></option>
-           <option value="9m">9m</option>
-           <option value="12m">12m</option>
-           <option value="18m">18m</option>
-           <option value="24m">24m</option>
-           <option value="36m">36m</option>
-           <option value="48m">48m</option>
-           <option value="96m">96m</option>
-           <option value="3 o.z.">3 o.z.</option>
-           <option value="6 o.z.">6 o.z.</option>
-           <option value="d.z.">d.z.</option>
-            </select>
+            <label for="ilosc_z" class="badge badge-pill badge-secondary text-uppercase">Ilość</label>
+            <input name="ilosc_z" id="ilosc_z" class="form-control form-control-sm mb-3" type="number" placeholder="">
+            <label for="wartosc_netto_z" class="badge badge-pill badge-secondary text-uppercase">Wartość netto</label>
+            <input name="wartosc_netto_z" id="wartosc_netto_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="wartosc_ewid_z" class="badge badge-pill badge-secondary text-uppercase">Wartość ewid.</label>
+            <input name="wartosc_ewid_z" id="wartosc_ewid_z" class="form-control form-control-sm" type="text" placeholder="">
             </div>
             <div class="col-sm-2 border bg-light">
-            <label for="pracownik_z" class="badge badge-pill badge-secondary text-uppercase">Pracownik</label>
+            <label for="przypisano_z" class="badge badge-pill badge-secondary text-uppercase">Przypisano</label>
+            <input name="przypisano_z" id="przypisano_z" class="form-control form-control-sm" type="text" placeholder="">
+            <label for="pracownik_z" class="badge badge-pill badge-secondary text-uppercase">Dodaj z listy</label>
             <select name="pracownik_z" id="pracownik_z" size="11" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <option></option>
             '.tabeladb2('1','SELECT * FROM pracownicy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
@@ -97,21 +94,24 @@ if ($_GET) {
 
 echo '<script>';
 echo 'var objinp = {';
-echo tabeladb2('12','SELECT * FROM inwentarz WHERE `id` = '.$id_get.'', '', '',
+echo tabeladb2('15','SELECT * FROM inwentarz WHERE `id` = '.$id_get.'', '', '',
 '"id_z": "', '0', '",',
+'"nr_inw_z": "', '1', '",',
 '"data_z": "', '7', '",',
+'"zlikwidowano_z": "', '11', '",',
 '"nazwa_z": "', '2', '",',
-'', '', '',
 '"uwagi_z": "', '9', '",',
-'"wartosc_z": "', '5', '",',
-'"rozmiar_z": "', '3', '",',
-'"ilosc_z": "', '4', '",',
-'"nr_dowodu_wyd_z": "', '6', '" };',
+'"wartosc_netto_z": "', '9', '",',
+'"wartosc_ewid_z": "', '10', '",',
+'"przypisano_z": "', '8', '",',
+'"lokalizacja_z": "', '4', '",',
+'"ilosc_z": "', '6', '",',
+'"nr_dowodu_wyd_z": "', '5', '" };',
 '
 var objsel = {
 ', '', '',
-'"okres_uz_z": "', '8', '",',
-'"pracownik_z": "', '1', '"',
+'"grupa_z": "', '3', '",',
+'"pracownik_z": "', '8', '"',
 '', '', '',
 '', '', '',
 '', '', '',
@@ -142,6 +142,7 @@ $.each( objsel, function( select, value ) {
 });
 
 
+
 </script>
 
 ';
@@ -163,15 +164,18 @@ echo '
 jQuery(function(){
     jQuery("#zapis_button").click(function () {
         var nowe = {
-        "data_pobr" : $("#data_z").val(),
-        "uwagi" : $("#uwagi_z").val().replace(/(\r\n|\n|\r)/gm," "),
-        "wartosc" : $("#wartosc_z").val(),
-        "rozmiar" : $("#rozmiar_z").val(),
-        "okres_uz" : $("#okres_uz_z option:selected").html(),
-        "ilosc" : $("#ilosc_z").val(),
+        "nr_inw" : $("#nr_inw_z").val(),
+        "data" : $("#data_z").val(),
+        "zlikwidowano" : $("#zlikwidowano_z").val(),
         "nazwa" : $("#nazwa_z").val(),
-        "nr_dowodu_wyd" : $("#nr_dowodu_wyd_z").val(),
-        "pracownik" : $("#pracownik_z option:selected").html()
+        "grupa" : $("#grupa_z option:selected").html(),
+        "lokalizacja" : $("#lokalizacja_z").val(),
+        "nr_dow_wyd" : $("#nr_dowodu_wyd_z").val(),
+        "ilosc" : $("#ilosc_z").val(),
+        "wartosc_netto" : $("#wartosc_netto_z").val(),
+        "wartosc_ewid" : $("#wartosc_ewid_z").val(),
+        "przypisane_do" : $("#przypisano_z").val()
+
           };
 
         tabela = "inwentarz";
@@ -186,7 +190,12 @@ jQuery(function(){
 
     });
 });
+$("#pracownik_z").on("change", function() {
 
+    kto_przypis = $(this).find("option:selected").text();
+    $("#przypisano_z").val(kto_przypis);
+
+  });
 </script>
 ';
 
