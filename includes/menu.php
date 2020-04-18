@@ -74,7 +74,7 @@
               </a>
               <div class="dropdown-menu bg-dark">
                 <a class="dropdown-item bg-dark text-light" href="zamowienia.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Zamówienia</a>
-                <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Magazyn</a>
+               <!-- <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Magazyn</a> -->
                 <a class="dropdown-item bg-dark text-light" href="inwentarz.php"><i class="fa fa-university" aria-hidden="true"></i> Inwentarz</a>
                 <a class="dropdown-item bg-dark text-light" href="faktury.php"><i class="fa fa-money" aria-hidden="true"></i> Faktury</a>
               </div>

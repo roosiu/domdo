@@ -198,7 +198,7 @@ jQuery(function(){
 });
 function sendEmail() {
     if ($("#typ_z option:selected").html()=="unifon"){
-        window.open("mailto: '.pojed_zapyt('SELECT mail FROM ustawienia_adresy_mail WHERE `nazwa` = "zgl_unifony"').'  ?subject="+ $("#tresc_z").val() + "&body=Data: "+ $("#data_z").val() +" Zgłaszający: "+ $("#zglasza_z").val() +", Kontakt: "+ $("#kontakt_z").val() +" - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " - " + $("#tresc_z").val()+ "");
+        window.open("mailto: '.pojed_zapyt('SELECT mail FROM ustawienia_adresy_mail WHERE `nazwa` = "zgl_unifony"').'  ?subject=Zgłoszenie unifon '.pojed_zapyt('SELECT symbol_jednostki FROM ustawienia_ogolne WHERE `id` = "1"').' '.pojed_zapyt('SELECT adres_biura_miasto FROM ustawienia_ogolne WHERE `id` = "1"').' - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " z dnia: "+ $("#data_z").val() +"&body=Data: "+ $("#data_z").val() +" Zgłaszający: "+ $("#zglasza_z").val() +", Kontakt: "+ $("#kontakt_z").val() +" - Adres: "+ $("#adres_ulica_z option:selected").html()+" "+ $("#adres_nrulicy").val() + "/" + $("#adres_nrlok").val() + " - " + $("#tresc_z").val()+ "'.pojed_zapyt('SELECT stopka_mail FROM ustawienia_ogolne WHERE `id` = 1').'");
     }
 }
 </script>

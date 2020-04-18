@@ -70,6 +70,12 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                     <td class="text-right">Strona WWW biura jednostki organizacyjnej</td>
                     <td class="text-left"><input class="form-control form-control-sm" id="biuro_www_z" name="biuro_www_z" type="text" value="'.pojed_zapyt('SELECT biuro_www FROM ustawienia_ogolne WHERE `id` = 1').'" placeholder=""></td>
                 </tr>
+                <tr>
+                    <td class="text-right">Stopka mail</td>
+                    <td class="text-left">
+                    <textarea class="form-control form-control-sm mb-3" id="stopka_mail_z" name="stopka_mail_z" rows="12">'.pojed_zapyt('SELECT stopka_mail FROM ustawienia_ogolne WHERE `id` = 1').'</textarea>
+                    </td>
+                </tr>
             </tbody>
             </table>
             </div>
@@ -110,6 +116,7 @@ jQuery(function(){
         "biuro_kontakt" : $("#biuro_kontakt_z").val(),
         "biuro_email" : $("#biuro_email_z").val(),
         "biuro_www" : $("#biuro_www_z").val(),
+        "stopka_mail" : $("#stopka_mail_z").val(),
         "symbol_jednostki" : $("#symbol_jednostki_z").val()
 
           };
