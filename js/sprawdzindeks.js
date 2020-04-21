@@ -253,7 +253,7 @@ var ilosc_mieszkan_w_klatce = liczba_lokali_w_klatkach[nr_klatki-1];
 
 ///////// koniec sprawdzania umiejscowianie lokalu w budynku
 dlugosc = nr_lok.slice(0, -1).length;
-console.log(nr_lok.slice(0, -1));
+///////console.log(nr_lok.slice(0, -1));
             if(dlugosc == 1) {
                 indeks_2_czesc = "-00"+nr_lok;
 

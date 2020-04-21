@@ -64,6 +64,13 @@ jQuery(function(){
     });
   });
   jQuery("#przycisk_generuj").click(function () {
+
+		for (x=1;x<=31;x++) {
+
+			$(".dzien_"+x).html(" ");
+
+
+		}
     $("#jednos_wart").html($("#jednos").val());
     $("#mies_rok").html("m-c:"+$("#miesiac").val()+" rok:"+$("#rok").val());
 
@@ -97,40 +104,26 @@ jQuery(function(){
 
 				var miesiacj = $("#miesiac").val();
 				var rokj = $("#rok").val();
-var pred = new Date(rokj,miesiacj,0).getDate();
-
-var nowd;
-var sat_array = "";
-var sun_array = "";
 
 
-for (i=1;i<=pred;i++) {
+var d = new Date();
+var getTot = daysInMonth(d.getMonth(),d.getFullYear());
+var sat = new Array();
+var sun = new Array();
 
-  try {
+for(var i=1;i<=getTot;i++){
+  var newDate = new Date(rokj,miesiacj-1,i)
 
-    nowd = new Date(rokj+ "-" + (miesiacj) + "-" + i)
-
-    if (nowd.getUTCDay() == 6)
-    {
-        sat_array = sat_array + "," + i;
-    $(".dzien_"+i).html("----------");
-    console.log(sat_array);
+  if(newDate.getDay()==0){
+      sat.push(i)
+      $(".dzien_"+(i)).html("----------");
   }
-
-  if (nowd.getUTCDay() == 0)
-  {
-    sun_array = sun_array + "," + i;
-		$(".dzien_"+i).html("----------");
-    console.log(i);
-    }
-
-
+  if(newDate.getDay()==6){
+      sun.push(i)
+      $(".dzien_"+(i)).html("----------");
   }
-  catch(e) {
-      return;
-  }
-
 }
+
 
 
 
@@ -139,12 +132,6 @@ for (i=1;i<=pred;i++) {
 		{
 
 
-		for (x=1;x<=31;x++) {
-
-			$(".dzien_"+x).html(" ");
-
-
-		}
 
 
 
