@@ -351,21 +351,18 @@ $(window).on("load", function() {
 
 if(ostatni_znak_w_adresie == "/") {
   td_z_adresem.html(td_z_adresem.text().slice(0, -1));
-  td_z_adresem.append(sprawdzindeks(id_do_spr_dir, td_z_adresem.text()));
+  td_z_adresem.append(` <span class="badge badge-dark dontprint clickable pokaz_info" onclick="pokaz_info_1(this)"><i class="fa fa-info-circle" aria-hidden="true"></i></span>`);
+
+
+
 } else {
-  adres_podz = td_z_adresem.text().split("/");
-  adres_podz_ulica = adres_podz[0].split(" ");
-  td_z_adresem.append(sprawdzindeks(id_do_spr_dir, adres_podz[0], adres_podz[1]));
+
+  td_z_adresem.append(` <span class="badge badge-dark dontprint clickable pokaz_info" onclick="pokaz_info_2(this)"><i class="fa fa-info-circle" aria-hidden="true"></i></span>`);
+
 
 }
 
-$( ".pokaz_info" ).on( "click", function() {
 
-
-  $("#dialog-info").html($(this).next(".text-info").html());
-  $("#dialog-info").dialog("open");
-
-});
 
     if(td_z_data_fakt.html() == ""){
       if(td_z_data_uzgod.html() != ""){
@@ -397,7 +394,25 @@ $(".dataTables_paginate").addClass("dontprint");
 $(".dataTables_filter").addClass("dontprint");
 
 });
+function pokaz_info_1(el) {
+  id_do_spr_dir = $(el).parent().parent().find("button:last").attr("id");
+  td_z_adresem = $(el).parent().parent().find("td:eq(5)");
 
+ td_z_adresem.append(sprawdzindeks(id_do_spr_dir, td_z_adresem.text().slice(0, -1)));
+ $("#dialog-info").html($(el).next(".text-info").html());
+$("#dialog-info").dialog("open");
+};
+
+  function pokaz_info_2(el) {
+    id_do_spr_dir = $(el).parent().parent().find("button:last").attr("id");
+    td_z_adresem = $(el).parent().parent().find("td:eq(5)");
+    adres_podz = td_z_adresem.text().split("/");
+    adres_podz_ulica = adres_podz[0].split(" ");
+  td_z_adresem.append(sprawdzindeks(id_do_spr_dir, adres_podz[0], adres_podz[1]));
+  $("#dialog-info").html($(el).next(".text-info").html());
+  $("#dialog-info").dialog("open");
+
+};
 </script>
 
 ';

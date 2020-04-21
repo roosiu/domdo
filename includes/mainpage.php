@@ -1,36 +1,37 @@
       <!-- treść-->
-
+<script>
+$(window).on("load", function() {
+$("#naglowek_data").html($.datepicker.formatDate("yy-mm-dd", new Date()));
+});
+</script>
       <main class="container-fluid">
     <div class="jumbotron mb-n4 bg-white">
 
-                <h5 class="card-header bg-white mb-3"><i class="fa fa-book"></i> Dziś jest 16/11/2019. Zaplanowane zdarzenia</h5>
+                <h5 class="card-header bg-white mb-3"><i class="fa fa-book"></i> Dziś jest <span id="naglowek_data"></span>. Zaplanowane zdarzenia na dziś: </h5>
 
-          <table class="table table-sm table-striped">
+          <table class="table table-sm table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">data</th>
-                  <th scope="col">termin uzgodniony</th>
-                  <th scope="col">termin faktyczny</th>
                   <th scope="col">Treść</th>
                   <th scope="col">Adres</th>
                   <th scope="col">Typ zgłoszenia</th>
                   <th scope="col">Zgłaszający</th>
                   <th scope="col">Kontakt</th>
                   <th scope="col">Zlecono</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 <?php
 
-    ///echo tabeladb('0','12','dziennik', '<tr>', '</tr>', '<td>', '</td>');
-    echo tabeladb2('12','SELECT * FROM dziennik ORDER BY `id` ASC LIMIT 15', '<tr>', '</tr>', '<td>', '0', '</td>', '<td>', '1', '</td>', '<td>', '2', '</td>', '<td>', '3', '</td>', '<td>', '4', '</td>', '<td>', '5', '', ' ', '6', '', '/', '7', '</td>', '<td>', '8', '</td>', '<td>', '9', '</td>', '<td>', '10', '</td>', '<td>', '11', '</td>', '', '', '', '', '', '', '', '', '', '', '', '');
+    echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u = CURDATE() AND data_k = "" ORDER BY `id` ASC', '<tr>', '</tr>', '<td>', '0', '</td>', '', '', '', '', '', '', '', '', '', '<td>', '4', '</td>', '<td>', '5', '', ' ', '6', '', '/', '7', '</td>', '<td>', '8', '</td>', '<td>', '9', '</td>', '<td>', '10', '</td>', '<td>', '11', '</td>', '<td><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>', '', '', '', '', '', '', '', '', '');
 
    ?>
               </tbody>
             </table>
 
-            <a href="#" class="btn btn-primary">Przejdź do zgłoszeń</a>
+          <!--<a href="dziennik.php" class="btn btn-dark btn-sm text-uppercase float-left dontprint">Przejdź do zgłoszeń</a>-->
 
 </div>
 </div>
