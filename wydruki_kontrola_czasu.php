@@ -41,16 +41,7 @@ jQuery(function(){
         $(".Editor-editor").html(data)
       });
     });
-  });';
-  if ($_POST) {
-
-    $pracownik_1 = (htmlspecialchars(trim($_POST['pracownik_1'])));
-    echo 'alert("'.$pracownik_1.'");';
-    echo '$("#pole_nazwisko_1").html("'.$pracownik_1.'");';
-  }
-
-
-echo '
+  });
 });
 </script>
 <div id="div_filtr" class="row mb-3 dontprint justify-content-center">';
@@ -155,7 +146,22 @@ $(document).ready(function() {
 
   $(function () {
     $.get("wydruki_kontrola_czasu_podglad.htm", function (data) {
-      $(".Editor-editor").html(data)
+      $(".Editor-editor").html(data);';
+
+      if ($_POST) {
+        $jednos = (htmlspecialchars(trim($_POST['jednos'])));
+        echo 'jQuery("#pole_jednos").html("'.$jednos.'");';
+        $miesiac = (htmlspecialchars(trim($_POST['miesiac'])));
+        echo 'jQuery("#pole_miesiac").html("'.$miesiac.'");';
+        $rok = (htmlspecialchars(trim($_POST['rok'])));
+        echo 'jQuery("#pole_rok").html("'.$rok.'");';
+
+          for ($i = 1; $i <= 7; $i++) {
+            ${'pracownik_'.$i} = (htmlspecialchars(trim($_POST['pracownik_'.$i])));
+            echo 'jQuery("#pole_nazwisko_'.$i.'").html("'.${'pracownik_'.$i}.'");';
+          }
+      };
+      echo '
     });
 });
 });
