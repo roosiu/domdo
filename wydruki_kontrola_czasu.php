@@ -77,7 +77,6 @@ $filtr_7_rozmiar = '-2 my-2';
 $filtr_7_text = 'MIESIĄC';
 $filtr_7 = '<select name="miesiac" id="miesiac" class="form-control form-control-sm">
 <option value = '.(date('m')).'>'.(date('m')).'</option>
-<option></option>
 <option value=01>01</option>
 <option value=02>02</option>
 <option value=03>03</option>
@@ -95,7 +94,6 @@ $filtr_8_rozmiar = '-2 my-2';
 $filtr_8_text = 'ROK';
 $filtr_8 = '<select name ="rok" id="rok" class="form-control form-control-sm">
 <option value = '.(date('Y')).'>'.(date('Y')).'</option>
-<option></option>
 <option value = '.(date('Y', strtotime(" +1 year"))).'>'.(date('Y', strtotime(" +1 year"))).'</option>
 <option value = '.(date('Y', strtotime(" -3 year"))).'>'.(date('Y', strtotime(" -3 year"))).'</option>
 <option value = '.(date('Y', strtotime(" -2 year"))).'>'.(date('Y', strtotime(" -2 year"))).'</option>
@@ -150,20 +148,88 @@ $(document).ready(function() {
 
       if ($_POST) {
         $jednos = (htmlspecialchars(trim($_POST['jednos'])));
-        echo 'jQuery("#pole_jednos").html("'.$jednos.'");';
         $miesiac = (htmlspecialchars(trim($_POST['miesiac'])));
-        echo 'jQuery("#pole_miesiac").html("'.$miesiac.'");';
         $rok = (htmlspecialchars(trim($_POST['rok'])));
+
+        echo 'jQuery("#pole_jednos").html("'.$jednos.'");';
+        echo 'jQuery("#pole_miesiac").html("'.$miesiac.'");';
         echo 'jQuery("#pole_rok").html("'.$rok.'");';
 
           for ($i = 1; $i <= 7; $i++) {
             ${'pracownik_'.$i} = (htmlspecialchars(trim($_POST['pracownik_'.$i])));
             echo 'jQuery("#pole_nazwisko_'.$i.'").html("'.${'pracownik_'.$i}.'");';
+            if(${'pracownik_'.$i}){
+              if($miesiac){
+                $miesiac_i = ' AND miesiac = "'.$miesiac.'"';
+              }
+              if($rok){
+                $rok_i = ' AND rok = "'.$rok.'"';
+              }
+              echo 'console.log("'.${'pracownik_'.$i}.'");';
+              echo 'jQuery("#pole_stanowisko_'.$i.'").html("'.pojed_zapyt('SELECT stanowisko FROM pracownicy WHERE `imieinazwisko` = "'.${'pracownik_'.$i}.'"').'");';
+              echo ' var str = "'.pojed_zapyt('SELECT godziny FROM kontrola_czasu_pracy WHERE `pracownik` = "'.${'pracownik_'.$i}.'"'.$miesiac_i.''.$rok_i.'').'";
+              str = str.replace(/:9/g, "").replace(/:8/g, "").replace(/:7/g, "").replace(/:6/g, "").replace(/:5/g, "").replace(/:4/g, "").replace(/:3/g, "").replace(/:2/g, "").replace(/:1/g, "").replace(/undefined/g, "X");
+              wynik = str.split(";");
+              var suma = "0";
+              for (j = 0; j < 31; ++j) {
+
+                jQuery("#pole_godziny_'.$i.'_"+(j+1)).html(wynik[j]);
+
+                if($.isNumeric(wynik[j])){
+                  suma = parseFloat(suma) + parseFloat(wynik[j]);
+                  jQuery("#pole_godziny_'.$i.'_32").html(suma);
+                }else
+                {
+                  jQuery("#pole_godziny_'.$i.'_"+(j+1)).parent().addClass( "small" );
+                }
+
+              };
+              ';
+            } else {
+              echo 'jQuery("#pole_stanowisko_'.$i.'").html("");';
+
+            }
+
           }
+
       };
       echo '
     });
 });
+});
+var objsel = {
+  "pracownik_1": "'.$pracownik_1.'",
+  "pracownik_2": "'.$pracownik_2.'",
+  "pracownik_3": "'.$pracownik_3.'",
+  "pracownik_4": "'.$pracownik_4.'",
+  "pracownik_5": "'.$pracownik_5.'",
+  "pracownik_6": "'.$pracownik_6.'",
+  "pracownik_7": "'.$pracownik_7.'",
+  "miesiac": "'.$miesiac.'",
+  "rok": "'.$rok.'"
+};
+var objinp = {
+  "jednos": "'.$jednos.'"
+};
+$.each( objsel, function( select, value ) {
+  $(function() {
+    $("[name="+select+"] option").filter(function() {
+        return ($(this).val() == value);
+      }).prop("selected", true);
+      if(value == ""){  }
+      else {
+
+        $("#naglowek_dziennik").append(" | "+select+": <i>"+($("#"+select+" option:selected").text())+"</i>" );
+      };
+    })
+  });
+
+  $.each( objinp, function( select, value ) {
+    if(value == ""){  }
+    else {
+    $("input[name="+select+"]").val(value);
+    $("#naglowek_dziennik2").append(" | "+select+": <i>"+($("input[name="+select+"]").val())+"</i>");
+    };
 });
 </script>
 <div class="container"><textarea id="txtEditor"></textarea></div>
