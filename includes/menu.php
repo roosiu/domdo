@@ -90,8 +90,9 @@
               <div class="dropdown-menu bg-dark">
                 <a class="dropdown-item bg-dark text-light" href="wydruki_lista_obecnosci.php">Lista obecności</a>
                 <a class="dropdown-item bg-dark text-light" href="wydruki_karty_robot.php">Karty robót</a>
-                <a class="dropdown-item bg-dark text-light" href="wydruki_karty_wyposazenia.php">Karty wyposażenia</a>
                 <a class="dropdown-item bg-dark text-light" href="wydruki_kontrola_czasu.php">Kontrola czasu</a>
+                <a class="dropdown-item bg-dark text-light" href="wydruki_wykaz_zmian_czynszowych.php">Wykaz zmian czynszowych</a>
+                <a class="dropdown-item bg-dark text-light" href="wydruki_karty_wyposazenia.php">Karty wyposażenia</a>
                 <a class="dropdown-item bg-dark text-light" href="wydruki_raporty.php">Raporty</a>
               </div>
             </li>
