@@ -76,10 +76,17 @@ $filtr_2_rozmiar = '-3 my-2';
 $filtr_2_text = 'JEDNOSTKA ORGANIZACYJNA';
 $filtr_2 = '<input type="text" class="form-control form-control-sm" id="jednos" name="jednos" value="
 '.pojed_zapyt('SELECT nazwa_jednostki FROM ustawienia_ogolne WHERE `id` = 1').'">';
+$filtr_3_rozmiar = '-2 my-2';
+$filtr_3_text = 'ZAKOŃCZONE';
+$filtr_3 = '<select name ="zakonczone" id="zakonczone" class="form-control form-control-sm">
+<option value = "NIE">NIE</option>
+<option value= ""></option>
+<option value = "TAK">TAK</option>
+</select>';
 
 
 
-for ($x = 0; $x <= 2; $x++) {
+for ($x = 0; $x <= 3; $x++) {
 if($x==7){
 }
   echo ' <div class="col-sm'.${filtr_.$x._rozmiar}.' px-1">
@@ -122,46 +129,42 @@ $(document).ready(function() {
         $jednos = (htmlspecialchars(trim($_POST['jednos'])));
         $miesiac = (htmlspecialchars(trim($_POST['miesiac'])));
         $rok = (htmlspecialchars(trim($_POST['rok'])));
-
+        $zakonczone = (htmlspecialchars(trim($_POST['zakonczone'])));
+        ////echo 'console.log("'.$zakonczone.'");';
+        if($zakonczone == "NIE"){
+          $zakonczone_i = ' AND data_k = ""';
+          /////echo 'jQuery("#pole_zakonczone").html(" - zmiany niezakończone");';
+        }else if($zakonczone == "TAK"){
+          $zakonczone_i = ' AND data_k <> ""';
+          /////echo 'jQuery("#pole_zakonczone").html(" - zmiany zakończone");';
+        }else if ($zakonczone == ""){
+          $zakonczone_i = "";
+         ///// echo 'jQuery("#pole_zakonczone").html(" - zmiany zakończone i niezakończone");';
+        }
+        echo '$("#wpis_wzor").remove();';
         echo 'jQuery("#pole_jednos").html("'.$jednos.'");';
         echo 'jQuery("#pole_miesiac").html("'.$miesiac.'");';
         echo 'jQuery("#pole_rok").html("'.$rok.'");';
-
-          for ($i = 1; $i <= 7; $i++) {
-            ${'pracownik_'.$i} = (htmlspecialchars(trim($_POST['pracownik_'.$i])));
-            echo 'jQuery("#pole_nazwisko_'.$i.'").html("'.${'pracownik_'.$i}.'");';
-            if(${'pracownik_'.$i}){
-              if($miesiac){
-                $miesiac_i = ' AND miesiac = "'.$miesiac.'"';
-              }
-              if($rok){
-                $rok_i = ' AND rok = "'.$rok.'"';
-              }
-              echo 'jQuery("#pole_stanowisko_'.$i.'").html("'.pojed_zapyt('SELECT stanowisko FROM pracownicy WHERE `imieinazwisko` = "'.${'pracownik_'.$i}.'"').'");';
-              echo ' var str = "'.pojed_zapyt('SELECT godziny FROM kontrola_czasu_pracy WHERE `pracownik` = "'.${'pracownik_'.$i}.'"'.$miesiac_i.''.$rok_i.'').'";
-              str = str.replace(/:9/g, "").replace(/:8/g, "").replace(/:7/g, "").replace(/:6/g, "").replace(/:5/g, "").replace(/:4/g, "").replace(/:3/g, "").replace(/:2/g, "").replace(/:1/g, "").replace(/undefined/g, "X");
-              wynik = str.split(";");
-              var suma = "0";
-              for (j = 0; j < 31; ++j) {
-
-                jQuery("#pole_godziny_'.$i.'_"+(j+1)).html(wynik[j]);
-
-                if($.isNumeric(wynik[j])){
-                  suma = parseFloat(suma) + parseFloat(wynik[j]);
-                  jQuery("#pole_godziny_'.$i.'_32").html(suma);
-                }else
-                {
-                  jQuery("#pole_godziny_'.$i.'_"+(j+1)).parent().addClass( "small" );
-                }
-
-              };
-              ';
-            } else {
-              echo 'jQuery("#pole_stanowisko_'.$i.'").html("");';
-
-            }
-
-          }
+        echo 'var liczenie_liczba_zmian = 1;';
+        echo tabeladb2('15','SELECT * FROM dziennik WHERE typ="zmiany czynszowe" AND YEAR(data_u) = '.$rok.' AND MONTH(data_u) = '.$miesiac.''.$zakonczone_i.' ORDER BY dziennik.id ASC', '', '',
+        '$("#tabel_wykaz").append("<tr style=mso-yfti-irow:1;mso-yfti-lastrow:yes;height:49.45pt><td valign=top style=\u0022border:solid black 1.0pt;border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022><p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=mso-bookmark:_Hlk29794814><b style=mso-bidi-font-weight:normal><span style=mso-bidi-font-size:12.0pt>', '', '"+liczenie_liczba_zmian+".<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '2', '<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '', '',
+       '"+tylkosprawdzindeks("', '5', ' ',
+       '', '6', '","',
+       '', '7', '")+"<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '5', '',
+       ' ', '6', '/',
+       '', '7', '<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '9', '<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '4', '<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><b style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>', '', 'x<o:p></o:p></span></b></span></p></td>',
+       '<span style=\u0022mso-bookmark:_Hlk29794814\u0022></span><td valign=top style=\u0022border-top:none;border-left:none;border-bottom:solid black 1.0pt; border-right:solid black 1.0pt;mso-border-top-alt:solid black .5pt;  mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;  padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022>  <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=\u0022mso-bookmark:_Hlk29794814\u0022><span style=\u0022mso-bidi-font-weight:normal\u0022><span style=\u0022mso-bidi-font-size:12.0pt\u0022>Zmiana liczby osób zgodnie z pisemnym oświadczeniem użytkownika lokalu z dnia ', '2', '<o:p></o:p></span></span></span></p></td>',
+       '', '', '',
+       '', '', '',
+       '', '', '</tr>");
+       liczenie_liczba_zmian ++;'
+      );
 
       };
       echo '
@@ -170,7 +173,8 @@ $(document).ready(function() {
 });
 var objsel = {
   "miesiac": "'.$miesiac.'",
-  "rok": "'.$rok.'"
+  "rok": "'.$rok.'",
+  "zakonczone": "'.$zakonczone.'"
 };
 var objinp = {
   "jednos": "'.$jednos.'"
@@ -197,7 +201,9 @@ $.each( objsel, function( select, value ) {
 });
 </script>
 <div class="container"><textarea id="txtEditor"></textarea></div>
-                  </main>';
+                  </main>
+
+                  <script src="js/tylkosprawdzindeks.js"></script>';
 
 
 
