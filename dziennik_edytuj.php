@@ -139,7 +139,10 @@ $.each( objsel, function( select, value ) {
     if(value == ""){  }
     else {
 
-        $("#" + select + " option:contains(" + value + ")").attr("selected", "selected");
+ $("#" + select + " option").filter(function() {
+    return $(this).text() == value;
+}).prop("selected", true);
+
     };
 });
 
