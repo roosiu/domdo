@@ -133,7 +133,7 @@ $(document).ready(function() {
       );
         }else if($typ == "wyposażenie 50-200"){
 
-          echo tabeladb2('15', 'SELECT * FROM inwentarz WHERE wartosc_ewid < 200 AND przypisane_do="'.$pracownik.'" ORDER BY id ASC', '', '',
+          echo tabeladb2('15', 'SELECT * FROM inwentarz WHERE wartosc_ewid < 200 AND przypisane_do="'.$pracownik.'" AND zlikwidowano = "0000-00-00" ORDER BY id ASC', '', '',
          '$("#tabela_wykaz").append("<tr style=\u0022height:17.0pt\u0022><td width=44 colspan=2 rowspan=2 style=\u0022width:33.0pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt\u0022><p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt; text-align:center;line-height:normal\u0022><b><span style=\u0022font-size:7.0pt\u0022>', '', '</span></b></p></td>',
        '<td width=145 colspan=8 rowspan=2 style=\u0022width:108.45pt;border-top:none; border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt\u0022> <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt; text-align:center;line-height:normal\u0022><b><span style=\u0022font-size:7.0pt\u0022>', '2', '',
        '<br/>Nr. inw. ', '1', '</span></br></p> </td>',
@@ -154,7 +154,7 @@ $(document).ready(function() {
       );
         }else if($typ == "wyposażenie 200-2000"){
 
-          echo tabeladb2('15', 'SELECT * FROM inwentarz WHERE wartosc_ewid > 200 AND wartosc_ewid < 2000 AND przypisane_do="'.$pracownik.'" ORDER BY id ASC', '', '',
+          echo tabeladb2('15', 'SELECT * FROM inwentarz WHERE wartosc_ewid > 200 AND wartosc_ewid < 2000 AND przypisane_do="'.$pracownik.'" AND zlikwidowano = "0000-00-00" ORDER BY id ASC', '', '',
           '$("#tabela_wykaz").append("<tr style=\u0022height:17.0pt\u0022><td width=44 colspan=2 rowspan=2 style=\u0022width:33.0pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt\u0022><p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt; text-align:center;line-height:normal\u0022><b><span style=\u0022font-size:7.0pt\u0022>', '', '</span></b></p></td>',
         '<td width=145 colspan=8 rowspan=2 style=\u0022width:108.45pt;border-top:none; border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:17.0pt\u0022> <p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt; text-align:center;line-height:normal\u0022><b><span style=\u0022font-size:7.0pt\u0022>', '2', '',
         '<br/>Nr. inw. ', '1', '</span></br></p> </td>',

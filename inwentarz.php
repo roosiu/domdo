@@ -192,7 +192,8 @@ echo '</div></form>';
                   }
 
                   if($pracownik){
-                    $pracownik_i = ' AND grupa = "'.$pracownik.'"';
+                    $pracownik_i = ' AND przypisane_do = "'.pojed_zapyt('SELECT imieinazwisko FROM pracownicy WHERE `id` ='.$pracownik).'"';
+
                   }
 
                   if($zlikwidowane == 'nie'){

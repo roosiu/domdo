@@ -102,33 +102,27 @@ jQuery(function(){
 </script>
 
                 <div id="div_filtr" class="row mb-3 dontprint" style="display: none">';
-                $filtr_0_rozmiar = '-4';
-                $filtr_0_text = 'RODZAJ';
-                $filtr_0 = '<select name="rodzaj" id="rodzaj" class="form-control form-control-sm">
-                <option></option>
-                <option value="wykres kołowy">wykres kołowy</option>
-                </select>';
-                $filtr_1_rozmiar = '-2';
-                $filtr_1_text = 'TYP';
-                $filtr_1 = '<select name ="typ" id="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
-                $filtr_2_rozmiar = '-3';
-                $filtr_2_text = 'ADRES';
-                $filtr_2 = '
+                $filtr_0_rozmiar = '';
+                $filtr_0_text = 'TYP';
+                $filtr_0 = '<select name ="typ" id="typ" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM typy ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>';
+                $filtr_1_rozmiar = '';
+                $filtr_1_text = 'ADRES';
+                $filtr_1 = '
                 <div class="row">
                 <div class="col-sm-8 pr-1">
                 <select name="adres_ulica" id="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
                 </div>
                 <div class="col-sm "><input name="adres_nrbud" id="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
                 </div></div>';
-                $filtr_3_rozmiar = '';
-                $filtr_3_text = 'DATA OD';
-                $filtr_3 = '
+                $filtr_2_rozmiar = '';
+                $filtr_2_text = 'DATA OD';
+                $filtr_2 = '
                 <input type="text" name="data_od" class="form-control form-control-sm" id="datepicker-10" value = '.(date('Y-m-d', strtotime(" -2 month"))).'>';
-                $filtr_4_rozmiar = '';
-                $filtr_4_text = 'DATA DO';
-                $filtr_4 = '
+                $filtr_3_rozmiar = '';
+                $filtr_3_text = 'DATA DO';
+                $filtr_3 = '
                 <input type = "text" name="data_do" class="form-control form-control-sm" id = "datepicker" value = '.date('Y-m-d').'>';
-                for ($x = 0; $x <= 4; $x++) {
+                for ($x = 0; $x <= 3; $x++) {
 
                   echo ' <div class="col-sm'.${filtr_.$x._rozmiar}.' px-1">
                   <div class="card bg-light">
@@ -219,9 +213,6 @@ if($adres_ulica){
 if($adres_nrbud){
   $adres_nrbud_i = ' AND nr_ulicy = "'.$adres_nrbud.'"';
 }
-if($adres_nrlok){
-  $adres_nrlok_i = ' AND nr_lokalu = "'.$adres_nrlok.'"';
-}
 if($data_od <> ''){
 $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
   if($data_do <> ''){
@@ -230,46 +221,175 @@ $data_od_i = ' AND data_p BETWEEN "'.$data_od.'" ';
     $data_do_i = ' AND "'.date('Y-m-d').'" ';
   }
 }
-    echo tabeladb2('15','SELECT * FROM dziennik WHERE id IS NOT NULL'.$rodzaj_i.''.$typ_i.''.$ulica_i.''.$adres_nrbud_i.''.$adres_nrlok_i.''.$status_i.''.$data_od_i.''.$data_do_i.' ORDER BY `data_p` ASC', '<tr>', '</tr>',
-    '<td><span class="small">', '0', '</span><br/><span class="badge badge-dark dontprint clickable pokazukryj"><i class="fa fa-eye-slash" aria-hidden="true"></i></span></td>',
-    '<td>', '1', '</td>',
-    '<td>', '2', '</td>',
-    '<td>', '3', '</td>',
-    '<td class="small">', '4', '</td>',
-    '<td>', '5', '',
-    ' ', '6', '',
-    '/', '7', '</td>',
-    '<td class="small">', '8', '</td>',
-    '<td>', '9', '</td>',
-    '<td>', '10', '</td>',
-    '<td>', '11', '</td>',
-    '<td class="text-center dontprint text-nowrap"><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i>edytuj</a></td>',
-     '<td class="text-center dontprint text-nowrap"><button id="', '0', '" class="click-del btn btn-dark btn-sm text-uppercase"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button></td>',
-     '<div class="dialog-confirm" id="dialog-confirm-', '0', '" title="Potwierdzenie usuwania"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy napewno usunąć wpis? Przywrócenie go nie będzie możliwe</p>',
-     '<button value="', '0', '" class="click-del-confirm btn btn-danger btn-sm text-uppercase text-white"><i class="fa fa-trash-o" aria-hidden="true"></i> usuń</button>
-     <button class="btn btn-dark btn-sm dialog_cancel float-right text-uppercase">anuluj</button>
-     </div>'
-    );
 
 
-} else
+function CountTheMonth($startDate,$endDate,$order)
+{
+    $startDate = strtotime($startDate);
+    $endDate   = strtotime($endDate);
+
+    $ASC_Month = $startDate;
+    $DESC_Month = $endDate;
+    $Y_Axis = Array();
+
+    if($order == 'DESC')//Big to small
+    {
+        while ($DESC_Month >= $startDate)
+        {
+            $Y_Axis[] = date('F-Y',$DESC_Month);
+            $DESC_Month = strtotime( date('Y-m-d',$DESC_Month).' -1 month');
+        }
+        return $Y_Axis;
+    }
+    elseif($order == 'ASC')//Small to big
+    {
+        while ($ASC_Month <= $endDate)
+        {
+            $Y_Axis[] = date('Y-m',$ASC_Month);
+            $ASC_Month = strtotime( date('Y-m-d',$ASC_Month).' +1 month');
+        }
+        return $Y_Axis;
+    }
+}
+/////
+echo "    <script type='text/javascript'>
+$(window).on('load', function() {
+  $( '#wykres' ).hide();
+$( '#wykres2' ).hide();
+$( '#wykres3' ).hide();
+$( '#wykres4' ).hide();
+})
+
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([";
+  echo '["Miesiąc","liczba zgłoszeń"]';
+  for($i=0; $i<count(CountTheMonth($data_od,$data_do,'ASC')); $i++){
+echo ',["'.date('m/Y', strtotime(CountTheMonth($data_od,$data_do,'ASC')[$i])).'"';
+
+  echo tabeladb2('15','SELECT COUNT(*) FROM `dziennik` WHERE YEAR(data_p)='.date('Y', strtotime(CountTheMonth($data_od,$data_do,'ASC')[$i])).' AND MONTH(data_p)="'.date('m', strtotime(CountTheMonth($data_od,$data_do,'ASC')[$i])).'"'.$typ_i.''.$ulica_i.''.$adres_nrbud_i.'', ',', '',
+  '', '0', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', ''
+   );
+   echo "]";
+  }
+    echo "]);
+
+  var options = {
+    title: 'Statystyka ilości zgłoszeń: ".pojed_zapyt('SELECT typ FROM typy WHERE `id` ='.$typ)." na osi czasu od ".date('m/Y', strtotime($data_od))." do ".date('m/Y', strtotime($data_do))."',
+    hAxis: {title: 'Miesiąc',  titleTextStyle: {color: '#333'}},
+    vAxis: {minValue: 0},
+    legend: 'none'
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('wykres5'));
+  chart.draw(data, options);
+}
+</script>
+";
+//////
 echo "<script type='text/javascript'>
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+        var data = google.visualization.arrayToDataTable([";
+        echo "
+          ['Task', 'Hours per Day']
+          ";
+
+          echo tabeladb2('15','SELECT ulica,nr_ulicy,COUNT(*) FROM dziennik WHERE data_p >="'.$data_od.'" AND data_p <= "'.$data_do.'"'.$typ_i.''.$ulica_i.''.$adres_nrbud_i.' GROUP BY nr_ulicy ORDER BY COUNT(*)', ',[', ']',
+          '"', '0', '',
+          ' ', '1', '"',
+          ',', '2', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', ''
+           );
+
+          echo "
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Statystyka zgłoszeń z budynków: ".pojed_zapyt('SELECT typ FROM typy WHERE `id` ='.$typ)." od ".date('m/Y', strtotime($data_od))." do ".date('m/Y', strtotime($data_do))."',
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('wykres6'));
+
+        chart.draw(data, options);
+      }
+    </script>";
+} else {
+  //////////////////
+echo "<script type='text/javascript'>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([";
+        echo "
+          ['Task', 'Hours per Day']
+          ";
+          echo tabeladb2('15','SELECT typ,COUNT(*) FROM dziennik  WHERE YEAR(data_p)=YEAR(CURDATE()) GROUP BY typ ORDER BY COUNT(*)', ',[', ']',
+          '"', '0', '"',
+          ',', '1', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', ''
+           );
+          echo "
+        ]);
+
+        var options = {
+          title: 'Statystyka typów zgłoszeń w roku '+ (new Date).getFullYear()+' ogółem',
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('wykres'));
@@ -277,11 +397,169 @@ echo "<script type='text/javascript'>
         chart.draw(data, options);
       }
     </script>";
-{
+////////////////
+echo "    <script type='text/javascript'>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([";
+  echo '["Miesiąc"';
+  echo tabeladb2('15','SELECT * FROM typy ORDER BY typ', ',', '',
+  '"', '1', '"',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', ''
+   );
+
+echo "]";
+for ($i = 1; $i <= date('m'); $i++) {
+echo ',["'.$i.' / '.date("Y").'"';
+  echo tabeladb2('15','SELECT typy.typ, COUNT(dziennik.typ)
+  FROM typy
+  LEFT JOIN dziennik
+  ON typy.typ = dziennik.typ AND YEAR(dziennik.data_p)=YEAR(CURDATE()) AND MONTH(dziennik.data_p)='.$i.'
+  GROUP BY typy.typ ORDER BY typy.typ', ',', '',
+  '', '1', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', ''
+   );
+   echo "]";
+  }
+    echo "]);
+
+  var options = {
+    title: 'Statystyka według miesięcy w roku '+ (new Date).getFullYear()+'',
+    hAxis: {title: 'Miesiąc',  titleTextStyle: {color: '#333'}},
+    vAxis: {minValue: 0}
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('wykres2'));
+  chart.draw(data, options);
+}
+</script>
+";
+
+////////////////////
+echo "<script type='text/javascript'>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([";
+        echo "
+          ['Task', 'Hours per Day']
+          ";
+          echo tabeladb2('15','SELECT ulica,nr_ulicy,COUNT(*) FROM dziennik WHERE YEAR(data_p)=YEAR(CURDATE()) GROUP BY nr_ulicy ORDER BY COUNT(*)', ',[', ']',
+          '"', '0', '',
+          ' ', '1', '"',
+          ',', '2', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', '',
+          '', '', ''
+           );
+          echo "
+        ]);
+
+        var options = {
+          title: 'Statystyka zgłoszeń z budynków w roku '+ (new Date).getFullYear()+' ogółem',
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('wykres3'));
+
+        chart.draw(data, options);
+      }
+    </script>";
 
 
+    /////////////////////
+    echo "    <script type='text/javascript'>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([";
+  echo '["Miesiąc","liczba zgłoszeń"]';
+for ($i = 1; $i <= date('m'); $i++) {
+echo ',["'.$i.' / '.date("Y").'"';
+  echo tabeladb2('15','SELECT COUNT(*) FROM `dziennik` WHERE YEAR(data_p)=YEAR(CURDATE()) AND MONTH(data_p)="'.$i.'"', ',', '',
+  '', '0', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', '',
+  '', '', ''
+   );
+   echo "]";
+  }
+    echo "]);
 
+  var options = {
+    title: 'Statystyka ilości zgłoszeń na osi czasu w roku '+ (new Date).getFullYear()+' ogółem',
+    hAxis: {title: 'Miesiąc',  titleTextStyle: {color: '#333'}},
+    vAxis: {minValue: 0}
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('wykres4'));
+  chart.draw(data, options);
+}
+</script>
+";
 
 
                 }
@@ -292,9 +570,22 @@ echo "<script type='text/javascript'>
 
                 </div>
 
+                <div class="row">
 
-                <center><div id="wykres" style="width: 900px; height: 500px;"></div></center>
+                    <center><div class="col-sm" id="wykres" style="width: 950px; height: 700px;"></div></center>
+                    <center><div class="col-sm" id="wykres2" style="width: 950px; height: 700px;"></div></center>
 
+                </div>
+
+                <div class="row">
+
+                    <center><div class="col-sm" id="wykres4" style="width: 950px; height: 700px;"></div></center>
+                    <center><div class="col-sm" id="wykres3" style="width: 950px; height: 700px;"></div></center>
+
+                    </div>
+
+                <center><div class="col-sm" id="wykres5" style="width: 100%; height: 700px;"></div></center>
+                <center><div class="col-sm" id="wykres6" style="width: 100%; height: 700px;"></div></center>
               </main>';
 
 /// koniec części main

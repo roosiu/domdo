@@ -13,6 +13,7 @@ $("#naglowek_data").html($.datepicker.formatDate("yy-mm-dd", new Date()));
               <thead>
                 <tr>
                   <th scope="col">ID</th>
+                  <th scope="col">Data</th>
                   <th scope="col">Treść</th>
                   <th scope="col">Adres</th>
                   <th scope="col">Typ zgłoszenia</th>
@@ -25,12 +26,36 @@ $("#naglowek_data").html($.datepicker.formatDate("yy-mm-dd", new Date()));
               <tbody>
                 <?php
 
-    echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u = CURDATE() AND data_k = "" ORDER BY `id` ASC', '<tr>', '</tr>', '<td>', '0', '</td>', '', '', '', '', '', '', '', '', '', '<td>', '4', '</td>', '<td>', '5', '', ' ', '6', '', '/', '7', '</td>', '<td>', '8', '</td>', '<td>', '9', '</td>', '<td>', '10', '</td>', '<td>', '11', '</td>', '<td><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>', '', '', '', '', '', '', '', '', '');
+    echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u = CURDATE() AND data_k = "" ORDER BY `id` ASC', '<tr>', '</tr>', '<td>', '0', '</td>', '<td>', '2', '</td>', '', '', '', '', '', '', '<td>', '4', '</td>', '<td>', '5', '', ' ', '6', '', '/', '7', '</td>', '<td>', '8', '</td>', '<td>', '9', '</td>', '<td>', '10', '</td>', '<td>', '11', '</td>', '<td><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>', '', '', '', '', '', '', '', '', '');
 
    ?>
               </tbody>
             </table>
 
+            <h5 class="card-header bg-white mb-3"><i class="fa fa-calendar"></i> Zaplanowane na najbliższe 30 dni </h5>
+
+<table class="table table-sm table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Data</th>
+        <th scope="col">Treść</th>
+        <th scope="col">Adres</th>
+        <th scope="col">Typ zgłoszenia</th>
+        <th scope="col">Zgłaszający</th>
+        <th scope="col">Kontakt</th>
+        <th scope="col">Zlecono</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+
+echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u > CURDATE() AND data_u < CURDATE() + INTERVAL 31 DAY AND data_k = "" ORDER BY `data_u` ASC', '<tr>', '</tr>', '<td>', '0', '</td>', '<td>', '2', '</td>', '', '', '', '', '', '', '<td>', '4', '</td>', '<td>', '5', '', ' ', '6', '', '/', '7', '</td>', '<td>', '8', '</td>', '<td>', '9', '</td>', '<td>', '10', '</td>', '<td>', '11', '</td>', '<td><a href="dziennik_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i> edytuj</a></td>', '', '', '', '', '', '', '', '', '');
+
+?>
+    </tbody>
+  </table>
           <!--<a href="dziennik.php" class="btn btn-dark btn-sm text-uppercase float-left dontprint">Przejdź do zgłoszeń</a>-->
 
 </div>
