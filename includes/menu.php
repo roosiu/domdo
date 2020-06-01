@@ -75,8 +75,8 @@
               <div class="dropdown-menu bg-dark">
                 <a class="dropdown-item bg-dark text-light" href="zamowienia.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Zamówienia</a>
                <!-- <a class="dropdown-item bg-dark text-light" href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Magazyn</a> -->
-                <a class="dropdown-item bg-dark text-light" href="garaze.php"><i class="fa fa-car" aria-hidden="true"></i> Garaże</a>
-                <a class="dropdown-item bg-dark text-light" href="lokale_i_pomieszczenia.php"><i class="fa fa-fort-awesome" aria-hidden="true"></i> Lokale i pomieszczenia</a>
+                <!-- <a class="dropdown-item bg-dark text-light" href="garaze.php"><i class="fa fa-car" aria-hidden="true"></i> Garaże</a> -->
+                <a class="dropdown-item bg-dark text-light" href="nieruchomosci_lokalowe.php"><i class="fa fa-fort-awesome" aria-hidden="true"></i> Nieruchomości lokalowe</a>
                 <a class="dropdown-item bg-dark text-light" href="rozliczenie_pralni.php"><i class="fa fa-tint" aria-hidden="true"></i> Rozliczenie pralni</a>
                 <a class="dropdown-item bg-dark text-light" href="adresy_korespondencyjne.php"><i class="fa fa-envelope" aria-hidden="true"></i> Adresy korespondencyjne</a>
                 <a class="dropdown-item bg-dark text-light" href="inwentarz.php"><i class="fa fa-university" aria-hidden="true"></i> Inwentarz</a>
