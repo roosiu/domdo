@@ -20,7 +20,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             </div>
             <div class="col text-center">
-            <form method="post" action="nieruchomosci_lokalowe_edytuj.php"><i class="fa fa-user-secret" aria-hidden="true"></i> <b>KARTY ODZIEŻOWE - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <form method="post" action="nieruchomosci_lokalowe_edytuj.php"><i class="fa fa-fort-awesome" aria-hidden="true"></i> <b>NIERUCHOMOŚCI LOKALOWE - EDYTUJ</b><span id="input_z_id" style="display: none"> | wpis o id: <span id="id_z_label"></span><input type=hidden disabled size="7" id="id_z"></input></span>
             </div>
 
             <div class="col-2">
@@ -80,23 +80,47 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
             <div class="row mb-4">
                 <div class="col-sm mb-3">
+                    <div id="liczniki" class="border rounded bg-light d-none">
+                        <label class="badge badge-pill badge-secondary text-uppercase">Liczniki</label><br/>
+                        <table class="table table-sm table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TYP LICZNIKA</th>
+                            <th>NUMER LICZNIKA</th>
+                            <th>WYMIENIONO DNIA</th>
+                            <th class="text-center">
+                            <a href="liczniki_edytuj.php?id_pom='.$_GET['id'].'" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj</a>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        ';
+                        if ($_GET) {
 
-                </div>
-                <div class="col-sm-2 mb-3">
+                            if($_GET['id']){
+                                $id_get = (htmlspecialchars(trim($_GET['id'])));
+                        echo tabeladb2('15','SELECT * FROM liczniki WHERE id_pom="'.$id_get.'" ORDER BY `id_pom` ASC', '<tr>', '</tr>',
+                        '<td><span class="small">', '0', '</span></td>',
+                        '<td>', '2', '</td>',
+                        '<td>', '3', '</td>',
+                        '<td>', '4', '</td>',
+                        '<td class="text-center dontprint text-nowrap"><a href="liczniki_edytuj.php?id=', '0', '" role="button" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-pencil" aria-hidden="true"></i>edytuj</a></td>',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', '',
+                        '', '', ''
 
-                </div>
-                <div class="col-sm-2 mb-3">
-                    <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
-                </div>
-            </div>
+                        );
 
-        </div>
-</form>
-</main>';
-if ($_GET) {
 
-    if($_GET['id']){
-        $id_get = (htmlspecialchars(trim($_GET['id'])));
 
 echo '<script>';
 echo 'var objinp = {';
@@ -134,7 +158,7 @@ $.each( objinp, function( select, value ) {
     $("#"+select).val(value);
     $("#input_z_id").show();
     $("#id_z_label").html($("#id_z").val());
-    $("#pliki_zapis").removeClass( "d-none" );
+    $("#liczniki").removeClass( "d-none" );
 };
 });
 $.each( objsel, function( select, value ) {
@@ -157,6 +181,21 @@ $.each( objsel, function( select, value ) {
 
 
 }
+echo '                        </tbody>
+</table>
+</div>
+</div>
+<div class="col-sm-2 mb-3">
+
+</div>
+<div class="col-sm-2 mb-3">
+<button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
+</div>
+</div>
+
+</div>
+</form>
+</main>';
 } else {
     // Widok dla użytkownika niezalogowanego
     header("Location: login.php");
@@ -173,8 +212,8 @@ jQuery(function(){
         "kontakt" : $("#kontakt_z").val().replace(/(\r\n|\n|\r)/gm," "),
         "najemca" : $("#najemca_z").val(),
         "powierzchnia" : $("#powierzchnia_z").val(),
-        "okres_uz" : $("#okres_uz_z option:selected").html(),
         "opiekun" : $("#opiekun_z").val(),
+        "lokalizacja" : $("#lokalizacja_z option:selected").html(),
         "lokalizacja_nr" : $("#lokalizacja_nr").val(),
         "rodzaj_dzialalnosci" : $("#rodzaj_dzialalnosci_z").val(),
         "wlasciciel" : $("#wlasciciel_z").val(),

@@ -31,9 +31,9 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             var data = [];';
                 echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
                 'data["id_z"]="', '0', '";',
-                'data["data_z"]="', '1', '";',
+                'data_z="', '1', '".split("-"); data["data_z"]= data_z[2] + "-" + data_z[1] + "-" + data_z[0] + "r.";',
                 'termin_uzgodniony_z="', '2', '".split("-"); data["termin_uzgodniony_z"]= termin_uzgodniony_z[2] + "-" + termin_uzgodniony_z[1] + "-" + termin_uzgodniony_z[0] + "r.";',
-                'data["termin_faktyczny_z"]="', '3', '";',
+                'termin_faktyczny_z="', '3', '".split("-"); data["termin_faktyczny_z"]= termin_faktyczny_z[2] + "-" + termin_faktyczny_z[1] + "-" + termin_faktyczny_z[0] + "r.";',
                 'data["tresc_z"]="', '4', '";',
                 'data["adres_nrulicy"]="', '6', '";',
                 'data["adres_nrlok"]="', '7', '";',
@@ -48,7 +48,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 '', '', ''
 
                 );
-                echo '';
+                echo 'data["miejscowosc_o"]="'.pojed_zapyt('SELECT adres_biura_miasto FROM ustawienia_ogolne WHERE `id` = 1').'";';
+                echo 'data["biuro_kontakt"]="'.pojed_zapyt('SELECT biuro_kontakt FROM ustawienia_ogolne WHERE `id` = 1').'";';
+                echo 'data["nazwa_jednostki"]="'.pojed_zapyt('SELECT nazwa_jednostki FROM ustawienia_ogolne WHERE `id` = 1').'";';
+                echo 'data["adres_biura_ulica"]="'.pojed_zapyt('SELECT adres_biura_ulica FROM ustawienia_ogolne WHERE `id` = 1').'";';
+                echo 'data["adres_biura_kod"]="'.pojed_zapyt('SELECT adres_biura_kod FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo '</script>';
 
             }
@@ -56,6 +60,15 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 
             echo '</span><input type=hidden disabled size="7" id="id_z"></input></span>
+            <br/>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <select name="kontakty_sel" id="kontakty_sel" class="form-control form-control-sm" ><option></option>'.tabeladb2('5','SELECT * FROM kontakty ORDER BY nazwa ASC', '', '', '<option value=', '0', ">", "", "1", "", ",", "2", "", ", tel.", "3", "", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
+                    </div>
+                    <div class="col-sm-2">
+                        <button id="wklej" class="btn btn-dark btn-sm text-uppercase"><i class="fa fa-plus" aria-hidden="true"></i> Wklej</button>
+                    </div>
+                </div>
             </div>
 
             <div class="col-2">
@@ -65,6 +78,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <script src="js/editor.js"></script>
             <script>
                 $(document).ready(function() {
+                    $("#kontakty_sel").select2();
                     $("#txtEditor").Editor();
                     $("#menu_szablony_div").load("szablony/menu_szablony.html");
                     jQuery("#zapis_button").click(function () {
@@ -108,6 +122,17 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
 
                     });
+                    $(".selection").on("focusout", function() {
+                        $("#txtEditor").data("editor").focus();
+                    });
+                    jQuery("#wklej").click(function () {
+                        $("#txtEditor").data("editor").focus();
+
+                        var target = $("#kontakty_sel option:selected").text();
+
+                        $("#txtEditor .Editor-editor").Editor("insertTextAtSelection", target);
+
+                    });
                 });
             </script>
             <div class="container-fluid">
@@ -126,7 +151,10 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 				</div>
 			</div>
 		</div>
-    </div>';
+    </div>
+    <link href="css/select2.min.css" rel="stylesheet" />
+<script src="js/select2.min.js"></script>
+    ';
 } else {
     // Widok dla użytkownika niezalogowanego
     header("Location: login.php");

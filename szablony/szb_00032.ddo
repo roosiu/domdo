@@ -1,0 +1,259 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
+.MsoChpDefault
+	{font-family:"Calibri",sans-serif;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=PL>
+
+<div class=WordSection1>
+
+<p class=MsoNormal align=center style='text-align:center'><b><u><span
+style='font-size:14.0pt'>Załącznik do protokółu przekazania placu budowy</span></u></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><u><span
+style='font-size:14.0pt'><span style='text-decoration:none'>&nbsp;</span></span></u></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'>Stan urządzeń pomiarowych
+na dzień {{termin_uzgodniony_z}}.</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'>Budynek  przy ul. {{adres_ulica_z}}
+{{adres_nrulicy}} w  Gniewkowie Pralnia {{adres_nrlok}}   </span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'>Remont xxxxxx  przy ulicy {{adres_ulica_z}}
+{{adres_nrulicy}} przez
+Firmę xxxx z xxx ({{tresc_z}})</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'>&nbsp;</span></b></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=156 valign=top style='width:116.9pt;border-top:solid windowtext 1.0pt;
+  border-left:solid windowtext 1.0pt;border-bottom:none;border-right:none;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Media</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Numer</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:none;border-top:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Stan na dzień </span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>przekazania</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Stan na dzień</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>zdania</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Zużycie</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=156 valign=top style='width:116.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Energia elektryczna:</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Podlicznik wykonawcy</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=156 valign=top style='width:116.9pt;border:none;border-left:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Zimna woda</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=156 valign=top style='width:116.9pt;border:solid windowtext 1.0pt;
+  border-right:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Ciepła woda</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border-top:solid windowtext 1.0pt;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:none;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=156 valign=top style='width:116.9pt;border-top:none;border-left:
+  solid windowtext 1.0pt;border-bottom:solid windowtext 1.0pt;border-right:
+  none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>Gaz</span></b></p>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:none;border-bottom:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+  <td width=115 valign=top style='width:85.9pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt'>
+  <p class=MsoNormal style='line-height:115%'><b><span style='font-size:14.0pt;
+  line-height:115%'>&nbsp;</span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>Stan
+techniczny pomieszczeń:</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>1.
+Pralni - . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . .. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:14.0pt'>2.
+Suszarni - . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . </span></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='font-size:14.0pt'>Strona
+przekazująca:                                            Strona przejmująca:</span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='font-size:14.0pt'>                                                                              
+</span></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

@@ -11,7 +11,7 @@ function filename(path){
     }
     else if(filename(window.location.pathname)=="index"){
       $(".menu_index").addClass('active');
-    }else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj" || filename(window.location.pathname)=="inwentarz" || filename(window.location.pathname)=="inwentarz_edytuj" || filename(window.location.pathname)=="zamowienia" || filename(window.location.pathname)=="zamowienia_edytuj"){
+    }else if(filename(window.location.pathname)=="faktury" || filename(window.location.pathname)=="faktury_edytuj" || filename(window.location.pathname)=="inwentarz" || filename(window.location.pathname)=="inwentarz_edytuj" || filename(window.location.pathname)=="zamowienia" || filename(window.location.pathname)=="nieruchomosci_lokalowe" || filename(window.location.pathname)=="nieruchomosci_lokalowe_edytuj" || filename(window.location.pathname)=="odczyty_licznikow" || filename(window.location.pathname)=="odczyty_licznikow_edytuj" || filename(window.location.pathname)=="adresy_korespondencyjne" || filename(window.location.pathname)=="adresy_korespondencyjne_edytuj" || filename(window.location.pathname)=="zamowienia_edytuj"){
       $(".menu_inwentarz").addClass('active');
     }
     else if(filename(window.location.pathname)=="kontakty" || filename(window.location.pathname)=="kontakty_edytuj"){

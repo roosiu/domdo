@@ -1,0 +1,67 @@
+<meta
+  http-equiv="Content-Type"
+  content="text/html; charset=utf-8"/><meta name="Generator" content="Microsoft Word 15 (filtered)" /><style>
+  <!-- /* Font Definitions */ @font-face	{font-family:"Cambria Math";	panose-1:2 4 5 3 5 4 6 3 2 4;}@font-face	{font-family:Calibri;	panose-1:2 15 5 2 2 2 4 3 2 4;}@font-face	{font-family:Tahoma;	panose-1:2 11 6 4 3 5 4 4 2 4;} /* Style Definitions */ p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin-top:0cm;	margin-right:0cm;	margin-bottom:10.0pt;	margin-left:0cm;	line-height:115%;	font-size:11.0pt;	font-family:"Calibri",sans-serif;}.MsoChpDefault	{font-size:10.0pt;	font-family:"Calibri",sans-serif;} /* Page Definitions */ @page WordSection1	{size:595.3pt 841.9pt;	margin:21.3pt 2.0cm 70.9pt 2.0cm;}div.WordSection1	{page:WordSection1;} /* List Definitions */ ol	{margin-bottom:0cm;}ul	{margin-bottom:0cm;}-->
+</style>
+<div class="WordSection1">
+  <div align="center">
+    <table
+      class="MsoTableGrid"
+      style="width:542.6pt;border-collapse:collapse;border:none"
+      width="723"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+    >
+      <tbody>
+        <tr style="height:758.2pt">
+          <td
+            style="width:542.6pt;padding:0cm 5.4pt 0cm 5.4pt;  height:758.2pt"
+            width="723"
+            valign="top"
+          >
+            <p class="MsoNormal">
+              <img
+                id="Obraz 1"
+                src="szablony/KSM_listownik_cz.jpg"
+                alt="KSM listownik n"
+                width="708"
+                height="172"
+              /><b
+                ><span style="font-size:14.0pt;line-height:115%"
+                  ><br />
+                  {{miejscowosc_o}}, dnia {{termin_uzgodniony_z}}</span
+                ></b
+              >
+            </p>
+            <p class="MsoNormal" style="text-align:center" align="center">
+              <b
+                ><span style="font-size:36.0pt;line-height:115%"
+                  >UWAGA MIESZKAŃCY BUDYNKU PRZY ULICY<br />
+                  {{adres_ulica_z}} {{adres_nrulicy}}/{{adres_nrlok}}</span
+                ></b
+              >
+            </p>
+             <p class="MsoNormal" style="text-align:justify;tab-stops:14.0cm"><span style="font-size:26.0pt;mso-bidi-font-size:16.0pt;line-height:115%">W związku z
+licznymi zgłoszeniami mieszkańców bloku dotyczących <b><u>hałasów oraz głośnej muzyki</u></b>. Administracja Osiedla w
+Gniewkowie zwraca się do Państwa z apelem o&nbsp;</span></p><p class="MsoNormal" style="text-align:justify;tab-stops:14.0cm"><div style="text-align: center;"><b style="font-size: 11pt;"><u><span style="font-size:48.0pt;mso-bidi-font-size:16.0pt;line-height:
+115%;mso-bidi-font-style:italic">niezakłócanie spokoju</span></u></b><span style="font-size: 28pt; line-height: 115%;">&nbsp;</span></div><u><div style="text-align: center;"><u style="font-size: 11pt;"><span style="font-size:36.0pt;mso-bidi-font-size:16.0pt;line-height:
+115%;mso-bidi-font-style:italic">zarówno w godzinach ciszy nocnej jak i w
+dzień.</span></u></div></u></p><p class="MsoNormal" style="text-align:justify;tab-stops:14.0cm">
+
+</p><p class="MsoNormal" style="text-align:justify;tab-stops:14.0cm"><span style="font-size:24.0pt;mso-bidi-font-size:16.0pt;line-height:115%;mso-bidi-font-style:
+italic">Takie postępowanie jest bowiem sprzeczne z&nbsp; obowiązującym Regulaminem porządku domowego</span><span style="font-size:16.0pt;line-height:115%;mso-bidi-font-style:italic">(§ 19, §
+20) &nbsp;</span><span style="font-size:24.0pt;
+mso-bidi-font-size:16.0pt;line-height:115%;mso-bidi-font-style:italic">i współżycia
+mieszkańców oraz Kodeksem wykroczeń</span><span style="font-size:16.0pt;
+line-height:115%;mso-bidi-font-style:italic">(Art. 51</span><span style="font-size:24.0pt;mso-bidi-font-size:16.0pt;line-height:115%;mso-bidi-font-style:
+italic">)<o:p></o:p></span></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="MsoNormal">
+    <span style="font-size:22.0pt;line-height:115%;color:white">&nbsp;</span>
+  </p>
+</div>

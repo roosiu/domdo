@@ -118,12 +118,12 @@ jQuery(function(){
                 $filtr_3_text = 'ADRES';
                 $filtr_3 = '
                 <div class="row">
-                <div class="col-sm-8 pr-1">
+                <div class="col-sm-6 pr-1">
                 <select name="adres_ulica" id="adres_ulica" class="form-control form-control-sm"><option></option>'.tabeladb2('1','SELECT * FROM ulice ORDER BY `id` ASC', '', '', '<option value=', '0', ">", "", "1", "</option>", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'</select>
                 </div>
-                <div class="col-sm px-0"><input name="adres_nrbud" id="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
+                <div class="col-sm "><input name="adres_nrbud" id="adres_nrbud" class="form-control form-control-sm" type="text" placeholder="">
                 </div>/
-                <div class="col-sm pl-0">
+                <div class="col-sm">
                 <input name="adres_nrlok" id="adres_nrlok" class="form-control form-control-sm" type="text" placeholder="">
                 </div></div>';
                 $filtr_4_rozmiar = '';
