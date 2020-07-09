@@ -220,7 +220,7 @@ echo '</div></form>';
 
                   {
 
-      echo tabeladb2('15','SELECT * FROM liczniki INNER JOIN liczniki_odczyty ON liczniki.nr_licznika = liczniki_odczyty.nr_licznika INNER JOIN nieruchomosci_lokalowe ON nieruchomosci_lokalowe.id = liczniki.id_pom ORDER BY liczniki.id DESC LIMIT 25', '<tr class="text-center">', '</tr>',
+      echo tabeladb2('15','SELECT * FROM liczniki INNER JOIN liczniki_odczyty ON liczniki.nr_licznika = liczniki_odczyty.nr_licznika INNER JOIN nieruchomosci_lokalowe ON nieruchomosci_lokalowe.id = liczniki.id_pom ORDER BY liczniki_odczyty.id DESC LIMIT 25', '<tr class="text-center">', '</tr>',
       '<td>', '5', '</td>',
       '<td>', '1', '</td>',
       '<td>', '0', '</td>',

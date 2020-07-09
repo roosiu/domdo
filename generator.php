@@ -25,11 +25,11 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 $id_get = (htmlspecialchars(trim($_GET['id'])));
 
             echo $id_get;
-
+                echo ' <script src="js/tylkosprawdzindeks.js"></script>';
             echo '
             <script>
             var data = [];';
-                echo tabeladb2('12','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
+                echo tabeladb2('15','SELECT * FROM dziennik WHERE `id` = '.$id_get.'', '', '',
                 'data["id_z"]="', '0', '";',
                 'data_z="', '1', '".split("-"); data["data_z"]= data_z[2] + "-" + data_z[1] + "-" + data_z[0] + "r.";',
                 'termin_uzgodniony_z="', '2', '".split("-"); data["termin_uzgodniony_z"]= termin_uzgodniony_z[2] + "-" + termin_uzgodniony_z[1] + "-" + termin_uzgodniony_z[0] + "r.";',
@@ -42,21 +42,37 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 'data["adres_ulica_z"]="', '5', '";',
                 'data["typ_z"]="', '8', '";',
                 'data["zlecono_z"]="', '11', '";',
+                'data["indeks"]=tylkosprawdzindeks(data["adres_ulica_z"]+" "+data["adres_nrulicy"], data["adres_nrlok"]);', '', ';',
                 '', '', '',
                 '', '', '',
                 '', '', '',
                 '', '', ''
 
                 );
+
                 echo 'data["miejscowosc_o"]="'.pojed_zapyt('SELECT adres_biura_miasto FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["biuro_kontakt"]="'.pojed_zapyt('SELECT biuro_kontakt FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["nazwa_jednostki"]="'.pojed_zapyt('SELECT nazwa_jednostki FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["adres_biura_ulica"]="'.pojed_zapyt('SELECT adres_biura_ulica FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["adres_biura_kod"]="'.pojed_zapyt('SELECT adres_biura_kod FROM ustawienia_ogolne WHERE `id` = 1').'";';
+                $all_files = glob("uploads/".$id_get."/*.*");
+                for ($i=0; $i<count($all_files); $i++)
+                  {
+                    $image_name = $all_files[$i];
+                    $supported_format = array('gif','jpg','jpeg','png');
+                    $ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
+                    if (in_array($ext, $supported_format))
+                        {
+                            echo 'data["zdjecie_'.$i.'"]="'.$image_name.'";';
+
+                        } else {
+                            continue;
+                        }
+                  }
+
                 echo '</script>';
 
             }
-
 
 
             echo '</span><input type=hidden disabled size="7" id="id_z"></input></span>
