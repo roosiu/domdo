@@ -76,8 +76,14 @@
         markers: [{
           coords: [60, 110],
           name: 'punkt1',
-          style: {fill: 'yellow'}
+          style: {fill: 'red'}
        }],
+       markerStyle: {
+        initial: {
+          fill: 'red'
+        }
+      },
+
 
 ////////// kolory start
        series: {
@@ -86,6 +92,8 @@
                   "stara_kotlownia":'#f2f2f2ff',
                   "nowa_kotlownia":'#f2f2f2ff',
                   "trafostacja_dz_478_33":'#f2f2f2ff',
+                  "trafostacja_dz_478_31":'#f2f2f2ff',
+                  "trafostacja_dz_478_32":'#f2f2f2ff',
                   "staw":'#508406ff',
                   "boisko":'#508406ff',
                   "bud_gosp_700lecia4":'#f7b101ff',
@@ -96,13 +104,21 @@
                   "garaze_dreckiego":'#a142feff',
                   "garaze_dreckiego2":'#a142feff',
                   "garaz_adm":'#5084feff',
+                  "dz_319_26":'#ffffff',
                   "dz_319_29":'#ffffff',
                   "dz_319_30":'#ffffff',
                   "dz_319_27":'#ffffff',
                   "dz_474_4":'#ffffff',
                   "dz_566_27":'#ffffff',
+                  "dz_478_7":'#ffffff',
+                  "dz_478_31":'#ffffff',
+                  "dz_478_32":'#ffffff',
                   "dz_478_41":'#ffffff',
+                  "dz_478_48":'#ffffff',
+                  "dz_478_62":'#ffffff',
+                  "dz_478_76":'#ffffff',
                   "dz_520_1":'#ffffff',
+                  "dz_566_13":'#ffffff',
                   "dz_478_23":'#ffffff',
                   "dz_478_25":'#ffffff',
                   "dz_478_33":'#ffffff',

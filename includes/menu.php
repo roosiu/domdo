@@ -126,7 +126,7 @@ echo $userData['fullname'];
 ?>
           </a>
           <div class="dropdown-menu bg-dark">
-            <a class="dropdown-item bg-dark text-light" href="profile.php?id=<? echo zakodowanie($userData["id"]); ?>">Profil</a>
+            <a class="dropdown-item bg-dark text-light" href="profile.php?id=   <? echo zakodowanie($userData["id"]);?>">Profil</a>
             <a class="dropdown-item bg-dark text-light" href="logout.php"><i class="fa fa-sign-out"></i> Wyloguj</a>
 
           </div>

@@ -145,6 +145,8 @@ $(document).ready(function() {
         echo 'jQuery("#pole_jednos").html("'.$jednos.'");';
         echo 'jQuery("#pole_miesiac").html("'.$miesiac.'");';
         echo 'jQuery("#pole_rok").html("'.$rok.'");';
+        echo 'jQuery("#pole_data").html("'.date("d/m/Y").'");';
+        echo 'jQuery("#pole_autor").html("'.$userData["fullname"].'");';
         echo 'var liczenie_liczba_zmian = 1;';
         echo tabeladb2('15','SELECT * FROM dziennik WHERE typ="zmiany czynszowe" AND YEAR(data_u) = '.$rok.' AND MONTH(data_u) = '.$miesiac.''.$zakonczone_i.' ORDER BY dziennik.id ASC', '', '',
         '$("#tabel_wykaz").append("<tr style=mso-yfti-irow:1;mso-yfti-lastrow:yes;height:49.45pt><td valign=top style=\u0022border:solid black 1.0pt;border-top:none;mso-border-top-alt:solid black .5pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:49.45pt\u0022><p class=MsoNormal align=center style=\u0022margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:normal\u0022><span style=mso-bookmark:_Hlk29794814><b style=mso-bidi-font-weight:normal><span style=mso-bidi-font-size:12.0pt>', '', '"+liczenie_liczba_zmian+".<o:p></o:p></span></b></span></p></td>',

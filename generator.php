@@ -34,7 +34,6 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 'data_z="', '1', '".split("-"); data["data_z"]= data_z[2] + "-" + data_z[1] + "-" + data_z[0] + "r.";',
                 'termin_uzgodniony_z="', '2', '".split("-"); data["termin_uzgodniony_z"]= termin_uzgodniony_z[2] + "-" + termin_uzgodniony_z[1] + "-" + termin_uzgodniony_z[0] + "r.";',
                 'termin_faktyczny_z="', '3', '".split("-"); data["termin_faktyczny_z"]= termin_faktyczny_z[2] + "-" + termin_faktyczny_z[1] + "-" + termin_faktyczny_z[0] + "r.";',
-                'data["tresc_z"]="', '4', '";',
                 'data["adres_nrulicy"]="', '6', '";',
                 'data["adres_nrlok"]="', '7', '";',
                 'data["zglasza_z"]="', '9', '";',
@@ -50,6 +49,7 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
                 );
 
+                echo 'data["tresc_z"]="'.preg_replace('/\r\n|\r|\n/','<br/>', pojed_zapyt('SELECT tresc FROM dziennik WHERE `id` = '.$id_get.'')).'";';
                 echo 'data["miejscowosc_o"]="'.pojed_zapyt('SELECT adres_biura_miasto FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["biuro_kontakt"]="'.pojed_zapyt('SELECT biuro_kontakt FROM ustawienia_ogolne WHERE `id` = 1').'";';
                 echo 'data["nazwa_jednostki"]="'.pojed_zapyt('SELECT nazwa_jednostki FROM ustawienia_ogolne WHERE `id` = 1').'";';
