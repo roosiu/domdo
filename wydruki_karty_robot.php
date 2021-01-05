@@ -41,7 +41,7 @@ jQuery(function(){
   jQuery("#przycisk_filtr_wyczysc").click(function () {
     $(":input").val("");
     $(function () {
-      $.get("wydruki_karty_robot_podglad.html", function (data) {
+      $.get("wydruki_karty_robot_podglad2.html", function (data) {
         $(".Editor-editor").html(data)
       });
     });
@@ -101,7 +101,7 @@ $(document).ready(function() {
   $("#txtEditor").Editor();
 
   $(function () {
-    $.get("wydruki_karty_robot_podglad.html", function (data) {
+    $.get("wydruki_karty_robot_podglad2.html", function (data) {
       $(".Editor-editor").html(data)
     });
 });
