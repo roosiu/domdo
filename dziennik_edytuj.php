@@ -91,7 +91,9 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
 
         </div>
 </form>
+
 </main>';
+include './dziennik_edytuj_menu_szablony.html'; //// dodawanie menu szablonów
 if ($_GET) {
 
     if($_GET['id']){
@@ -211,6 +213,7 @@ function sendEmail() {
     }
 }
 </script>
+<script src="./js/dziennik_edytuj_menu.js"></script>
 ';
 
 require 'includes/footer.php';
