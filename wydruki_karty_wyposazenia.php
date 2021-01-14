@@ -109,7 +109,7 @@ $(document).ready(function() {
 
         echo '$(".wpis_wzor").remove();';
         echo 'jQuery("#pole_jednos").html("'.$jednos.' - '.$typ.'");';
-        echo 'jQuery("#dane_pracownika").html("'.$pracownik.'<b><br>Miejsce zamieszkania</b> '.pojed_zapyt('SELECT adres FROM pracownicy WHERE `imieinazwisko` = "'.$pracownik.'"').'<b><br></b>_______________________________<b> Nr ewidencyjny </b>___________________");';
+        echo 'jQuery("#dane_pracownika").html("'.$pracownik.'<b><br>Miejsce zamieszkania</b> '.preg_replace( "/\r|\n/", " ", pojed_zapyt('SELECT adres FROM pracownicy WHERE `imieinazwisko` = "'.$pracownik.'"')).'<b><br></b>_______________________________<b> Nr ewidencyjny </b>___________________");';
         echo 'var liczenie_liczba_zmian = 1;';
         if($typ == "odzież"){
           echo tabeladb2('15', 'SELECT * FROM karty_odziezowe WHERE pracownik="'.$pracownik.'" ORDER BY id ASC', '', '',

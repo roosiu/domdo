@@ -325,7 +325,12 @@ $(window).on("load", function() {
             if($.isNumeric(wynik[i])){
               suma = parseFloat(suma) + parseFloat(wynik[i]);
               $(this).find("td:eq(35)").html(suma);
-            }else
+            }
+            else if(wynik[i] == "-" | wynik[i] == " -")
+            {
+              $(this).find("td:eq("+(i+4)+")").css("background-color", "#d3d3d3");
+            }
+            else
             {
               $(this).find("td:eq("+(i+4)+")").addClass( "small text-center" );
             }
