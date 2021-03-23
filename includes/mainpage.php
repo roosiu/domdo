@@ -10,7 +10,7 @@ $("a").addClass("dontprint");
     <div class="jumbotron mb-n4 bg-white">
     <div>    <h5 class="card-header bg-dark mb-3 text-light"><i class="fa fa-hourglass-end"></i> Po terminie <a class="btn btn-light btn-sm text-uppercase float-right rozwin" href="#" role="button"><i class="fa fa-eye-slash" aria-hidden="true"></i> pokaż/ukryj</a></h5>
 
-<table class="table table-sm table-striped table-hover" style="display: none">
+<table id="table_po_terminie" class="table table-sm table-striped table-hover" style="display: none">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -37,7 +37,7 @@ echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u < CURDATE() AND data_u 
 <div>
                 <h5 class="card-header bg-dark text-light mb-3"><i class="fa fa-hourglass-half"></i> Dziś jest <span id="naglowek_data"></span>. Zaplanowane zdarzenia na dziś: <a class="btn btn-light btn-sm text-uppercase float-right rozwin" href="#" role="button"><i class="fa fa-eye-slash" aria-hidden="true"></i> pokaż/ukryj</a></h5>
 
-          <table class="table table-sm table-striped table-hover">
+          <table id="table_dzis" class="table table-sm table-striped table-hover">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -62,7 +62,7 @@ echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u < CURDATE() AND data_u 
             </div>
         <div>    <h5 class="card-header bg-dark text-light mb-3"><i class="fa fa-hourglass-start"></i> Zaplanowane na najbliższe 30 dni <a class="btn btn-light btn-sm text-uppercase float-right rozwin" href="#" role="button"><i class="fa fa-eye-slash" aria-hidden="true"></i> pokaż/ukryj</a></h5>
 
-<table class="table table-sm table-striped table-hover">
+<table id="table_zaplanowane" class="table table-sm table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -194,10 +194,17 @@ echo tabeladb2('12','SELECT * FROM dziennik WHERE data_u > CURDATE() AND data_u 
           <!-- Content here -->
          </main>
         <!--koniec treść-->
+        <script src="js/hiderow.js">
+        </script>
         <script>
         $(".rozwin").click(function() {
 
    $(this).parent().parent().children('table').toggle("slow");
 });
+
+hiderow("table_po_terminie", [0,1,4,5,6,7]);
+hiderow("table_dzis", [0,1,4,5,6,7]);
+hiderow("table_zaplanowane", [0,1,4,5,6,7]);
 </script>
+
         <!--koniec treść-->
