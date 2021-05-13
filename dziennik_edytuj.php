@@ -56,6 +56,45 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
             <input name="zglasza_z" id="zglasza_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
             <label for="kontakt_z" class="badge badge-pill badge-secondary text-uppercase">Kontakt</label>
             <input name="kontakt_z" id="kontakt_z" class="form-control form-control-sm mb-3" type="text" placeholder="">
+            <span  id="przycisk_sprawdz" onclick="sprzawdzwszsystkiewpisy();return false;" style="cursor: pointer;" class="btn btn-dark btn-sm text-uppercase float-right dontprint m-3">HISTORIA <i class="fa fa-search" aria-hidden="true"></i> <i class="fa fa-list-alt" aria-hidden="true"></i></span>
+            <script>
+
+                function submit_post_via_hidden_form(url, params) {
+                    var f = $(`<form target="_blank" method="POST" style="display:none;"></form>`).attr({
+                        action: url
+                    }).appendTo(document.body);
+
+                    for (var i in params) {
+                        if (params.hasOwnProperty(i)) {
+                            $(`<input type="hidden" />`).attr({
+                                name: i,
+                                value: params[i]
+                            }).appendTo(f);
+                        }
+                    }
+
+                    f.submit();
+
+                    f.remove();
+                }
+
+
+                function sprzawdzwszsystkiewpisy(e) {
+                    var adres_ulica = document.getElementById("adres_ulica_z").value;
+                    var adres_nrbud = document.getElementById("adres_nrulicy").value;
+                    var adres_nrlok = document.getElementById("adres_nrlok").value;
+
+                    submit_post_via_hidden_form(
+                        `dziennik.php`,
+                        {
+                            "adres_ulica": adres_ulica,
+                            "adres_nrbud": adres_nrbud,
+                            "adres_nrlok": adres_nrlok
+                        }
+                    );
+
+                }
+            </script>
             </div>
             <div class="col-sm-2">
             <label for="typ_z" class="badge badge-pill badge-secondary text-uppercase">Typ</label>
