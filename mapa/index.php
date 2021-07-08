@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
+<meta charset="UTF-8">
   <title>jVectorMap demo</title>
   <link rel="stylesheet" href="jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <script src="../js/jquery.js"></script>
   <script src="jquery-jvectormap-2.0.5.min.js"></script>
-  <script src="jquery-jvectormap-gniewkowo.js"></script>
+  <script src="jquery-jvectormap-gniewkowo.js" charset="UTF-8"></script>
 </head>
 <body>
-  <div id="gniewkowo-map" style="width: 500px; height: 500px"></div>
+  <div id="gniewkowo-map" style="width: 50vw; height: 97vh"></div>
   <script>
     $(function(){
       $('#gniewkowo-map').vectorMap({
