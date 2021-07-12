@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-  <title>jVectorMap demo</title>
+  <title>Gniewkowo mapa Osiedle 700-lecia</title>
   <link rel="stylesheet" href="jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
   <script src="../js/jquery.js"></script>
   <script src="jquery-jvectormap-2.0.5.min.js"></script>
@@ -12,7 +12,14 @@
   <div id="gniewkowo-map" style="width: 50vw; height: 97vh"></div>
   <script>
     $(function(){
-      $('#gniewkowo-map').vectorMap({
+        var map,
+      markerIndex = 1,
+      markersCoords = {1: {   /////// zrobić odczytywanie
+    "lat": 46.10088953342537,
+    "lng": -109.37540580514667
+}};
+
+      map = new jvm.Map({
         map: 'gniewkowo',
         regionStyle : {
         initial : {
@@ -74,129 +81,175 @@
                 }
             },
    ////// start znaczniki
-        markers: [{
-          coords: [60, 110],
-          name: 'punkt1',
-          style: {fill: 'red'}
-       }],
+
+      markers: [{
+     coords: [46.10088953342537, -109.37540580514667], ////////// poprawić pbo nie działa
+       name: '110, 110',
+      style: {fill: 'red'}
+    }],
+
        markerStyle: {
         initial: {
           fill: 'red'
         }
       },
 
+      container: $('#gniewkowo-map'),
+      onMarkerTipShow: function(e, label, code){
+        map.tip.text(markersCoords[code].lat.toFixed(2)+', '+markersCoords[code].lng.toFixed(2));
+      },
+      onMarkerClick: function(e, code){
+        map.removeMarkers([code]);
+        map.tip.hide();
+      },
+
 
 ////////// kolory start
        series: {
             regions: [{
+              scale: {
+                terenwlasny: '#ffffa7ff',
+                terenobcy: '#ffffff',
+                terenwieczysty: '#fed3ffff',
+                budyneknawieczystym: '#fe7fffff',
+                budynekobcy: '#f2f2f2ff',
+                budynekgospodarczy: '#f7b101ff',
+                budynek: '#f7b101ff',
+                garaze: '#a142feff',
+                ulica: '#4d4d4dff',
+                pawilon: '#5084feff',
+                chodnik: '#b3b3b3ff',
+                inne: '#508406ff'
+               },
+               attribute: 'fill',
                 values: {
-                  "stara_kotlownia":'#f2f2f2ff',
-                  "nowa_kotlownia":'#f2f2f2ff',
-                  "trafostacja_dz_478_33":'#f2f2f2ff',
-                  "trafostacja_dz_478_31":'#f2f2f2ff',
-                  "trafostacja_dz_478_32":'#f2f2f2ff',
-                  "staw":'#508406ff',
-                  "boisko":'#508406ff',
-                  "bud_gosp_700lecia4":'#f7b101ff',
-                  "bud_gosp_700lecia8":'#f7b101ff',
-                  "bud_gosp_700lecia12":'#f7b101ff',
-                  "bud_gosp_700lecia16":'#f7b101ff',
-                  "garaze_700l":'#a142feff',
-                  "garaze_dreckiego":'#a142feff',
-                  "garaze_dreckiego2":'#a142feff',
-                  "garaz_adm":'#5084feff',
-                  "dz_319_26":'#ffffff',
-                  "dz_319_29":'#ffffff',
-                  "dz_319_30":'#ffffff',
-                  "dz_319_27":'#ffffff',
-                  "dz_474_4":'#ffffff',
-                  "dz_566_27":'#ffffff',
-                  "dz_478_7":'#ffffff',
-                  "dz_478_31":'#ffffff',
-                  "dz_478_32":'#ffffff',
-                  "dz_478_41":'#ffffff',
-                  "dz_478_48":'#ffffff',
-                  "dz_478_62":'#ffffff',
-                  "dz_478_76":'#ffffff',
-                  "dz_520_1":'#ffffff',
-                  "dz_566_13":'#ffffff',
-                  "dz_478_23":'#ffffff',
-                  "dz_478_25":'#ffffff',
-                  "dz_478_33":'#ffffff',
-                  "dz_478_34":'#ffffff',
-                  "dz_478_37":'#ffffff',
-                  "dz_478_39":'#ffffff',
-                  "dz_478_63":'#ffffff',
-                  "dz_478_38":'#fed3ffff',
-                  "dz_478_43":'#fed3ffff',
-                  "dz_478_51":'#fed3ffff',
-                  "dz_478_52":'#fed3ffff',
-                  "dz_478_53":'#fed3ffff',
-                  "dz_478_58":'#fed3ffff',
-                  "dz_478_61":'#fed3ffff',
-                  "dz_478_68":'#fed3ffff',
-                  "dz_478_69":'#fed3ffff',
-                  "dz_478_71":'#fed3ffff',
-                  "dz_478_73":'#fed3ffff',
-                  "dz_478_79":'#fed3ffff',
-                  "chodnikiiparkingi":'#b3b3b3ff',
-                  "chodnikiiparkingi2":'#b3b3b3ff',
-                  "ulica_piasta":'#4d4d4dff',
-                  "ulica_inowroclawska":'#4d4d4dff',
-                  "ulica_dreckiego":'#4d4d4dff',
-                  "ulica_700lecia":'#4d4d4dff',
-                  "700lecia2":'#f7b101ff',
-                  "700lecia4":'#f7b101ff',
-                  "700lecia6":'#f7b101ff',
-                  "700lecia8":'#f7b101ff',
-                  "700lecia10":'#f7b101ff',
-                  "700lecia10_a":'#fe7fffff',
-                  "700lecia12":'#f7b101ff',
-                  "700lecia14":'#f7b101ff',
-                  "700lecia14_b":'#fe7fffff',
-                  "700lecia16":'#f7b101ff',
-                  "700lecia18":'#5084feff',
-                  "700lecia18_2":'#5084feff',
-                  "700lecia18_b":'#5084feff',
-                  "700lecia20":'#f7b101ff',
-                  "700lecia22":'#f7b101ff',
-                  "dreckiego1":'#f7b101ff',
-                  "dreckiego3":'#f7b101ff',
-                  "dreckiego5":'#f7b101ff',
-                  "dreckiego7":'#f7b101ff',
-                  "dreckiego9":'#f7b101ff',
-                  "dreckiego11":'#f7b101ff',
-                  "dreckiego13":'#f7b101ff',
-                  "dreckiego15":'#f7b101ff',
-                  "dreckiego17":'#f7b101ff',
-                  "dreckiego19":'#5084feff',
-                  "dz_700lecia2":'#ffffa7ff',
-                  "dz_700lecia4":'#ffffa7ff',
-                  "dz_700lecia6":'#ffffa7ff',
-                  "dz_700lecia8":'#ffffa7ff',
-                  "dz_700lecia10":'#ffffa7ff',
-                  "dz_700lecia12":'#ffffa7ff',
-                  "dz_700lecia14":'#ffffa7ff',
-                  "dz_700lecia16":'#ffffa7ff',
-                  "dz_700lecia18":'#fed3ffff',
-                  "dz_700lecia20":'#ffffa7ff',
-                  "dz_700lecia22":'#ffffa7ff',
-                  "dz_dreckiego1":'#ffffa7ff',
-                  "dz_dreckiego3":'#ffffa7ff',
-                  "dz_dreckiego5":'#ffffa7ff',
-                  "dz_dreckiego7":'#ffffa7ff',
-                  "dz_dreckiego9":'#ffffa7ff',
-                  "dz_dreckiego11":'#ffffa7ff',
-                  "dz_dreckiego13":'#ffffa7ff',
-                  "dz_dreckiego15":'#ffffa7ff',
-                  "dz_dreckiego17":'#ffffa7ff',
-                  "dz_dreckiego19":'#fed3ffff'
+                  "stara_kotlownia":'budynekobcy',
+                  "nowa_kotlownia":'budynekobcy',
+                  "trafostacja_dz_478_33":'budynekobcy',
+                  "trafostacja_dz_478_31":'budynekobcy',
+                  "trafostacja_dz_478_32":'budynekobcy',
+                  "staw":'inne',
+                  "boisko":'inne',
+                  "bud_gosp_700lecia4":'budynekgospodarczy',
+                  "bud_gosp_700lecia8":'budynekgospodarczy',
+                  "bud_gosp_700lecia12":'budynekgospodarczy',
+                  "bud_gosp_700lecia16":'budynekgospodarczy',
+                  "garaze_700l":'garaze',
+                  "garaze_dreckiego":'garaze',
+                  "garaze_dreckiego2":'garaze',
+                  "garaz_adm":'budynekgospodarczy',
+                  "dz_319_26":'terenobcy',
+                  "dz_319_29":'terenobcy',
+                  "dz_319_30":'terenobcy',
+                  "dz_319_27":'terenobcy',
+                  "dz_474_4":'terenobcy',
+                  "dz_566_27":'terenobcy',
+                  "dz_478_7":'terenobcy',
+                  "dz_478_31":'terenobcy',
+                  "dz_478_32":'terenobcy',
+                  "dz_478_41":'terenobcy',
+                  "dz_478_48":'terenobcy',
+                  "dz_478_62":'terenobcy',
+                  "dz_478_76":'terenobcy',
+                  "dz_520_1":'terenobcy',
+                  "dz_566_13":'terenobcy',
+                  "dz_478_23":'terenobcy',
+                  "dz_478_25":'terenobcy',
+                  "dz_478_33":'terenobcy',
+                  "dz_478_34":'terenobcy',
+                  "dz_478_37":'terenobcy',
+                  "dz_478_39":'terenobcy',
+                  "dz_478_63":'terenobcy',
+                  "dz_478_38":'terenwieczysty',
+                  "dz_478_43":'terenwieczysty',
+                  "dz_478_51":'terenwieczysty',
+                  "dz_478_52":'terenwieczysty',
+                  "dz_478_53":'terenwieczysty',
+                  "dz_478_58":'terenwieczysty',
+                  "dz_478_61":'terenwieczysty',
+                  "dz_478_68":'terenwieczysty',
+                  "dz_478_69":'terenwieczysty',
+                  "dz_478_71":'terenwieczysty',
+                  "dz_478_73":'terenwieczysty',
+                  "dz_478_79":'terenwieczysty',
+                  "chodnikiiparkingi":'chodnik',
+                  "chodnikiiparkingi2":'chodnik',
+                  "ulica_piasta":'ulica',
+                  "ulica_inowroclawska":'ulica',
+                  "ulica_dreckiego":'ulica',
+                  "ulica_700lecia":'ulica',
+                  "700lecia2":'budynek',
+                  "700lecia4":'budynek',
+                  "700lecia6":'budynek',
+                  "700lecia8":'budynek',
+                  "700lecia10":'budynek',
+                  "700lecia10_a":'budyneknawieczystym',
+                  "700lecia12":'budynek',
+                  "700lecia14":'budynek',
+                  "700lecia14_b":'budyneknawieczystym',
+                  "700lecia16":'budynek',
+                  "700lecia18":'pawilon',
+                  "700lecia18_2":'pawilon',
+                  "700lecia18_b":'pawilon',
+                  "700lecia20":'budynek',
+                  "700lecia22":'budynek',
+                  "dreckiego1":'budynek',
+                  "dreckiego3":'budynek',
+                  "dreckiego5":'budynek',
+                  "dreckiego7":'budynek',
+                  "dreckiego9":'budynek',
+                  "dreckiego11":'budynek',
+                  "dreckiego13":'budynek',
+                  "dreckiego15":'budynek',
+                  "dreckiego17":'budynek',
+                  "dreckiego19":'pawilon',
+                  "dz_700lecia2":'terenwlasny',
+                  "dz_700lecia4":'terenwlasny',
+                  "dz_700lecia6":'terenwlasny',
+                  "dz_700lecia8":'terenwlasny',
+                  "dz_700lecia10":'terenwlasny',
+                  "dz_700lecia12":'terenwlasny',
+                  "dz_700lecia14":'terenwlasny',
+                  "dz_700lecia16":'terenwlasny',
+                  "dz_700lecia18":'terenwieczysty',
+                  "dz_700lecia20":'terenwlasny',
+                  "dz_700lecia22":'terenwlasny',
+                  "dz_dreckiego1":'terenwlasny',
+                  "dz_dreckiego3":'terenwlasny',
+                  "dz_dreckiego5":'terenwlasny',
+                  "dz_dreckiego7":'terenwlasny',
+                  "dz_dreckiego9":'terenwlasny',
+                  "dz_dreckiego11":'terenwlasny',
+                  "dz_dreckiego13":'terenwlasny',
+                  "dz_dreckiego15":'terenwlasny',
+                  "dz_dreckiego17":'terenwlasny',
+                  "dz_dreckiego19":'terenwieczysty'
                 }
+               //// ,
+       /// legend: {
+        ///  vertical: true,
+        ///  title: 'Legenda'
+      ///////  }
+
             }]
-        },
+        }
 
 
       });
+      map.container.click(function(e){
+      var latLng = map.pointToLatLng(
+              e.pageX - map.container.offset().left,
+              e.pageY - map.container.offset().top
+          ),
+          targetCls = $(e.target).attr('class');
+
+      if (latLng && (!targetCls || (targetCls && $(e.target).attr('class').indexOf('jvectormap-marker') === -1))) {
+        markersCoords[markerIndex] = latLng;
+        map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng]});
+        markerIndex += 1;
+      }
+      console.log(markersCoords);
+  });
     });
   </script>
 </body>
