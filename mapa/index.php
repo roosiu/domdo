@@ -9,15 +9,63 @@
   <script src="jquery-jvectormap-gniewkowo.js" charset="UTF-8"></script>
 </head>
 <body>
-  <div id="gniewkowo-map" style="width: 50vw; height: 97vh"></div>
+  <div id="gniewkowo-map" style="float: left; width: 50vw; height: 97vh"></div>
+  <div id="gniewkowo-map-menu" style="padding-left: 15px; float: left; width: 30vw; height: 97vh">
+  <p><h2><label for="punkty">Punkty: </label>  <button id="edit_button" onclick="check_button_active();">EDYTUJ</button></h2></p>
+    <select size=10 name="punkty" id="punkty">
+
+    </select>
+   <p>
+   <button id="geoportal_button" >GEOPORTAL</button>
+   <button id="google_button" >GOOGLE MAPY</button></p>
+   <h2>Legenda:</h2>
+  </div>
   <script>
+var edit_button_active = 0;
+function check_button_active(){ {
+    if(edit_button_active == 0)
+      {
+        edit_button_active = 1
+        document.getElementById("edit_button").style.color = "#ff0000";
+      }
+      else
+    if(edit_button_active == 1)
+      {
+       edit_button_active = 0;
+       document.getElementById("edit_button").style.color = "black";
+      };
+    }
+};
     $(function(){
         var map,
-      markerIndex = 1,
-      markersCoords = {1: {   /////// zrobić odczytywanie
-    "lat": 46.10088953342537,
-    "lng": -109.37540580514667
-}};
+        punkty = document.getElementById("punkty");
+
+      markersCoords = {
+        1: {
+          "lat": 46.10088953342537,
+          "lng": -109.37540580514667
+        },
+        2: {
+            "lat": -5.058909411719167,
+            "lng": 155.64263535514735
+        }
+      };
+ilosc_zapamietana = Object.keys(markersCoords).length;
+      markerIndex = ilosc_zapamietana+1;
+
+for (var key in markersCoords) {
+    if (markersCoords.hasOwnProperty(key)) {
+        console.log(key + ": {" + markersCoords[key].lat + "," + markersCoords[key].lng + "}");
+
+        var opt = document.createElement('option');
+    opt.value = key;
+    opt.innerHTML = key + ": {" + markersCoords[key].lat + "," +  markersCoords[key].lng + "}";
+    punkty.appendChild(opt);
+    }
+}
+
+console.log(Object.keys(markersCoords).length);
+
 
       map = new jvm.Map({
         map: 'gniewkowo',
@@ -76,17 +124,18 @@
 
                       ) {
                        return jvm.Map.maps['gniewkowo'].paths[code].name;
+
                       }
                     }
                 }
             },
    ////// start znaczniki
 
-      markers: [{
-     coords: [46.10088953342537, -109.37540580514667], ////////// poprawić pbo nie działa
-       name: '110, 110',
-      style: {fill: 'red'}
-    }],
+      markers: [
+
+  ///    1, {latLng: [46.10088953342537, -109.37540580514667]}
+
+    ],
 
        markerStyle: {
         initial: {
@@ -97,10 +146,19 @@
       container: $('#gniewkowo-map'),
       onMarkerTipShow: function(e, label, code){
         map.tip.text(markersCoords[code].lat.toFixed(2)+', '+markersCoords[code].lng.toFixed(2));
+
       },
       onMarkerClick: function(e, code){
-        map.removeMarkers([code]);
-        map.tip.hide();
+        if(edit_button_active == 1){
+          map.removeMarkers([code]);
+          delete markersCoords[code]; /// usuwanie z array kordynatow
+          map.tip.hide();
+          console.log(markersCoords);
+
+        $("#punkty option[value='"+ code +"']").remove();
+
+          console.log(code);
+        }
       },
 
 
@@ -234,8 +292,8 @@
             }]
         }
 
-
       });
+
       map.container.click(function(e){
       var latLng = map.pointToLatLng(
               e.pageX - map.container.offset().left,
@@ -243,13 +301,26 @@
           ),
           targetCls = $(e.target).attr('class');
 
-      if (latLng && (!targetCls || (targetCls && $(e.target).attr('class').indexOf('jvectormap-marker') === -1))) {
+      if (edit_button_active == 1 && latLng && (!targetCls || (targetCls && $(e.target).attr('class').indexOf('jvectormap-marker') === -1))) {
         markersCoords[markerIndex] = latLng;
         map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng]});
+        var option = document.createElement("option");
+        option.value = markerIndex;
+        option.text = markerIndex+":" + " {" + latLng.lat + "," + latLng.lng + "}";
+        punkty.add(option);
         markerIndex += 1;
       }
       console.log(markersCoords);
   });
+
+       /// map.addMarker(1, {latLng: [46.10088953342537, -109.37540580514667]});
+        for (var key in markersCoords) {
+    if (markersCoords.hasOwnProperty(key)) {
+      map.addMarker(key, {latLng: [markersCoords[key].lat, markersCoords[key].lng]});
+    }
+}
+ //map.removeMarkers([0]);
+       // delete markersCoords[0];
     });
   </script>
 </body>
