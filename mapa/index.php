@@ -4,38 +4,57 @@
 <meta charset="UTF-8">
   <title>Gniewkowo mapa Osiedle 700-lecia</title>
   <link rel="stylesheet" href="jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="../js/jquery.js"></script>
   <script src="jquery-jvectormap-2.0.5.min.js"></script>
   <script src="jquery-jvectormap-gniewkowo.js" charset="UTF-8"></script>
 </head>
 <body>
   <div id="gniewkowo-map" style="float: left; width: 50vw; height: 97vh"></div>
-  <div id="gniewkowo-map-menu" style="padding-left: 15px; float: left; width: 30vw; height: 97vh">
-  <p><h2><label for="punkty">Punkty: </label>  <button id="edit_button" onclick="check_button_active();">EDYTUJ</button></h2></p>
-    <select size=10 name="punkty" id="punkty">
+  <div id="gniewkowo-map-menu" class="d-print-none" style="padding-left: 15px; float: left; width: 30vw; height: 97vh">
+  <p><h3><label for="punkty">Punkty: </label>  <button id="edit_button" class="btn btn-dark" onclick="check_button_active();"><i class="fa fa-pencil" aria-hidden="true"></i> EDYTUJ</button></h3></p>
+    <select size=10 name="punkty" onclick="point_from_list_click();" id="punkty">
 
     </select>
    <p>
-   <button id="geoportal_button" >GEOPORTAL</button>
-   <button id="google_button" >GOOGLE MAPY</button></p>
-   <h2>Legenda:</h2>
+   <button id="geoportal_button" class="btn btn-dark">GEOPORTAL</button>
+   <button id="google_button" onclick="button_google();" class="btn btn-dark" >GOOGLE MAPY</button></p>
+   <h3>Legenda:</h3>
   </div>
   <script>
+  function button_google(){
+
+var punkt_selected_val = $( "#punkty option:selected" ).val();
+console.log(markersCoords[punkt_selected_val].lat);
+window.open("http://maps.google.com/maps?z=12&t=h&q="+ markersCoords[punkt_selected_val].lat +","+ markersCoords[punkt_selected_val].lng);
+}
+  ////// funkcja sprawdzania czy przycisk edytuj jest aktywny
 var edit_button_active = 0;
 function check_button_active(){ {
     if(edit_button_active == 0)
       {
         edit_button_active = 1
-        document.getElementById("edit_button").style.color = "#ff0000";
+        $( "#edit_button" ).removeClass( "btn-dark" ).addClass( "btn-danger" );
       }
       else
     if(edit_button_active == 1)
       {
        edit_button_active = 0;
-       document.getElementById("edit_button").style.color = "black";
+       $( "#edit_button" ).removeClass( "btn-danger" ).addClass( "btn-dark" );
       };
     }
 };
+  /////// koniec funkcja sprawdzania czy przycisk edytuj jest aktywny
+  /////// funkcja kolorwania aktywnego punktu z listy
+  function point_from_list_click(){
+console.log($("#punkty :selected").val());
+$('circle').css("fill", "red");
+$("[data-index=" + $("#punkty :selected").val() + "]").css("fill", "green");
+  }
+  /////// koniec funkcja kolorwania aktywnego punktu z listy
+
     $(function(){
         var map,
         punkty = document.getElementById("punkty");
@@ -157,7 +176,10 @@ console.log(Object.keys(markersCoords).length);
 
         $("#punkty option[value='"+ code +"']").remove();
 
-          console.log(code);
+        } else {
+          $('circle').css("fill", "red");
+          $("[data-index=" + code + "]").css("fill", "green");
+          $('#punkty option[value="' + code + '"]').prop('selected', true);
         }
       },
 
