@@ -122,6 +122,15 @@ if ($user->check()) { // Tylko dla użytkowników zalogowanych
                 <div class="col-sm-2 mb-3">
                 <a href="generator.php?id='.($_GET['id']).'" role="button" class="btn btn-dark btn-sm text-uppercase float-right m-1"><i class="fa fa-file-text" aria-hidden="true"></i> Generuj pismo</a>
                 <button type="button" class="btn btn-dark btn-sm text-uppercase float-right m-1" onclick=sendEmail()><i class="fa fa-paper-plane" aria-hidden="true"></i> Wyślij mail</button>
+                <a href="sms:+48';
+                if($_GET['id']){ $pracownik_odczytany =  pojed_zapyt("SELECT zlecono FROM dziennik WHERE `id` = ".$_GET[id]);
+                echo pojed_zapyt('SELECT `kontakt` FROM pracownicy WHERE `imieinazwisko` = "'.$pracownik_odczytany.'"');
+                }
+
+                echo '?&body='.tabeladb2('10','SELECT * FROM dziennik WHERE `id` = '.($_GET['id']), '', '', '', '5', " ", "", "6", "/", "", "7", " ", " ", "4", " ", " ", "9", ", tel.", " ", "10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "").'
+                ">
+                  <button type="button" class="btn btn-dark btn-sm text-uppercase float-right m-1" ><i class="fa fa-mobile" aria-hidden="true"></i> Wyślij sms</button>
+                </a>
                 </div>
                 <div class="col-sm-2 mb-3">
                     <button type="button" id="zapis_button" class="btn btn-dark btn-lg text-uppercase float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i> Zapisz</button>
