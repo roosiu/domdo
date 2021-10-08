@@ -28,7 +28,7 @@
 <!--menu-->
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
       <!--menu/logo-->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
             <img src="img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
           <b>domdo</b></a>
           <!--koniec menu/logo-->

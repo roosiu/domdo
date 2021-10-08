@@ -421,7 +421,12 @@ echo '
 
 <script type="text/javascript" src="js/sprawdzindeks.js"></script>
 <script type="text/javascript" src="js/datatables.min.js"></script>
-<script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>';
+<script type="text/javascript" src="js/dataTables.bootstrap4.min.js"></script>
+<script src="js/hiderow.js"></script>
+<script>
+hiderow("tabela_gl", [0,1,2,3,6,7,8,9]);
+</script>
+';
 
 
 } else {
